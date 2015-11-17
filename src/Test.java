@@ -9,7 +9,7 @@ import Models.Races.Gnome;
  * Created by Rex on 11/6/2015.
  */
 public class Test {
-
+//testetsteststeet
     public static void main(String[] args){
 
        Attributes attributes = new Attributes();
