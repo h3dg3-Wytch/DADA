@@ -13,6 +13,8 @@ public class Attributes implements Serializable {
  private Strength strength ;
  private Dexterity dexterity;
 
+    //Test comment
+
  public Attributes(Constitution constitution, Wisdom wisdom, Charisma charisma, Intelligence intelligence,
                    Strength strength, Dexterity dexterity){
      this.constitution = constitution;
