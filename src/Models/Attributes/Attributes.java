@@ -14,9 +14,12 @@ public class Attributes implements Serializable {
  private Dexterity dexterity;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Test comment
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
 
  public Attributes(Constitution constitution, Wisdom wisdom, Charisma charisma, Intelligence intelligence,
                    Strength strength, Dexterity dexterity){

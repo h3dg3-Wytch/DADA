@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="24a84653-396a-4559-b665-f95118fab888" name="Default" comment="" />
     <ignored path="DunegonsAndDragons.iws" />
 =======
     <list default="true" id="81e1cba8-99da-4a92-8b17-d165ca3ba148" name="Default" comment="" />
     <ignored path="DADA.iws" />
 >>>>>>> origin/master
+=======
+    <list default="true" id="81e1cba8-99da-4a92-8b17-d165ca3ba148" name="Default" comment="" />
+    <ignored path="DADA.iws" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,6 +29,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <favorites_list name="DunegonsAndDragons" />
   </component>
   <component name="FileEditorManager">
@@ -37,6 +43,8 @@
                 <element signature="e#860#861#0" expanded="true" />
                 <element signature="e#902#903#0" expanded="true" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <favorites_list name="DADA" />
   </component>
   <component name="FileEditorManager">
@@ -50,12 +58,16 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#211#212#0" expanded="true" />
                 <element signature="e#247#248#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="Constitution.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Constitution.java">
@@ -63,17 +75,23 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="Charisma.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Charisma.java">
@@ -82,6 +100,8 @@
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <file leaf-file-name="Dice.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Models/Dice.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,11 +123,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="Attribute.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attribute.java">
@@ -116,6 +140,8 @@
               <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
               <folding />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <file leaf-file-name="Stealth.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Skills/Stealth.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,11 +150,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
@@ -136,12 +166,17 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <file leaf-file-name="Survival.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Skills/Survival.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,7 +185,10 @@
         </entry>
       </file>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <file leaf-file-name="Swim.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Models/Skills/Swim.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -197,7 +235,10 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -209,10 +250,14 @@
   </component>
   <component name="Git.Settings">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$" />
 =======
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
 >>>>>>> origin/master
+=======
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -222,6 +267,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Attribute.java" />
         <option value="$PROJECT_DIR$/src/Models/Attribute.java" />
@@ -247,6 +293,8 @@
       </MavenGeneralSettings>
     </option>
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
         <option value="$PROJECT_DIR$/src/Models/Skills/Climb.java" />
         <option value="$PROJECT_DIR$/src/Models/Attributes/Attributes.java" />
         <option value="$PROJECT_DIR$/src/Models/Test.java" />
@@ -283,22 +331,31 @@
   </component>
   <component name="NamedScopeManager">
     <order />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
+<<<<<<< HEAD
 <<<<<<< HEAD
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <option name="width" value="1456" />
     <option name="height" value="886" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -306,10 +363,14 @@
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ConfirmationsSetting value="2" id="Add" />
 =======
     <ConfirmationsSetting value="0" id="Add" />
 >>>>>>> origin/master
+=======
+    <ConfirmationsSetting value="0" id="Add" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -324,17 +385,23 @@
       <autoscrollFromSource />
       <sortByType />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     </navigator>
     <panes>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="Scope" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -350,10 +417,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <option name="myItemId" value="DunegonsAndDragons" />
 =======
               <option name="myItemId" value="DADA" />
 >>>>>>> origin/master
+=======
+              <option name="myItemId" value="DADA" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -364,10 +435,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <option name="myItemId" value="DunegonsAndDragons" />
 =======
               <option name="myItemId" value="DADA" />
 >>>>>>> origin/master
+=======
+              <option name="myItemId" value="DADA" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -382,32 +457,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< HEAD
-              <option name="myItemId" value="DunegonsAndDragons" />
-=======
-              <option name="myItemId" value="DADA" />
->>>>>>> origin/master
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DunegonsAndDragons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
 <<<<<<< HEAD
               <option name="myItemId" value="DunegonsAndDragons" />
 =======
               <option name="myItemId" value="DADA" />
 >>>>>>> origin/master
+=======
+              <option name="myItemId" value="DADA" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -418,12 +475,42 @@
               <option name="myItemId" value="Models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
+              <option name="myItemId" value="DunegonsAndDragons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+<<<<<<< HEAD
+              <option name="myItemId" value="DunegonsAndDragons" />
+=======
+              <option name="myItemId" value="DADA" />
+>>>>>>> origin/master
+=======
+              <option name="myItemId" value="DADA" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
 <<<<<<< HEAD
               <option name="myItemId" value="Races" />
 =======
               <option name="myItemId" value="Skills" />
 >>>>>>> origin/master
+=======
+              <option name="myItemId" value="Skills" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -434,10 +521,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <option name="myItemId" value="DunegonsAndDragons" />
 =======
               <option name="myItemId" value="DADA" />
 >>>>>>> origin/master
+=======
+              <option name="myItemId" value="DADA" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -456,6 +547,7 @@
         </subPane>
       </pane>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
@@ -468,6 +560,8 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -475,7 +569,10 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
     <property name="dynamic.classpath" value="false" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
   </component>
   <component name="RunManager" selected="Application.Test">
     <configuration default="false" name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -490,7 +587,10 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <module name="DADA" />
       <envs />
       <method />
@@ -511,7 +611,10 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <module name="DunegonsAndDragons" />
       <envs />
       <method />
@@ -541,6 +644,7 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
@@ -552,6 +656,8 @@
       <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -574,6 +680,7 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
@@ -592,6 +699,11 @@
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
 >>>>>>> origin/master
+=======
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -651,6 +763,7 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -674,11 +787,14 @@
     </configuration>
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <envs />
       <method />
     </configuration>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -711,6 +827,8 @@
     </configuration>
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -732,6 +850,7 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="OUTPUT_DIRECTORY" />
@@ -765,6 +884,9 @@
 =======
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
 >>>>>>> origin/master
+=======
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
@@ -780,6 +902,7 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Application.Test" />
     </list>
@@ -787,6 +910,8 @@
       <list size="1">
         <item index="0" class="java.lang.String" itemvalue="Application.Test" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Application.Test" />
       <item index="1" class="java.lang.String" itemvalue="Application.Test" />
@@ -795,7 +920,10 @@
       <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Application.Test" />
         <item index="1" class="java.lang.String" itemvalue="Application.Test" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       </list>
     </recent_temporary>
   </component>
@@ -806,20 +934,27 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <changelist id="24a84653-396a-4559-b665-f95118fab888" name="Default" comment="" />
       <created>1446767229050</created>
       <option name="number" value="Default" />
       <updated>1446767229050</updated>
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <changelist id="81e1cba8-99da-4a92-8b17-d165ca3ba148" name="Default" comment="" />
       <created>1448246137501</created>
       <option name="number" value="Default" />
       <updated>1448246137501</updated>
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
@@ -847,6 +982,8 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.49707174" order="3" side_tool="false" content_ui="tabs" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
     <editor active="true" />
     <layout>
@@ -873,7 +1010,10 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -890,10 +1030,14 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <option name="time" value="10" />
 =======
       <option name="time" value="1" />
 >>>>>>> origin/master
+=======
+      <option name="time" value="1" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -902,6 +1046,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -950,6 +1095,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attributes.java">
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/DunegonsAndDragons.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -967,11 +1114,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/SleightofHand.java">
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <element signature="e#860#861#0" expanded="true" />
             <element signature="e#902#903#0" expanded="true" />
@@ -980,25 +1131,37 @@
             <element signature="e#211#212#0" expanded="true" />
             <element signature="e#247#248#0" expanded="true" />
 >>>>>>> origin/master
+=======
+            <element signature="imports" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#247#248#0" expanded="true" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Constitution.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attributes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Charisma.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1013,6 +1176,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Climb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1027,22 +1192,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="75" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Climb.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1050,20 +1224,27 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attributes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Craft.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1091,6 +1272,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/DunegonsAndDragons.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1115,13 +1298,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Descriptions.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1135,6 +1322,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Appraise.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1149,11 +1338,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="24" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="24" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Craft.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1181,11 +1374,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Craft.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1195,6 +1393,7 @@
     <entry file="file://$PROJECT_DIR$/src/Models/Descriptions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
 <<<<<<< HEAD
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -1207,10 +1406,14 @@
 =======
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
 >>>>>>> origin/master
+=======
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Strength.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1224,6 +1427,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/DisableDevice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1238,13 +1443,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1259,6 +1468,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Disguise.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1273,13 +1484,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1294,6 +1509,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Fly.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1308,13 +1525,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1329,6 +1550,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Heal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1343,13 +1566,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Attributes/Attribute.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1421,6 +1648,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Knowledge.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1485,6 +1714,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+<<<<<<< HEAD
 >>>>>>> origin/master
           <folding />
         </state>
@@ -1503,15 +1733,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/SleightofHand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1538,13 +1773,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="28" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="28" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Models/Races/Gnome.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1589,6 +1828,8 @@
             <element signature="e#860#861#0" expanded="true" />
             <element signature="e#902#903#0" expanded="true" />
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
     <entry file="file://$PROJECT_DIR$/src/Models/Skills/Survival.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1634,12 +1875,16 @@
           <folding>
             <element signature="e#705#706#0" expanded="true" />
             <element signature="e#734#735#0" expanded="true" />
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
           </folding>
         </state>
       </provider>
     </entry>
   </component>
+<<<<<<< HEAD
 <<<<<<< HEAD
   <component name="masterDetails">
     <states>
@@ -1717,4 +1962,6 @@
   </component>
 =======
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
 </project>

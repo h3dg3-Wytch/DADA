@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Models.Attributes.Attribute;
 import Models.Attributes.Attributes;
 import Models.Attributes.Constitution;
@@ -23,6 +24,8 @@ public class Test {
 
 
 =======
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
 import Models.Dice;
 
 /**
@@ -61,7 +64,10 @@ public class Test {
         for(int i = 0; i < 5; i++){
             System.out.print(Dice.rolld20() + " ");
         }
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> b087b2f1654f4985871504bd780980154d704c4a
 
 
     }
