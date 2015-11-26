@@ -5,19 +5,10 @@
 
 package Models.Equipment;
 
-public class Armor
+public class Weapon
 {
-    public enum ArmorType
-    {
-
-        CLOTH, LEATHER, MAIL, PLATE;
-
-    }
-
-    private ArmorType type;
-
     private String description, properties, name;
-    private int weight, acBonus;
+    private int weight, attackBonus;
 
     public void setName(String name)
     {
@@ -34,16 +25,10 @@ public class Armor
         this.weight = weight;
     }
 
-    public void setType(ArmorType type)
+    public void setAttackBonus(int bonus)
     {
-        this.type = type;
+        this.attackBonus = bonus;
     }
-
-    public void setACBonus(int bonus)
-    {
-        this.acBonus = bonus;
-    }
-    
     public void setProperties(String properties)
     {
         this.properties = properties;
@@ -64,14 +49,9 @@ public class Armor
         return weight;
     }
 
-    public ArmorType getType()
+    public int getAttackBonus()
     {
-        return type;
-    }
-
-    public int getACBonus()
-    {
-        return acBonus;
+        return attackBonus;
     }
     
     public String getProperties()
