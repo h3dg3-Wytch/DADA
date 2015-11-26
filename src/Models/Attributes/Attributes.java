@@ -13,7 +13,10 @@ public class Attributes implements Serializable {
  private Strength strength ;
  private Dexterity dexterity;
 
+<<<<<<< HEAD
     //Test comment
+=======
+>>>>>>> origin/master
 
  public Attributes(Constitution constitution, Wisdom wisdom, Charisma charisma, Intelligence intelligence,
                    Strength strength, Dexterity dexterity){
