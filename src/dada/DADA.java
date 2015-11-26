@@ -1,7 +1,7 @@
 //Main method
 package dada;
 
-import GUI.*;
+import View.GUI.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
