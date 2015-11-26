@@ -1,5 +1,9 @@
-import java.io.Serializable;
+package Models.Races;
 
+import java.io.Serializable;
+import Models.Attributes.Attribute;
+import Models.Attributes.Attributes;
+import org.w3c.dom.Attr;
 /**
  * Created by krushan on 11/15/15.
  */
