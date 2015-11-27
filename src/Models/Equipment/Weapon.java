@@ -5,7 +5,9 @@
 
 package Models.Equipment;
 
-public class Weapon
+import java.io.Serializable;
+
+public class Weapon implements Serializable
 {
     private String description, properties, name;
     private int weight, attackBonus;

@@ -12,9 +12,11 @@ import java.io.Serializable;
 public class HalfOrc extends Race implements Serializable
 {
 
+    /** purpose of enum is to allow the user to select which ability
+     *  gets the plus 2 variable
+    */
     public enum AbilityBoost
     {
-
         STRENGTH, DEXTERITY, CONSTITUTION, INTELLIGENCE, WISDOM, CHARISMA;
     }
 
@@ -72,5 +74,4 @@ public class HalfOrc extends Race implements Serializable
             }
         }
     }
-
 }

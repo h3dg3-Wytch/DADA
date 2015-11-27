@@ -5,7 +5,9 @@
 
 package Models.Equipment;
 
-public class Armor
+import java.io.Serializable;
+
+public class Armor implements Serializable
 {
     public enum ArmorType
     {
