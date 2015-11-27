@@ -18,7 +18,7 @@ public class Knowledge extends Skill implements Serializable
 
     }
 
-    KnowledgeType type;
+    private KnowledgeType type;
 
     public Knowledge(Intelligence attribute, int rank, KnowledgeType type)
     {
