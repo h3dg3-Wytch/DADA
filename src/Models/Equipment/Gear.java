@@ -6,9 +6,13 @@
 
 package Models.Equipment;
 
+<<<<<<< HEAD
 import java.io.Serializable;
 
 public class Gear implements Serializable{
+=======
+public class Gear {
+>>>>>>> 9f6a914c431329fcb70f747133cc7f240d0ea281
 	
 	
 	private String item , description;
