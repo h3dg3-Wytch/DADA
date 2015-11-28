@@ -1,6 +1,7 @@
 package Models.etc;
 
 import Models.Dice.Dice;
+import Models.Entity.Entity;
 
 import java.io.Serializable;
 
@@ -25,11 +26,45 @@ public class Spell implements Serializable {
     }
 
     public String castSpell(){
+        int result = calculateSpell();
+        return spellName + " was cast, with a total damage of " + result;
+    }
+
+    public void castHealingSpell(Entity entity){
+
+        int result = calculateSpell();
+        entity.setHealthPoints(entity.getHealthPoints() + result);
+
+    }
+
+    public void castCombatSpell(Entity entity){
+
+
+        int result = calculateSpell();
+        entity.setHealthPoints(entity.getHealthPoints() - result);
+
+    }
+
+    public void castProtectiveSpell(Entity entity){
+
+        int result = calculateSpell();
+        entity.setArmorClass(entity.getArmorClass() + result);
+    }
+
+    public void castWeakeningSpell(Entity entity){
+        
+        int result = calculateSpell();
+        entity.setArmorClass(entity.getArmorClass() - result);
+
+    }
+
+    private int calculateSpell(){
         int result = die.rollDice();
         for(int i = 1; i < levelMultiplier; i++){
             result += die.rollDice();
         }
-        return spellName + " was cast, with a total damage of " + result;
+        return result;
+
     }
 
     public Dice getDie() {
