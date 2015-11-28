@@ -13,7 +13,7 @@ public class Test {
 
     public static void main(String[] args) {
         CharacterImage ci = new CharacterImage("boobette","dwarf","barbarian","f","b");
-        ci.drawImage();
+        System.out.print(ci.drawImage());
 
         /*
          Attributes attributes = new Attributes();

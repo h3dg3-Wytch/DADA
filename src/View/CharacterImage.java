@@ -5,10 +5,12 @@ import javax.imageio.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.awt.Graphics;
+import java.awt.image.DataBufferInt;
 
 public class CharacterImage {
 
     private String imageName, charRace, charClass, charGender, charPalette;
+    private int[] pixels;
 
     public CharacterImage() {
     }
@@ -21,7 +23,7 @@ public class CharacterImage {
         this.charPalette = charPalette;
     }
 
-    public void drawImage() {
+    public int[] drawImage() {
 
         try {
 
@@ -34,8 +36,8 @@ public class CharacterImage {
             BufferedImage torso = ImageIO.read(new File(torsoPath));
 
             //CREATE FINAL IMAGE, GRAPHICS OBJECT
-            BufferedImage finalImage = new BufferedImage(torso.getWidth(), torso.getHeight(), BufferedImage.TYPE_INT_ARGB);
-            Graphics g = finalImage.getGraphics();
+            BufferedImage image = new BufferedImage(torso.getWidth(), torso.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics g = image.getGraphics();
 
             g.drawImage(torso, 0, 0, null); //DRAW TORSO LAYER
 
@@ -71,12 +73,16 @@ public class CharacterImage {
                 g.drawImage(hat, 0, 0, null); //DRAW HAT LAYER
             }//if hasHat
 
-            //CREATE AND SAVE OUTPUT FILE
-            File outputfile = new File("Images\\Output\\"+imageName + ".png");
-            ImageIO.write(finalImage, "png", outputfile);
+            //CREATE AND SAVE OUTPUT FILE AS <<actually ignore this>>
+            //File outputfile = new File("Images\\Output\\"+imageName + ".png");
+            //ImageIO.write(finalImage, "png", outputfile);
+            
+            //SAVE OUTPUT IMAGE AS INT ARRAY
+            this.pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
         } catch (IOException e) {
         }//catch
+        return pixels;
 
     }//generateImage
 
