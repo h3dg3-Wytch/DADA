@@ -52,7 +52,7 @@ public class Spell implements Serializable {
     }
 
     public void castWeakeningSpell(Entity entity){
-        
+
         int result = calculateSpell();
         entity.setArmorClass(entity.getArmorClass() - result);
 
