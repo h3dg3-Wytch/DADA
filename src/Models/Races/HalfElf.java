@@ -1,21 +1,21 @@
-<<<<<<< HEAD
 package Models.Races;
 
+import java.io.Serializable;
+
+
 import Models.Attributes.Attribute;
 import Models.Attributes.Attributes;
 import Models.Races.Race;
 
-=======
 import Models.Attributes.Attribute;
 import Models.Attributes.Attributes;
 import Models.Races.Race;
->>>>>>> c3aa1ef769b1456030b590e2b5453ae9ce184aad
 import java.io.Serializable;
 
 /**
  * Created by krushan on 11/23/15.
  */
-public class HalfElf extends Race implements Serializable{
+public class HalfElf extends Race implements Serializable {
 
     //allow the user to choose which ability gets the +2.
     public enum AbilityBoost
