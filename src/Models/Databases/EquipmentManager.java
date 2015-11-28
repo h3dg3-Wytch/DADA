@@ -2,10 +2,10 @@
  *
  * @author Morgan Miller
  */
-
 package Models.Databases;
 
-import Models.Entity.Monster;
+import Models.Equipment.Armor;
+import Models.Equipment.Weapon;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,24 +17,24 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EntityManager
+public class EquipmentManager
 {
 
-    private static final String CHARACTERS_FILE = "Characters.DADA",
-            MONSTERS_FILE = "Monsters.DADA";
+    private static final String WEAPONS_FILE = "Weapons.DADA",
+            ARMOR_FILE = "Armor.DADA";
 
-    public static void saveCharacters(List<Models.Entity.Character> characters)
+    public static void saveWeapons(List<Weapon> weapons)
     {
         try
         {
-            FileOutputStream fos = new FileOutputStream(CHARACTERS_FILE);
+            FileOutputStream fos = new FileOutputStream(WEAPONS_FILE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             try
             {
-                for (int i = 0; i < characters.size(); i++)
+                for (int i = 0; i < weapons.size(); i++)
                 {
-                    oos.writeObject(characters.get(i));
+                    oos.writeObject(weapons.get(i));
                 }
 
             }
@@ -46,22 +46,22 @@ public class EntityManager
         }
         catch (IOException ex)
         {
-            Logger.getLogger(EntityManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EquipmentManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void saveMonsters(List<Monster> monsters)
+    public static void saveArmor(List<Armor> armor)
     {
         try
         {
-            FileOutputStream fos = new FileOutputStream(MONSTERS_FILE);
+            FileOutputStream fos = new FileOutputStream(ARMOR_FILE);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             try
             {
-                for (int i = 0; i < monsters.size(); i++)
+                for (int i = 0; i < armor.size(); i++)
                 {
-                    oos.writeObject(monsters.get(i));
+                    oos.writeObject(armor.get(i));
                 }
 
             }
@@ -73,33 +73,33 @@ public class EntityManager
         }
         catch (IOException ex)
         {
-            Logger.getLogger(EntityManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EquipmentManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void saveAll(List<Models.Entity.Character> characters, List<Monster> monsters)
+    public static void saveAll(List<Weapon> weapons, List<Armor> armor)
     {
-        saveCharacters(characters);
-        saveMonsters(monsters);
+        saveWeapons(weapons);
+        saveArmor(armor);
     }
 
-    public static List<Models.Entity.Character> loadCharacters()
+    public static List<Weapon> loadWeapons()
     {
         FileInputStream fis;
         try
         {
-            fis = new FileInputStream(CHARACTERS_FILE);
+            fis = new FileInputStream(WEAPONS_FILE);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            List<Models.Entity.Character> characters = new ArrayList();
+            List<Weapon> weapons = new ArrayList();
 
             try
             {
-                Models.Entity.Character character = null;
+                Weapon weapon = null;
 
-                while ((character = (Models.Entity.Character) ois.readObject()) != null)
+                while ((weapon = (Weapon) ois.readObject()) != null)
                 {
-                    characters.add(character);
+                    weapons.add(weapon);
 
                 }
 
@@ -107,16 +107,15 @@ public class EntityManager
             catch (IOException ex)
             {
                 // ignore EOF
-
             }
             catch (ClassNotFoundException ex)
             {
-                Logger.getLogger(EntityManager.class
+                Logger.getLogger(EquipmentManager.class
                         .getName()).log(Level.SEVERE, null, ex);
             }
             finally
             {
-                return characters;
+                return weapons;
             }
         }
         catch (FileNotFoundException ex)
@@ -129,23 +128,23 @@ public class EntityManager
         }
     }
 
-    public static List<Monster> loadMonsters()
+    public static List<Armor> loadArmor()
     {
         FileInputStream fis;
         try
         {
-            fis = new FileInputStream(MONSTERS_FILE);
+            fis = new FileInputStream(ARMOR_FILE);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            List<Monster> monsters = new ArrayList();
+            List<Armor> armorList = new ArrayList();
 
             try
             {
-                Monster monster = null;
+                Armor armor = null;
 
-                while ((monster = (Monster) ois.readObject()) != null)
+                while ((armor = (Armor) ois.readObject()) != null)
                 {
-                    monsters.add(monster);
+                    armorList.add(armor);
                 }
 
             }
@@ -155,11 +154,11 @@ public class EntityManager
             }
             catch (ClassNotFoundException ex)
             {
-                Logger.getLogger(EntityManager.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EquipmentManager.class.getName()).log(Level.SEVERE, null, ex);
             }
             finally
             {
-                return monsters;
+                return armorList;
             }
         }
         catch (FileNotFoundException ex)
