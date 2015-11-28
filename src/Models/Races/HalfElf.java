@@ -1,3 +1,9 @@
+package Models.Races;
+
+import Models.Attributes.Attribute;
+import Models.Attributes.Attributes;
+import Models.Races.Race;
+
 import java.io.Serializable;
 
 /**

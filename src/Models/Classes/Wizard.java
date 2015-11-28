@@ -1,5 +1,6 @@
 package Models.Classes;
 
+import Models.Dice.Dice;
 import Models.Entity.Entity;
 import Models.etc.Ability;
 import Models.etc.Level;
@@ -16,6 +17,8 @@ public class Wizard extends CharacterClass implements Serializable {
 
 
     public Wizard(){
+        //The base die is 6
+        setTypeOfDie(new Dice(6));
 
     }
 

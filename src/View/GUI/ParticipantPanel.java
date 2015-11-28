@@ -2,6 +2,9 @@
 
 package View.GUI;
 
+import Models.Entity.*;
+import Models.Entity.Character;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.FlowLayout;
@@ -9,26 +12,25 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import main.Participant;
 
 public class ParticipantPanel extends JPanel
 {
 
     private JLabel label;
-    private Participant participant;
+    private Models.Entity.Character participant;
 
     private final int str = 0;
     private int index = 0;
 
-    public ParticipantPanel(Participant participant)
+    public ParticipantPanel(Character participant)
     {
         super(new FlowLayout(FlowLayout.LEFT, 10, 5));
         this.participant = participant;
 
-        label = new JLabel(participant.getName());
+        label = new JLabel(participant.getDescriptions().getName());
         label.setCursor(new java.awt.Cursor(Cursor.HAND_CURSOR));
 
-        label.setToolTipText(participant.getToolTip());
+        ////label.setToolTipText(participant.getToolTip());
 
         add(label);
         setBackground(Color.white);
@@ -64,7 +66,7 @@ public class ParticipantPanel extends JPanel
             public void mouseEntered(MouseEvent e)
             {
                 label.setForeground(Color.blue);
-                label.setToolTipText(participant.getToolTip());
+                //label.setToolTipText(participant.getToolTip());
             }
 
             @Override

@@ -2,13 +2,13 @@
 
 package View.GUI;
 
+import Models.Entity.Monster;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import main.Monster;
-import main.Participant;
 
 public class SelectCombatFrame extends javax.swing.JFrame
 {
