@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 package Models.Races;
 
 import Models.Attributes.Attribute;
 import Models.Attributes.Attributes;
 import Models.Races.Race;
 
+=======
+import Models.Attributes.Attribute;
+import Models.Attributes.Attributes;
+import Models.Races.Race;
+>>>>>>> c3aa1ef769b1456030b590e2b5453ae9ce184aad
 import java.io.Serializable;
 
 /**
