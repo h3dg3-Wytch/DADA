@@ -72,7 +72,7 @@ public class CharacterImage {
             }//if hasHat
 
             //CREATE AND SAVE OUTPUT FILE
-            File outputfile = new File(imageName + ".png");
+            File outputfile = new File("Images\\Output\\"+imageName + ".png");
             ImageIO.write(finalImage, "png", outputfile);
 
         } catch (IOException e) {
