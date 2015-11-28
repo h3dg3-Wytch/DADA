@@ -1,11 +1,11 @@
 package Models.Entity;
 
 import Models.Attributes.Attributes;
+import Models.Classes.CharacterClass;
 import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.Skills.Skills;
-import Models.etc.Descriptions;
-import Models.etc.Level;
+import Models.etc.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,7 +25,6 @@ public abstract class Entity implements Serializable{
     private CharacterClass characterClass;
     private ArrayList<Spell> spells;
     private Money money;
-    private Feat feat;
 
     private int healthPoints;
     private int armorClass;
@@ -36,8 +35,14 @@ public abstract class Entity implements Serializable{
     private int touchArmor;
     private int flatFooted;
 
-    protected void calculateHP;
-    protected void
+    protected abstract void calculateHP();
+    protected abstract void caluclateArmorClass();
+    protected abstract void calculateCMB();
+    protected abstract void calculateCMD();
+    protected abstract void calculateInititiative();
+    protected abstract void calculateBaseAttackBonus();
+    protected abstract void calculateTouchArmor();
+    protected abstract void calculateFlatFooted();
 
 
 

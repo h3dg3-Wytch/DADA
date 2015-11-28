@@ -31,7 +31,7 @@ public class TargetsPanel extends JPanel
             @Override
             public void run()
             {
-                ParticipantPanel participant = new ParticipantPanel(p);
+                gui.ParticipantPanel participant = new gui.ParticipantPanel(p);
                 panel.add(participant);
                 panel.revalidate();
             }

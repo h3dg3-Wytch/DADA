@@ -5,7 +5,9 @@
 
 package Models.etc;
 
-public class Money
+import java.io.Serializable;
+
+public class Money implements Serializable
 {
 
     private int gold, silver, copper;

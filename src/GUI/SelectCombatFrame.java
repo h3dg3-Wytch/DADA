@@ -16,7 +16,7 @@ public class SelectCombatFrame extends javax.swing.JFrame
     private List<Participant> participants;
     private ArrayList<main.Character> characters;
     private ArrayList<Monster> monsters;
-    private TargetsPanel targetsPanel;
+    private gui.TargetsPanel targetsPanel;
 
     public SelectCombatFrame(List<main.Character> characters, List<Monster> monsters)
     {

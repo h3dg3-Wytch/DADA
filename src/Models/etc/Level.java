@@ -5,7 +5,9 @@
 
 package Models.etc;
 
-public class Level
+import java.io.Serializable;
+
+public class Level implements Serializable
 {
 
     private int experience;
@@ -14,6 +16,7 @@ public class Level
     {
         this.experience += experience;
     }
+
 
     public int getLevel()
     {
@@ -98,4 +101,13 @@ public class Level
             return 20;
         }
     }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
 }
