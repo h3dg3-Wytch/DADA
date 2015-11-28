@@ -28,17 +28,47 @@ public class OptionsFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup = new javax.swing.ButtonGroup();
+        showButton = new javax.swing.JRadioButton();
+        hideButton = new javax.swing.JRadioButton();
+        Save = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        buttonGroup.add(showButton);
+        showButton.setText("Show monster stats during combat");
+
+        buttonGroup.add(hideButton);
+        hideButton.setText("Hide monster stats during combat");
+
+        Save.setText("Save Changes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hideButton)
+                            .addComponent(showButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(Save)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(showButton)
+                .addGap(18, 18, 18)
+                .addComponent(hideButton)
+                .addGap(18, 18, 18)
+                .addComponent(Save)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,5 +110,9 @@ public class OptionsFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Save;
+    private javax.swing.ButtonGroup buttonGroup;
+    private javax.swing.JRadioButton hideButton;
+    private javax.swing.JRadioButton showButton;
     // End of variables declaration//GEN-END:variables
 }

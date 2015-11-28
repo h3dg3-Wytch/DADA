@@ -12,7 +12,7 @@ public class Test {
 //testetsteststeet
 
     public static void main(String[] args) {
-        CharacterImage ci = new CharacterImage("image","half orc","wizard","m","b");
+        CharacterImage ci = new CharacterImage("boobette","dwarf","barbarian","f","b");
         ci.drawImage();
 
         /*
