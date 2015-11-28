@@ -29,5 +29,5 @@ public class Skills implements Serializable {
     private Knowledge knowledgeEngineering;
     private Knowledge knowledgeGeography;
     private Knowledge knowledgeHistory;
-    private Knowledge
+    private Knowledge knowledgePolitics;
 }

@@ -1,4 +1,4 @@
-package Models;
+package Models.Entity;
 
 import Models.Attributes.Attributes;
 import Models.Equipment.Armor;
@@ -37,7 +37,7 @@ public abstract class Entity implements Serializable{
     private int flatFooted;
 
     protected void calculateHP;
-    protected void 
+    protected void
 
 
 
