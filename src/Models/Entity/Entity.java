@@ -35,6 +35,11 @@ public abstract class Entity implements Serializable{
     private int touchArmor;
     private int flatFooted;
 
+    private int fortitude;
+    private int reflex;
+    private int will;
+
+
     protected abstract void calculateHP();
     protected abstract void caluclateArmorClass();
     protected abstract void calculateCMB();
@@ -186,5 +191,29 @@ public abstract class Entity implements Serializable{
 
     public void setFlatFooted(int flatFooted) {
         this.flatFooted = flatFooted;
+    }
+
+    public int getFortitude() {
+        return fortitude;
+    }
+
+    public void setFortitude(int fortitude) {
+        this.fortitude = fortitude;
+    }
+
+    public int getReflex() {
+        return reflex;
+    }
+
+    public void setReflex(int reflex) {
+        this.reflex = reflex;
+    }
+
+    public int getWill() {
+        return will;
+    }
+
+    public void setWill(int will) {
+        this.will = will;
     }
 }

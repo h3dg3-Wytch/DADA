@@ -27,7 +27,7 @@ public class Spell implements Serializable {
 
     public String castSpell(){
         int result = calculateSpell();
-        return spellName + " was cast, with a total damage of " + result;
+        return spellName + " was cast, " + description;
     }
 
     public void castHealingSpell(Entity entity){
