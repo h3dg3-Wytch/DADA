@@ -343,6 +343,10 @@ public class CharacterImage {
         return charPalette;
     }
 
+    public int[] getPixels() {
+        return pixels;
+    }
+
     public void setCharPalette(String charPalette) {
         this.charPalette = charPalette;
     }

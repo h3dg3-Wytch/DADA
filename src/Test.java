@@ -4,6 +4,9 @@ import Models.Dice.Dice;
 import Models.Attributes.Strength;
 import Models.Races.Gnome;
 import View.CharacterImage;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+import java.awt.image.WritableRaster;
 
 /**
  * Created by Rex on 11/6/2015.
@@ -13,7 +16,9 @@ public class Test {
 
     public static void main(String[] args) {
         CharacterImage ci = new CharacterImage("boobette","dwarf","barbarian","f","b");
-        System.out.print(ci.drawImage());
+        int[] pixels = (ci.drawImage());
+  
+        
 
         /*
          Attributes attributes = new Attributes();
