@@ -33,8 +33,11 @@ public class Character extends Entity
     @Override
     protected void caluclateArmorClass()
     {
-
-        setArmorClass(10 + currentlyEquipedArmor.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
+        if(shield == null) {
+            setArmorClass(10 + currentlyEquipedArmor.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
+        }else {
+            setArmorClass(10 + currentlyEquipedArmor.getACBonus() + shield.getACBonus() + getAttributes().getDexterity().getAbilityModifier())
+        }
 
     }
 
