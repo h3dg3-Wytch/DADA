@@ -28,32 +28,316 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Pane = new javax.swing.JTabbedPane();
-        RacePane = new javax.swing.JTabbedPane();
-        ClassPane = new javax.swing.JTabbedPane();
-        SkillsPane = new javax.swing.JTabbedPane();
-        FeatsPane = new javax.swing.JTabbedPane();
-        SpellsPane = new javax.swing.JTabbedPane();
-        StatsPane = new javax.swing.JTabbedPane();
-        GoldPane = new javax.swing.JTabbedPane();
-        AppearancePane = new javax.swing.JTabbedPane();
-        NamePane = new javax.swing.JTabbedPane();
         jLabel1 = new javax.swing.JLabel();
+        namePane = new javax.swing.JTabbedPane();
+        namePanel = new javax.swing.JPanel();
+        nameField = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        racePanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        selectRace = new javax.swing.JList();
+        raceLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        selectRace1 = new javax.swing.JList();
+        classLabel = new javax.swing.JLabel();
+        skillsPanel = new javax.swing.JPanel();
+        featsPanel = new javax.swing.JPanel();
+        spellsPanel = new javax.swing.JPanel();
+        statsPanel = new javax.swing.JPanel();
+        equipmentPanel = new javax.swing.JPanel();
+        goldButton = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        equipmentList = new javax.swing.JList();
+        addButton = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        inventoryList = new javax.swing.JList();
+        addButton1 = new javax.swing.JButton();
+        equipmentLabel = new javax.swing.JLabel();
+        inventoryLabel = new javax.swing.JLabel();
+        appearancePanel = new javax.swing.JPanel();
+        masculineButton = new javax.swing.JRadioButton();
+        feminineButton = new javax.swing.JRadioButton();
+        paletteAButton = new javax.swing.JRadioButton();
+        paletteBButton = new javax.swing.JRadioButton();
+        paletteCButton = new javax.swing.JRadioButton();
+        genderLabel = new javax.swing.JLabel();
+        skinLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         saveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Pane.addTab("Race", RacePane);
-        Pane.addTab("Class", ClassPane);
-        Pane.addTab("Skills", SkillsPane);
-        Pane.addTab("Feats", FeatsPane);
-        Pane.addTab("Spells", SpellsPane);
-        Pane.addTab("Stats", StatsPane);
-        Pane.addTab("Gold/Equipment", GoldPane);
-        Pane.addTab("Appearance", AppearancePane);
-        Pane.addTab("Name/Description", NamePane);
-
         jLabel1.setText("Character Editor");
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane4.setViewportView(jTextArea2);
+
+        javax.swing.GroupLayout namePanelLayout = new javax.swing.GroupLayout(namePanel);
+        namePanel.setLayout(namePanelLayout);
+        namePanelLayout.setHorizontalGroup(
+            namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(namePanelLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameField)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+        namePanelLayout.setVerticalGroup(
+            namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(namePanelLayout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+
+        namePane.addTab("Name/Description", namePanel);
+
+        selectRace.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(selectRace);
+
+        raceLabel.setText("Select Race");
+
+        selectRace1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(selectRace1);
+
+        classLabel.setText("Select Class");
+
+        javax.swing.GroupLayout racePanelLayout = new javax.swing.GroupLayout(racePanel);
+        racePanel.setLayout(racePanelLayout);
+        racePanelLayout.setHorizontalGroup(
+            racePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(racePanelLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(racePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(raceLabel))
+                .addGap(53, 53, 53)
+                .addGroup(racePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(classLabel)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(149, Short.MAX_VALUE))
+        );
+        racePanelLayout.setVerticalGroup(
+            racePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(racePanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(racePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(raceLabel)
+                    .addComponent(classLabel))
+                .addGap(18, 18, 18)
+                .addGroup(racePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+
+        namePane.addTab("Race/Class", racePanel);
+
+        javax.swing.GroupLayout skillsPanelLayout = new javax.swing.GroupLayout(skillsPanel);
+        skillsPanel.setLayout(skillsPanelLayout);
+        skillsPanelLayout.setHorizontalGroup(
+            skillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+        skillsPanelLayout.setVerticalGroup(
+            skillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+
+        namePane.addTab("Skills", skillsPanel);
+
+        javax.swing.GroupLayout featsPanelLayout = new javax.swing.GroupLayout(featsPanel);
+        featsPanel.setLayout(featsPanelLayout);
+        featsPanelLayout.setHorizontalGroup(
+            featsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+        featsPanelLayout.setVerticalGroup(
+            featsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+
+        namePane.addTab("Feats", featsPanel);
+
+        javax.swing.GroupLayout spellsPanelLayout = new javax.swing.GroupLayout(spellsPanel);
+        spellsPanel.setLayout(spellsPanelLayout);
+        spellsPanelLayout.setHorizontalGroup(
+            spellsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+        spellsPanelLayout.setVerticalGroup(
+            spellsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+
+        namePane.addTab("Spells", spellsPanel);
+
+        javax.swing.GroupLayout statsPanelLayout = new javax.swing.GroupLayout(statsPanel);
+        statsPanel.setLayout(statsPanelLayout);
+        statsPanelLayout.setHorizontalGroup(
+            statsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+        );
+        statsPanelLayout.setVerticalGroup(
+            statsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+
+        namePane.addTab("Stats", statsPanel);
+
+        goldButton.setText("Generate Gold");
+
+        equipmentList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(equipmentList);
+
+        addButton.setText("Add ");
+
+        inventoryList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane6.setViewportView(inventoryList);
+
+        addButton1.setText("Add ");
+
+        equipmentLabel.setText("Equipment");
+
+        inventoryLabel.setText("Inventory");
+
+        javax.swing.GroupLayout equipmentPanelLayout = new javax.swing.GroupLayout(equipmentPanel);
+        equipmentPanel.setLayout(equipmentPanelLayout);
+        equipmentPanelLayout.setHorizontalGroup(
+            equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(equipmentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(equipmentPanelLayout.createSequentialGroup()
+                        .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane5)
+                            .addComponent(goldButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addButton))
+                    .addComponent(equipmentLabel))
+                .addGap(41, 41, 41)
+                .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(equipmentPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addButton1))
+                    .addComponent(inventoryLabel))
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+        equipmentPanelLayout.setVerticalGroup(
+            equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(equipmentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(goldButton)
+                .addGap(24, 24, 24)
+                .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(equipmentLabel)
+                    .addComponent(inventoryLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addButton1)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addButton))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        namePane.addTab("Gold/Equipment", equipmentPanel);
+
+        masculineButton.setText("Masculine");
+
+        feminineButton.setText("Feminine");
+
+        paletteAButton.setText("Medium");
+
+        paletteBButton.setText("Light");
+
+        paletteCButton.setText("Dark");
+
+        genderLabel.setText("Body Type");
+
+        skinLabel.setText("Skin Tone");
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(288, 288));
+        jPanel1.setMinimumSize(new java.awt.Dimension(288, 288));
+        jPanel1.setPreferredSize(new java.awt.Dimension(288, 288));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 288, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 288, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout appearancePanelLayout = new javax.swing.GroupLayout(appearancePanel);
+        appearancePanel.setLayout(appearancePanelLayout);
+        appearancePanelLayout.setHorizontalGroup(
+            appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appearancePanelLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(skinLabel)
+                    .addComponent(genderLabel)
+                    .addComponent(paletteBButton)
+                    .addComponent(feminineButton)
+                    .addComponent(masculineButton)
+                    .addComponent(paletteAButton)
+                    .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(138, 138, 138))
+        );
+        appearancePanelLayout.setVerticalGroup(
+            appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(appearancePanelLayout.createSequentialGroup()
+                .addGroup(appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(appearancePanelLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(genderLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(masculineButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(feminineButton)
+                        .addGap(32, 32, 32)
+                        .addComponent(skinLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paletteAButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(paletteBButton))
+                    .addGroup(appearancePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        namePane.addTab("Appearance", appearancePanel);
 
         saveButton.setText("Save");
 
@@ -64,7 +348,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Pane, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                    .addComponent(namePane, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -79,8 +363,8 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(saveButton))
-                .addGap(18, 18, 18)
-                .addComponent(Pane, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(namePane, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -123,17 +407,42 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane AppearancePane;
-    private javax.swing.JTabbedPane ClassPane;
-    private javax.swing.JTabbedPane FeatsPane;
-    private javax.swing.JTabbedPane GoldPane;
-    private javax.swing.JTabbedPane NamePane;
-    private javax.swing.JTabbedPane Pane;
-    private javax.swing.JTabbedPane RacePane;
-    private javax.swing.JTabbedPane SkillsPane;
-    private javax.swing.JTabbedPane SpellsPane;
-    private javax.swing.JTabbedPane StatsPane;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton addButton1;
+    private javax.swing.JPanel appearancePanel;
+    private javax.swing.JLabel classLabel;
+    private javax.swing.JLabel equipmentLabel;
+    private javax.swing.JList equipmentList;
+    private javax.swing.JPanel equipmentPanel;
+    private javax.swing.JPanel featsPanel;
+    private javax.swing.JRadioButton feminineButton;
+    private javax.swing.JLabel genderLabel;
+    private javax.swing.JButton goldButton;
+    private javax.swing.JLabel inventoryLabel;
+    private javax.swing.JList inventoryList;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JRadioButton masculineButton;
+    private javax.swing.JTextField nameField;
+    private javax.swing.JTabbedPane namePane;
+    private javax.swing.JPanel namePanel;
+    private javax.swing.JRadioButton paletteAButton;
+    private javax.swing.JRadioButton paletteBButton;
+    private javax.swing.JRadioButton paletteCButton;
+    private javax.swing.JLabel raceLabel;
+    private javax.swing.JPanel racePanel;
     private javax.swing.JButton saveButton;
+    private javax.swing.JList selectRace;
+    private javax.swing.JList selectRace1;
+    private javax.swing.JPanel skillsPanel;
+    private javax.swing.JLabel skinLabel;
+    private javax.swing.JPanel spellsPanel;
+    private javax.swing.JPanel statsPanel;
     // End of variables declaration//GEN-END:variables
 }
