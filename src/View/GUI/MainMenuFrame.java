@@ -3,19 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package View.GUI;
+
+import Models.Entity.Monster;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /**
  *
  * @author Maia
  */
-public class MainMenuFrame extends javax.swing.JFrame {
+public class MainMenuFrame extends javax.swing.JFrame
+{
 
     /**
      * Creates new form mainMenuFrame
      */
-    public MainMenuFrame() {
+    public MainMenuFrame()
+    {
         initComponents();
     }
 
@@ -107,7 +113,29 @@ public class MainMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_monsterButtonMouseClicked
 
     private void combatButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combatButtonMouseClicked
-        CombatFrame frame = new CombatFrame();
+        
+        // this is test data
+        List<Models.Entity.Character> characterList = new ArrayList();
+        List<Monster> monsterList = new ArrayList();
+
+        for (int i = 0; i < 5; i++)
+        {
+            Models.Entity.Character character = new Models.Entity.Character();
+            character.getDescriptions().setName("Character " + i);
+            character.setInitiative(new Random().nextInt(20) + 1);
+            characterList.add(character);
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            Monster monster = new Monster();
+            monster.getDescriptions().setName("Monster " + i);
+            monster.setInitiative(new Random().nextInt(20) + 1);
+            monsterList.add(monster);
+        }
+
+        CombatFrame frame = new CombatFrame(characterList, monsterList);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }//GEN-LAST:event_combatButtonMouseClicked
 
@@ -119,7 +147,6 @@ public class MainMenuFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton characterButton;

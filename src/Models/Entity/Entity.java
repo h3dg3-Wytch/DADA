@@ -13,9 +13,10 @@ import java.util.ArrayList;
 /**
  * Created by Alex on 11/27/15.
  */
-public abstract class Entity implements Serializable{
+public abstract class Entity implements Serializable, Comparable<Entity>
+{
 
-    private Descriptions descriptions;
+    private Descriptions descriptions = new Descriptions();
     private Level level;
     private Attributes attributes;
     private ArrayList<Ability> abilities;
@@ -39,181 +40,243 @@ public abstract class Entity implements Serializable{
     private int reflex;
     private int will;
 
-
     protected abstract void calculateHP();
+
     protected abstract void caluclateArmorClass();
+
     protected abstract void calculateCMB();
+
     protected abstract void calculateCMD();
+
     protected abstract void calculateInititiative();
+
     protected abstract void calculateBaseAttackBonus();
+
     protected abstract void calculateTouchArmor();
+
     protected abstract void calculateFlatFooted();
 
-    public Descriptions getDescriptions() {
+    public Descriptions getDescriptions()
+    {
         return descriptions;
     }
 
-    public void setDescriptions(Descriptions descriptions) {
+    public void setDescriptions(Descriptions descriptions)
+    {
         this.descriptions = descriptions;
     }
 
-    public Level getLevel() {
+    public Level getLevel()
+    {
         return level;
     }
 
-    public void setLevel(Level level) {
+    public void setLevel(Level level)
+    {
         this.level = level;
     }
 
-    public Attributes getAttributes() {
+    public Attributes getAttributes()
+    {
         return attributes;
     }
 
-    public void setAttributes(Attributes attributes) {
+    public void setAttributes(Attributes attributes)
+    {
         this.attributes = attributes;
     }
 
-    public ArrayList<Ability> getAbilities() {
+    public ArrayList<Ability> getAbilities()
+    {
         return abilities;
     }
 
-    public void setAbilities(ArrayList<Ability> abilities) {
+    public void setAbilities(ArrayList<Ability> abilities)
+    {
         this.abilities = abilities;
     }
 
-    public ArrayList<Weapon> getWeapons() {
+    public ArrayList<Weapon> getWeapons()
+    {
         return weapons;
     }
 
-    public void setWeapons(ArrayList<Weapon> weapons) {
+    public void setWeapons(ArrayList<Weapon> weapons)
+    {
         this.weapons = weapons;
     }
 
-    public ArrayList<Armor> getArmory() {
+    public ArrayList<Armor> getArmory()
+    {
         return armory;
     }
 
-    public void setArmory(ArrayList<Armor> armory) {
+    public void setArmory(ArrayList<Armor> armory)
+    {
         this.armory = armory;
     }
 
-    public Skills getSkills() {
+    public Skills getSkills()
+    {
         return skills;
     }
 
-    public void setSkills(Skills skills) {
+    public void setSkills(Skills skills)
+    {
         this.skills = skills;
     }
 
-    public CharacterClass getCharacterClass() {
+    public CharacterClass getCharacterClass()
+    {
         return characterClass;
     }
 
-    public void setCharacterClass(CharacterClass characterClass) {
+    public void setCharacterClass(CharacterClass characterClass)
+    {
         this.characterClass = characterClass;
     }
 
-    public ArrayList<Spell> getSpells() {
+    public ArrayList<Spell> getSpells()
+    {
         return spells;
     }
 
-    public void setSpells(ArrayList<Spell> spells) {
+    public void setSpells(ArrayList<Spell> spells)
+    {
         this.spells = spells;
     }
 
-    public Money getMoney() {
+    public Money getMoney()
+    {
         return money;
     }
 
-    public void setMoney(Money money) {
+    public void setMoney(Money money)
+    {
         this.money = money;
     }
 
-    public int getHealthPoints() {
+    public int getHealthPoints()
+    {
         return healthPoints;
     }
 
-    public void setHealthPoints(int healthPoints) {
+    public void setHealthPoints(int healthPoints)
+    {
         this.healthPoints = healthPoints;
     }
 
-    public int getArmorClass() {
+    public int getArmorClass()
+    {
         return armorClass;
     }
 
-    public void setArmorClass(int armorClass) {
+    public void setArmorClass(int armorClass)
+    {
         this.armorClass = armorClass;
     }
 
-    public int getCMB() {
+    public int getCMB()
+    {
         return CMB;
     }
 
-    public void setCMB(int CMB) {
+    public void setCMB(int CMB)
+    {
         this.CMB = CMB;
     }
 
-    public int getCMD() {
+    public int getCMD()
+    {
         return CMD;
     }
 
-    public void setCMD(int CMD) {
+    public void setCMD(int CMD)
+    {
         this.CMD = CMD;
     }
 
-    public int getInitiative() {
+    public int getInitiative()
+    {
         return initiative;
     }
 
-    public void setInitiative(int initiative) {
+    public void setInitiative(int initiative)
+    {
         this.initiative = initiative;
     }
 
-    public int getBaseAttackBonus() {
+    public int getBaseAttackBonus()
+    {
         return baseAttackBonus;
     }
 
-    public void setBaseAttackBonus(int baseAttackBonus) {
+    public void setBaseAttackBonus(int baseAttackBonus)
+    {
         this.baseAttackBonus = baseAttackBonus;
     }
 
-    public int getTouchArmor() {
+    public int getTouchArmor()
+    {
         return touchArmor;
     }
 
-    public void setTouchArmor(int touchArmor) {
+    public void setTouchArmor(int touchArmor)
+    {
         this.touchArmor = touchArmor;
     }
 
-    public int getFlatFooted() {
+    public int getFlatFooted()
+    {
         return flatFooted;
     }
 
-    public void setFlatFooted(int flatFooted) {
+    public void setFlatFooted(int flatFooted)
+    {
         this.flatFooted = flatFooted;
     }
 
-    public int getFortitude() {
+    public int getFortitude()
+    {
         return fortitude;
     }
 
-    public void setFortitude(int fortitude) {
+    public void setFortitude(int fortitude)
+    {
         this.fortitude = fortitude;
     }
 
-    public int getReflex() {
+    public int getReflex()
+    {
         return reflex;
     }
 
-    public void setReflex(int reflex) {
+    public void setReflex(int reflex)
+    {
         this.reflex = reflex;
     }
 
-    public int getWill() {
+    public int getWill()
+    {
         return will;
     }
 
-    public void setWill(int will) {
+    public void setWill(int will)
+    {
         this.will = will;
+    }
+
+    public String getToolTip()
+    {
+        ToolTip tooltip = new ToolTip();
+        tooltip.add(new ToolTipObject("Level: ", "put info here"));
+        tooltip.add(new ToolTipObject("STR: ", "put info here"));
+        tooltip.add(new ToolTipObject("DEX: ", "put info here"));
+        tooltip.add(new ToolTipObject("CON: ", "put info here"));
+        tooltip.add(new ToolTipObject("INT: ", "put info here"));
+        tooltip.add(new ToolTipObject("WIS: ", "put info here"));
+        tooltip.add(new ToolTipObject("CHA: ", "put info here"));
+        
+        return tooltip.getDisplayString();
     }
 }

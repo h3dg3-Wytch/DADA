@@ -8,10 +8,6 @@ public class Descriptions implements Serializable
     private String name, playerName, deity, homeland, size, gender, hairColor, eyeColor;
     private int age, weight;
 
-    public Descriptions()
-    {
-    }
-
     public void setName(String s)
     {
         name = s;
@@ -61,7 +57,7 @@ public class Descriptions implements Serializable
     {
         weight = i;
     }
-
+    
     public String getName()
     {
         return name;
