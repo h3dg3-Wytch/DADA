@@ -13,6 +13,7 @@ public class Character extends Entity
 
     private Armor currentlyEquipedArmor;
     private Armor shield;
+    private int[] image;
 
     public void Character()
     {
@@ -74,6 +75,14 @@ public class Character extends Entity
 
     }
 
+    public int[] getImage() {
+        return image;
+    }
+
+    public void setImage(int[] image) {
+        this.image = image;
+    }
+    
     public Armor getCurrentlyEquipedArmor()
     {
         return currentlyEquipedArmor;
