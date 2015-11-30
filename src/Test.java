@@ -2,11 +2,14 @@
 import Models.Attributes.Attributes;
 import Models.Dice.Dice;
 import Models.Attributes.Strength;
+import Models.Entity.*;
+import Models.Entity.Character;
 import Models.Races.Gnome;
 import View.CharacterImage;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.awt.image.WritableRaster;
+import java.util.ArrayList;
 
 /**
  * Created by Rex on 11/6/2015.
@@ -15,9 +18,16 @@ public class Test {
 //testetsteststeet
 
     public static void main(String[] args) {
-        CharacterImage ci = new CharacterImage("boobette","dwarf","barbarian","f","b");
-        int[] pixels = (ci.drawImage());
-  
+     //We create a new Character
+     Models.Entity.Character character = new Character();
+
+     //We add things to the character
+     character.getDescriptions().setName("Vael");
+
+     Dice die = new Dice(0);
+
+    die.generateIntialDice();
+
         
 
         /*

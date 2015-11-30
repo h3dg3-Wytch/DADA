@@ -1,5 +1,6 @@
 package Models.Dice;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -60,6 +61,38 @@ public class Dice {
 	}
 	public int rolld20(){
 		return rollDice(1, 20);
+	}
+
+	public int[] generateIntialDice(){
+		int[] result = new int[6];
+        for(int i = 0; i < 6; i++){
+			int[] array = new int[4];
+			//The first inner loop, add numbers to each
+			for(int j = 0; j < 4; j++){
+				int num = rolld6();
+				System.out.println(num);
+				array[j] = num;
+			}
+			//the min algo that makes the lowest number disappear
+			int min = array[0];
+			for(int j = 0; j < 4; j++){
+				if(min > array[j]){
+					min = j;
+				}
+			}
+
+			array[min] = 0;
+
+			//Add up each value in this array
+			int temp = 0;
+			for(int j =0; j < 4; j++){
+				temp += array[j];
+			}
+
+			result[i] = temp;
+		}
+
+		return result;
 	}
 
 }

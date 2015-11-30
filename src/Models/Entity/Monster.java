@@ -64,6 +64,21 @@ public class Monster extends Entity implements Serializable
     }
 
     @Override
+    protected void calculateFortitude() {
+
+    }
+
+    @Override
+    protected void calculateReflex() {
+
+    }
+
+    @Override
+    protected void calculateWill() {
+
+    }
+
+    @Override
     public int compareTo(Entity e)
     {
         return Integer.compare(this.getInitiative(), e.getInitiative());

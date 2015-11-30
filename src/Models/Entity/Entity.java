@@ -22,6 +22,12 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     private ArrayList<Ability> abilities;
     private ArrayList<Weapon> weapons;
     private ArrayList<Armor> armory;
+
+    @Override
+    public int compareTo(Entity o) {
+        return 0;
+    }
+
     private Skills skills;
     private CharacterClass characterClass;
     private ArrayList<Spell> spells;
@@ -55,6 +61,10 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     protected abstract void calculateTouchArmor();
 
     protected abstract void calculateFlatFooted();
+
+    protected abstract void calculateFortitude();
+    protected abstract void calculateReflex();
+    protected abstract void calculateWill();
 
     public Descriptions getDescriptions()
     {

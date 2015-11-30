@@ -11,6 +11,9 @@ public class Weapon implements Serializable
 {
     private String description, properties, name;
     private int weight, attackBonus;
+    private boolean isRanged;
+
+
 
     public void setName(String name)
     {
@@ -59,5 +62,13 @@ public class Weapon implements Serializable
     public String getProperties()
     {
         return properties;
+    }
+
+    public boolean isRanged() {
+        return isRanged;
+    }
+
+    public void setIsRanged(boolean isRanged) {
+        this.isRanged = isRanged;
     }
 }
