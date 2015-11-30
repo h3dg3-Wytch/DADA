@@ -16,65 +16,65 @@ public class Monster extends Entity implements Serializable
     }
 
     @Override
-    protected void calculateHP()
+    public void calculateHP()
     {
 
     }
 
     @Override
-    protected void caluclateArmorClass()
+    public void caluclateArmorClass()
     {
 
     }
 
     @Override
-    protected void calculateCMB()
+    public void calculateCMB()
     {
 
     }
 
     @Override
-    protected void calculateCMD()
+    public void calculateCMD()
     {
 
     }
 
     @Override
-    protected void calculateInititiative()
+    public void calculateInititiative()
     {
 
     }
 
     @Override
-    protected void calculateBaseAttackBonus()
+    public void calculateBaseAttackBonus()
     {
 
     }
 
     @Override
-    protected void calculateTouchArmor()
+    public void calculateTouchArmor()
     {
 
     }
 
     @Override
-    protected void calculateFlatFooted()
+    public void calculateFlatFooted()
     {
 
     }
 
     @Override
-    protected void calculateFortitude() {
+    public void calculateFortitude() {
 
     }
 
     @Override
-    protected void calculateReflex() {
+    public void calculateReflex() {
 
     }
 
     @Override
-    protected void calculateWill() {
+    public void calculateWill() {
 
     }
 

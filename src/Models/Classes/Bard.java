@@ -15,7 +15,7 @@ public class Bard extends CharacterClass implements Serializable {
     private int currentLevel;
 
     public Bard(){
-        setTypeofDie(new Dice(8));
+        setTypeOfDie(new Dice(8));
     }
 
     public void baseAttackBonus(Entity entity){
@@ -25,29 +25,39 @@ public class Bard extends CharacterClass implements Serializable {
         result += bonus;
         entity.setBaseAttackBonus(result);
     }
-    public void calcFortSave(Entity entity){
-        int result =0;
-        int bonus = entity.getLevel().getLevel()/2;
+    //0
+    //2
+    //2
+    @Override
+    public void calcFortSave(Entity entity) {
 
-        result+=bonus;
-        entity.setBaseAttackBonus(result);
+        int result = 0;
+        int bonus = entity.getLevel().getLevel() / 2;
+
+        result += bonus;
+        entity.setFortitude(result);
+
     }
+
+    @Override
     public void calcRefSave(Entity entity) {
 
         int result = 2;
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
+
+    @Override
     public void calcWillSave(Entity entity) {
 
         int result = 2;
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setWill(result);
 
     }
     public int[] calcSpellsPerDay(Entity entity) {
@@ -114,4 +124,3 @@ public class Bard extends CharacterClass implements Serializable {
 
 }
 
-}

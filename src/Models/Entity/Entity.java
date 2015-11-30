@@ -46,25 +46,25 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     private int reflex;
     private int will;
 
-    protected abstract void calculateHP();
+    public abstract void calculateHP();
 
-    protected abstract void caluclateArmorClass();
+    public abstract void caluclateArmorClass();
 
-    protected abstract void calculateCMB();
+    public abstract void calculateCMB();
 
-    protected abstract void calculateCMD();
+    public abstract void calculateCMD();
 
-    protected abstract void calculateInititiative();
+    public abstract void calculateInititiative();
 
-    protected abstract void calculateBaseAttackBonus();
+    public abstract void calculateBaseAttackBonus();
 
-    protected abstract void calculateTouchArmor();
+    public abstract void calculateTouchArmor();
 
-    protected abstract void calculateFlatFooted();
+    public abstract void calculateFlatFooted();
 
-    protected abstract void calculateFortitude();
-    protected abstract void calculateReflex();
-    protected abstract void calculateWill();
+    public abstract void calculateFortitude();
+    public abstract void calculateReflex();
+    public abstract void calculateWill();
 
     public Descriptions getDescriptions()
     {

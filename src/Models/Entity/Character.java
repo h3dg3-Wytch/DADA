@@ -25,13 +25,13 @@ public class Character extends Entity
     }
 
     @Override
-    protected void calculateHP()
+    public void calculateHP()
     {
         setHealthPoints(getCharacterClass().getTypeOfDie().rollDice());
     }
 
     @Override
-    protected void caluclateArmorClass()
+    public void caluclateArmorClass()
     {
         if(shield == null) {
             setArmorClass(10 + currentlyEquippedArmor.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
@@ -42,67 +42,104 @@ public class Character extends Entity
     }
 
     @Override
-    protected void calculateFortitude() {
+    public void calculateFortitude() {
         getCharacterClass().calcFortSave(this);
     }
 
     @Override
-    protected void calculateReflex() {
+    public void calculateReflex() {
 
         getCharacterClass().calcRefSave(this);
 
     }
 
     @Override
-    protected void calculateWill() {
+    public void calculateWill() {
 
         getCharacterClass().calcWillSave(this);
 
     }
 
     @Override
-    protected void calculateCMB()
+    public void calculateCMB()
     {
         setCMB(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier());
 
     }
 
     @Override
-    protected void calculateCMD()
+    public void calculateCMD()
     {
         setCMB(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier());
     }
 
     @Override
-    protected void calculateInititiative()
+    public void calculateInititiative()
     {
         setCMB(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier() + getAttributes().getDexterity().getAbilityModifier());
     }
 
     @Override
-    protected void calculateBaseAttackBonus()
+    public void calculateBaseAttackBonus()
     {
-        if (currentlyEquippedWeapon.isRanged()) {
-            setBaseAttackBonus(currentlyEquippedWeapon.getAttackBonus() + getAttributes().getDexterity().getAbilityModifier());
-        } else {
-            setBaseAttackBonus(currentlyEquippedWeapon.getAttackBonus() + getAttributes().getStrength().getAbilityModifier());
+        if(currentlyEquippedWeapon != null) {
+            if (currentlyEquippedWeapon.isRanged()) {
+                setBaseAttackBonus(currentlyEquippedWeapon.getAttackBonus() + getAttributes().getDexterity().getAbilityModifier());
+            } else {
+                setBaseAttackBonus(currentlyEquippedWeapon.getAttackBonus() + getAttributes().getStrength().getAbilityModifier());
+            }
+        }else {
+
         }
     }
 
     @Override
-    protected void calculateTouchArmor()
+    public void calculateTouchArmor()
     {
        setTouchArmor( 10 + getAttributes().getDexterity().getAbilityModifier());
     }
 
+    public Weapon getCurrentlyEquippedWeapon() {
+        return currentlyEquippedWeapon;
+    }
+
+    public void setCurrentlyEquippedWeapon(Weapon currentlyEquippedWeapon) {
+        this.currentlyEquippedWeapon = currentlyEquippedWeapon;
+    }
+
+    public Armor getShield() {
+        return shield;
+    }
+
+    public void setShield(Armor shield) {
+        this.shield = shield;
+    }
+
     @Override
-    protected void calculateFlatFooted()
+    public void calculateFlatFooted()
     {
         if(shield == null) {
             setArmorClass(10 + currentlyEquippedArmor.getACBonus());
         }else {
             setArmorClass(10 + currentlyEquippedArmor.getACBonus() + shield.getACBonus());
         }
+    }
+
+    public void calculateEverything(){
+
+        calculateBaseAttackBonus();
+        calculateTouchArmor();
+        calculateFlatFooted();
+        caluclateArmorClass();
+        calculateCMD();
+        calculateCMB();
+        calculateFortitude();
+        caluclateArmorClass();
+        calculateHP();
+        calculateFortitude();
+        calculateReflex();
+        calculateWill();
+        calculateInititiative();
     }
 
     public int[] getImage() {

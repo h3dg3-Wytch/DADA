@@ -31,7 +31,7 @@ public class Dice {
 		return 1;
 	}
 
-	private  int rollDice(int min, int max){
+	private static  int rollDice(int min, int max){
 		//We Generate a random object, which is more preferable then Math.random()
 		Random random = new Random();
 
@@ -42,7 +42,7 @@ public class Dice {
 		return result;
 	}
 
-	public int rolld6(){
+	public static int rolld6(){
 		return rollDice(1,6);
 	}
 
@@ -50,16 +50,16 @@ public class Dice {
 		return rollDice(1,4);
 	}
 
-	public int rolld8(){
+	public static int rolld8(){
 		return rollDice(1, 8);
 	}
-	public int rolld10(){
+	public static int rolld10(){
 		return rollDice(1, 10);
 	}
-	public int rolld12(){
+	public static int rolld12(){
 		return rollDice(1, 12);
 	}
-	public int rolld20(){
+	public static int rolld20(){
 		return rollDice(1, 20);
 	}
 
@@ -70,7 +70,6 @@ public class Dice {
 			//The first inner loop, add numbers to each
 			for(int j = 0; j < 4; j++){
 				int num = rolld6();
-				System.out.println(num);
 				array[j] = num;
 			}
 			//the min algo that makes the lowest number disappear
@@ -80,9 +79,11 @@ public class Dice {
 					min = j;
 				}
 			}
-
-			array[min] = 0;
-
+            try {
+				array[min] = 0;
+			}catch(Exception e){
+				array[0] = 0;
+			}
 			//Add up each value in this array
 			int temp = 0;
 			for(int j =0; j < 4; j++){

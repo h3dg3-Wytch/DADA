@@ -31,5 +31,8 @@ public abstract class CharacterClass implements Serializable {
     public Dice getTypeOfDie() {
         return typeOfDie;
     }
+    public void setTypeOfDie(int num){
+        this.typeOfDie = new Dice(num);
+    }
 
 }

@@ -40,18 +40,18 @@ public class Sorcerer extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setFortitude(result);
 
     }
 
     @Override
     public void calcRefSave(Entity entity) {
 
-        int result = 0;
+        int result = 2;
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
 
@@ -62,7 +62,7 @@ public class Sorcerer extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setWill(result);
 
     }
 

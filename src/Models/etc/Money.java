@@ -5,6 +5,8 @@
 
 package Models.etc;
 
+import Models.Dice.Dice;
+
 import java.io.Serializable;
 
 public class Money implements Serializable
@@ -37,6 +39,30 @@ public class Money implements Serializable
         this.gold += gold;
     }
 
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public int getSilver() {
+        return silver;
+    }
+
+    public void setSilver(int silver) {
+        this.silver = silver;
+    }
+
+    public int getCopper() {
+        return copper;
+    }
+
+    public void setCopper(int copper) {
+        this.copper = copper;
+    }
+
     public void useMoney(int gold, int silver, int copper)
     {
         // convert
@@ -53,8 +79,14 @@ public class Money implements Serializable
         }
 
         this.copper -= copper;
+
         this.silver -= silver;
         this.gold -= gold;
+    }
+
+    public void generateStartingGold(){
+        gold = Dice.rolld6() * 50;
+        System.out.println(gold);
     }
 
     @Override

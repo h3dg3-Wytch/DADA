@@ -13,8 +13,9 @@ public class Level implements Serializable
     private int experience;
 
     public void giveExperience(int experience)
-    {
+    { if(getLevel() != 20) {
         this.experience += experience;
+    }
     }
 
 
@@ -108,6 +109,15 @@ public class Level implements Serializable
 
     public void setExperience(int experience) {
         this.experience = experience;
+    }
+
+    public void levelUp(){
+        if(getLevel() != 20) {
+            int tmp = getLevel();
+            while (tmp == getLevel()) {
+                giveExperience(1000);
+            }
+        }
     }
 
 }

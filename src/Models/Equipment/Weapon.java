@@ -5,15 +5,35 @@
 
 package Models.Equipment;
 
+import Models.etc.Money;
+
 import java.io.Serializable;
 
 public class Weapon implements Serializable
 {
+
     private String description, properties, name;
     private int weight, attackBonus;
     private boolean isRanged;
+    private int gold;
 
+    public Weapon(String description, String properties, String name, int weight, int attackBonus, boolean isRanged, int gold) {
+        this.description = description;
+        this.properties = properties;
+        this.name = name;
+        this.weight = weight;
+        this.attackBonus = attackBonus;
+        this.isRanged = isRanged;
+        this.gold = gold;
+    }
 
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
 
     public void setName(String name)
     {
@@ -71,4 +91,19 @@ public class Weapon implements Serializable
     public void setIsRanged(boolean isRanged) {
         this.isRanged = isRanged;
     }
+
+
+    public boolean canBePurchased(Money money){
+        if((money.getGold() - gold) > 0) {
+            money.setGold(money.getGold() - gold);
+            return true;
+        }else{
+
+            return false;
+        }
+
+    }
+
 }
+
+

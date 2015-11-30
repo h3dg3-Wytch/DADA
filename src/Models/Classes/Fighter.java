@@ -40,18 +40,18 @@ public class Fighter extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setFortitude(result);
 
     }
 
     @Override
     public void calcRefSave(Entity entity) {
 
-        int result = 0;
+        int result = 2;
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
 
@@ -62,11 +62,16 @@ public class Fighter extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setWill(result);
 
     }
 
-   
+    @Override
+    public int[] calcSpellsPerDay(Entity entity) {
+        return new int[0];
+    }
+
+
     @Override
     public Ability getAbility(Level level) {
         switch (level.getLevel()){

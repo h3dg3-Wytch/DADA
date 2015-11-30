@@ -30,6 +30,7 @@ public class Cleric extends CharacterClass implements Serializable {
         entity.setBaseAttackBonus(result);
 
     }
+    //202
 
     @Override
     public void calcFortSave(Entity entity) {
@@ -38,7 +39,7 @@ public class Cleric extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setFortitude(result);
 
     }
 
@@ -49,7 +50,7 @@ public class Cleric extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
 
@@ -60,7 +61,7 @@ public class Cleric extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setWill(result);
 
     }
 

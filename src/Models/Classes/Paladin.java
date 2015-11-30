@@ -39,18 +39,18 @@ public class Paladin extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setFortitude(result);
 
     }
 
     @Override
     public void calcRefSave(Entity entity) {
 
-        int result = 0;
+        int result = 2;
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
 
@@ -61,7 +61,7 @@ public class Paladin extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setWill(result);
 
     }
 
@@ -106,7 +106,7 @@ public class Paladin extends CharacterClass implements Serializable {
             case 8:
                 return new Ability(20, "Aura of Resolves: The Ability to be immune to charm spells and spell-like abilities.");
             case 12:
-                return new Ability(20, "Aura of Faith: A paladin’s weapons are treated as good-aligned for the purposes of overcoming damage reduction.");
+                return new Ability(20, "Aura of Faith: A paladinï¿½s weapons are treated as good-aligned for the purposes of overcoming damage reduction.");
             case 16:
                 return new Ability(20, "Smit Evil 6/Day: Six times per day, A paladin can call out to the powers of good to aid her in her struggle against evil. ");
             case 20:

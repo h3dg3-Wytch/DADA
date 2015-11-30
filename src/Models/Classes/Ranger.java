@@ -40,7 +40,7 @@ public class Ranger extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setFortitude(result);
 
     }
 
@@ -51,19 +51,25 @@ public class Ranger extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
+
 
     @Override
     public void calcWillSave(Entity entity) {
 
-        int result = 0;
+        int result = 2;
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
         entity.setBaseAttackBonus(result);
 
+    }
+
+    @Override
+    public int[] calcSpellsPerDay(Entity entity) {
+        return new int[0];
     }
 
     @Override

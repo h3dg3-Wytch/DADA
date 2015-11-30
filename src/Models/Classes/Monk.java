@@ -15,7 +15,7 @@ public class Monk extends CharacterClass implements Serializable {
     private int currentLevel;
 
 
-    public Wizard(){
+    public Monk(){
         //The base die is 8
         setTypeOfDie(new Dice(8));
 
@@ -30,7 +30,6 @@ public class Monk extends CharacterClass implements Serializable {
         entity.setBaseAttackBonus(result);
 
     }
-
     @Override
     public void calcFortSave(Entity entity) {
 
@@ -38,7 +37,7 @@ public class Monk extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setFortitude(result);
 
     }
 
@@ -49,7 +48,7 @@ public class Monk extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
 
@@ -60,10 +59,14 @@ public class Monk extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setWill(result);
 
     }
 
+    @Override
+    public int[] calcSpellsPerDay(Entity entity) {
+        return new int[0];
+    }
 
 
     @Override

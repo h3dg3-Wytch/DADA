@@ -15,7 +15,7 @@ public class Barbarian extends CharacterClass implements Serializable {
     private int currentLevel;
 
     public Barbarian(){
-        setTypeofDie(new Dice(12));
+        setTypeOfDie(new Dice(12));
     }
 
     public void baseAttackBonus(Entity entity){
@@ -30,7 +30,7 @@ public class Barbarian extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel()/2;
 
         result+=bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setFortitude(result);
     }
     public void calcRefSave(Entity entity) {
 
@@ -38,7 +38,7 @@ public class Barbarian extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
     public void calcWillSave(Entity entity) {
@@ -47,9 +47,15 @@ public class Barbarian extends CharacterClass implements Serializable {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setWill(result);
 
     }
+
+    @Override
+    public int[] calcSpellsPerDay(Entity entity) {
+        return new int[0];
+    }
+
     public Ability getAbility(Level level) {
         switch (level.getLevel()){
             case 1:

@@ -10,14 +10,14 @@ import java.io.Serializable;
 /**
  * Created by krushan on 11/29/15.
  */
-public class Druid {
+public class Druid extends CharacterClass implements Serializable{
     private int skillRanksPerLevel;
     private int currentLevel;
 
 
     public Druid(){
         //The base die is 8
-        setTypeOfDie(new Dice(8));
+        setTypeOfDie(8);
 
     }
 
@@ -31,6 +31,7 @@ public class Druid {
 
     }
 
+    //202
     @Override
     public void calcFortSave(Entity entity) {
 
@@ -38,7 +39,7 @@ public class Druid {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setFortitude(result);
 
     }
 
@@ -49,7 +50,7 @@ public class Druid {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setReflex(result);
 
     }
 
@@ -60,7 +61,7 @@ public class Druid {
         int bonus = entity.getLevel().getLevel() / 2;
 
         result += bonus;
-        entity.setBaseAttackBonus(result);
+        entity.setWill(result);
 
     }
 
