@@ -5,10 +5,13 @@
  */
 package View.GUI;
 
+import Models.Databases.EntityManager;
 import Models.Entity.Entity;
 import Models.Entity.Monster;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,13 +29,15 @@ public class CombatFrame extends javax.swing.JFrame
     private TargetsPanel targetsPanel;
     private Entity currentEntity;
     private int turnIndex;
+    private final MainMenuFrame mainFrame;
 
-    public CombatFrame(List<Models.Entity.Character> characters, List<Monster> monsters)
+    public CombatFrame(List<Models.Entity.Character> characters, List<Monster> monsters, MainMenuFrame mainFrame)
     {
         this.entities = new ArrayList();
         this.characters = new ArrayList(characters);
         this.monsters = new ArrayList(monsters);
-
+        this.mainFrame = mainFrame;
+        
         for (int i = 0; i < this.characters.size(); i++)
         {
             entities.add(this.characters.get(i));
@@ -89,6 +94,17 @@ public class CombatFrame extends javax.swing.JFrame
 
     private void initListeners()
     {
+        this.addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent windowEvent)
+            {
+                EntityManager.saveAll(characters, monsters);
+                mainFrame.enableButtons();
+                dispose();
+            }
+        });
+
         nextButton.addActionListener(new ActionListener()
         {
             @Override
@@ -126,12 +142,12 @@ public class CombatFrame extends javax.swing.JFrame
         }
         return buttonGroup2.getSelection().getActionCommand();
     }
-    
+
     public void removeTarget(TargetPanel target)
     {
         entities.remove(target.getEntity());
-        
-        if(turnIndex != -1)
+
+        if (turnIndex != -1)
         {
             turnIndex--;
         }
