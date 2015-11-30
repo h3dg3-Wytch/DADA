@@ -46,7 +46,7 @@ public class Dice {
 		return rollDice(1,6);
 	}
 
-	public int rolld4(){
+	public static int rolld4(){
 		return rollDice(1,4);
 	}
 

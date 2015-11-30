@@ -1,6 +1,7 @@
 //Main method
 package dada;
 
+import Models.etc.Money;
 import View.GUI.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -7,6 +7,8 @@ package View.GUI;
 
 import Models.Entity.Entity;
 import Models.Entity.Monster;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,13 +24,15 @@ public class CombatFrame extends javax.swing.JFrame
     private ArrayList<Models.Entity.Character> characters;
     private ArrayList<Monster> monsters;
     private TargetsPanel targetsPanel;
+    private Entity currentEntity;
+    private int turnIndex;
 
     public CombatFrame(List<Models.Entity.Character> characters, List<Monster> monsters)
     {
         this.entities = new ArrayList();
         this.characters = new ArrayList(characters);
         this.monsters = new ArrayList(monsters);
-        
+
         for (int i = 0; i < this.characters.size(); i++)
         {
             entities.add(this.characters.get(i));
@@ -41,14 +45,39 @@ public class CombatFrame extends javax.swing.JFrame
 
         Collections.sort(entities);
         Collections.reverse(entities);
+        turnIndex = 0;
+        currentEntity = entities.get(turnIndex);
 
         initComponents();
         initGUI();
+
+        buttonGroup1.add(attackOption);
+        buttonGroup1.add(spellOption);
+
+        buttonGroup2.add(d4);
+        buttonGroup2.add(d6);
+        buttonGroup2.add(d8);
+        buttonGroup2.add(d10);
+        buttonGroup2.add(d12);
+        buttonGroup2.add(d20);
+
+        initListeners();
     }
 
     private void initGUI()
     {
-        targetsPanel = new TargetsPanel();
+        attackOption.setActionCommand("Attack");
+        spellOption.setActionCommand("Spell");
+
+        d4.setActionCommand("4");
+        d6.setActionCommand("6");
+        d8.setActionCommand("8");
+        d10.setActionCommand("10");
+        d12.setActionCommand("12");
+        d20.setActionCommand("20");
+
+        nameLabel.setText(currentEntity.getDescriptions().getName());
+        targetsPanel = new TargetsPanel(this);
         jPanel1.add(targetsPanel);
         jScrollPane1.setViewportView(targetsPanel);
 
@@ -56,6 +85,53 @@ public class CombatFrame extends javax.swing.JFrame
         {
             targetsPanel.addEntity((Entity) entities.get(i));
         }
+    }
+
+    private void initListeners()
+    {
+        nextButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                if (turnIndex == entities.size() - 1)
+                {
+                    turnIndex = 0;
+                }
+                else
+                {
+                    turnIndex++;
+                }
+                currentEntity = entities.get(turnIndex);
+                nameLabel.setText(currentEntity.getDescriptions().getName());
+            }
+        });
+
+    }
+
+    public String getAction()
+    {
+        if (buttonGroup1.getSelection() == null)
+        {
+            return null;
+        }
+        return buttonGroup1.getSelection().getActionCommand();
+    }
+
+    public String getDie()
+    {
+        if (buttonGroup2.getSelection() == null)
+        {
+            return null;
+        }
+        return buttonGroup2.getSelection().getActionCommand();
+    }
+    
+    public void removeTarget(TargetPanel target)
+    {
+        entities.remove(target.getEntity());
+        turnIndex--;
+        targetsPanel.removeTarget(target);
     }
 
     /**
@@ -68,8 +144,24 @@ public class CombatFrame extends javax.swing.JFrame
     private void initComponents()
     {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        attackOption = new javax.swing.JRadioButton();
+        spellOption = new javax.swing.JRadioButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jPanel2 = new javax.swing.JPanel();
+        d4 = new javax.swing.JRadioButton();
+        d6 = new javax.swing.JRadioButton();
+        d8 = new javax.swing.JRadioButton();
+        d10 = new javax.swing.JRadioButton();
+        d12 = new javax.swing.JRadioButton();
+        d20 = new javax.swing.JRadioButton();
+        nextButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,33 +173,142 @@ public class CombatFrame extends javax.swing.JFrame
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addGap(0, 255, Short.MAX_VALUE)
         );
 
         jScrollPane1.setViewportView(jPanel1);
+
+        attackOption.setText("Attack");
+
+        spellOption.setText("Cast Spell");
+
+        jList1.setBorder(javax.swing.BorderFactory.createTitledBorder("Skills and Abilities"));
+        jScrollPane2.setViewportView(jList1);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dice"));
+
+        d4.setText("4");
+
+        d6.setText("6");
+
+        d8.setText("8");
+
+        d10.setText("10");
+
+        d12.setText("12");
+
+        d20.setText("20");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(d4)
+                    .addComponent(d6)
+                    .addComponent(d8)
+                    .addComponent(d10)
+                    .addComponent(d12)
+                    .addComponent(d20))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(d4)
+                .addGap(18, 18, 18)
+                .addComponent(d6)
+                .addGap(18, 18, 18)
+                .addComponent(d8)
+                .addGap(18, 18, 18)
+                .addComponent(d10)
+                .addGap(18, 18, 18)
+                .addComponent(d12)
+                .addGap(18, 18, 18)
+                .addComponent(d20)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        nextButton.setText("Next");
+
+        jLabel1.setText("Current turn:");
+
+        nameLabel.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(173, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(attackOption)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(spellOption)
+                                .addGap(18, 18, 18))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nextButton)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nextButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(nameLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(attackOption)
+                    .addComponent(spellOption))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton attackOption;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JRadioButton d10;
+    private javax.swing.JRadioButton d12;
+    private javax.swing.JRadioButton d20;
+    private javax.swing.JRadioButton d4;
+    private javax.swing.JRadioButton d6;
+    private javax.swing.JRadioButton d8;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JRadioButton spellOption;
     // End of variables declaration//GEN-END:variables
 }
