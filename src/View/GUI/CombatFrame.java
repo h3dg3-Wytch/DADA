@@ -130,7 +130,11 @@ public class CombatFrame extends javax.swing.JFrame
     public void removeTarget(TargetPanel target)
     {
         entities.remove(target.getEntity());
-        turnIndex--;
+        
+        if(turnIndex != -1)
+        {
+            turnIndex--;
+        }
         targetsPanel.removeTarget(target);
     }
 
