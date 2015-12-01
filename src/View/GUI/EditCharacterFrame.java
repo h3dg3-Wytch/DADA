@@ -482,6 +482,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
             }
         });
 
+        imageLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Maia\\Documents\\NetBeansProjects\\DADA\\Images\\question mark.png")); // NOI18N
         imageLabel.setText("  ");
 
         javax.swing.GroupLayout appearancePanelLayout = new javax.swing.GroupLayout(appearancePanel);
