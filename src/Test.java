@@ -2,6 +2,7 @@
 import Models.Attributes.Attributes;
 import Models.Attributes.Charisma;
 import Models.Attributes.Dexterity;
+import Models.Classes.Wizard;
 import Models.Databases.EntityManager;
 import Models.Databases.EquipmentManager;
 import Models.Databases.SpellManager;
@@ -35,85 +36,65 @@ public class Test {
 
     public static void main(String[] args) {
 
-     //Load all the monsters and allow them yo be displayed
-     List<Monster> monsterList = new ArrayList<Monster>();
-     monsterList.add(new Monster());
-     EntityManager.saveMonsters(monsterList);
-
-     monsterList = EntityManager.loadMonsters();
-
-
-     Monster monster = monsterList.get(0);
-
-
-
- //The users will then be able to name what type of creature it is
-
-     monster.setDescriptions(new Descriptions());
-     monster.getDescriptions().setName("Goblin");
-
-     //the user will be allowed to set the 6 attributes to however they wish
+     Character character = new Character();
+     Dice dice = new Dice(20);
+     int[] array = dice.generateIntialDice();
      Attributes attributes = new Attributes();
+     attributes.setCharisma(new Charisma(array[1]));
+     attributes.setDexterity(new Dexterity((array[0])));
+     attributes.setStrength(new Strength(array[0]));
+     character.setAttributes(attributes);
+     character.setCharacterClass(new Wizard());
+     character.caluclateArmorClass();
+
+     Monster monster = new Monster();
+     monster.setTypeOfDiceUsed(dice);
+
      monster.setAttributes(attributes);
-     monster.getAttributes().setCharisma(new Charisma(5));
-     monster.getAttributes().setStrength(new Strength(10));
-     monster.getAttributes().setDexterity(new Dexterity(10));
-     //etc
+     monster.setToughnessOfHide(5);
+     monster.caluclateArmorClass();
+     monster.calculateHP();
+     monster.setLevel(new Level());
 
-     //Ask how old the mosnter is, this is its level 1-20
-     Level newLevel = new Level();
-     int input = 5;
-     for(int i = 0 ; i < input; i++){
-      newLevel.levelUp();
+     character.attack(monster);
+
+     System.out.println("Character V Monster");
+     for(int i = 0; i < 20; i++) {
+       System.out.print(i + " ");
+       if(character.attack(monster)){
+        System.out.println(monster.getHealthPoints());
+       }else{
+        System.out.println("You missed!");
+       }
+     }
+     System.out.println("Monster v Character");
+     for(int i = 0; i < 20; i++) {
+      System.out.print(i + " ");
+      if(monster.attack(character)){
+       System.out.println(character.getHealthPoints());
+      }else{
+       System.out.println("You missed!");
+      }
+     }
+     System.out.println("Character V character");
+     for(int i = 0; i < 20; i++) {
+      System.out.print(i + " ");
+      if(character.attack(character)){
+       System.out.println(character.getHealthPoints());
+      }else{
+       System.out.println("You missed!");
+      }
+     }
+     System.out.println("monster V monster");
+     for(int i = 0; i < 20; i++) {
+      System.out.print(i + " ");
+      if(monster.attack(monster)){
+       System.out.println(monster.getHealthPoints());
+      }else{
+       System.out.println("You missed!");
+      }
      }
 
-     monster.setLevel(newLevel);
-
-
-
-     //The user will ask how strong the hide of this monster will be, this is the armor class
-     int userInput = 5;
-     monster.setArmorClass(userInput);
-
-//     //The user will ask strong the monster is,weak. normal, or strong, and can assign a dice value to it
-     //weak = 4 sided dice
-     //normal = 6 sided dice
-     //strong = 10 sided dice
-     Dice dice = new Dice(6);
-     monster.setDice(dice);
-
-//     //Ak how mcuh exp this monster will drop
-     monster.setExperienceDropped(4000);
-
-  //Ask if you want this monster to know any spells from the SpellManager or if they want to create any new spells
-     List<Spell> spells = SpellManager.loadSpells();
-     //let them choose how many they want, then add as many as they want
-     if(monster.getSpells() == null){
-      monster.setSpells(new ArrayList<>());
-      monster.getSpells().add(new Spell());
-     } else {
-      monster.getSpells().add(new Spell());
-     }
-
-     //If they want to create a new spell, here is how you do it. Please look at the spell constructor to understand
-     // all the parameters
-     Spell newSpell = new Spell("The name", 5, " The description", 9, monster.getLevel());
-     //Store it
-     List<Spell> newSpells = new ArrayList<>();
-     newSpells.add(newSpell);
-     //If you can go back to spell select and allow them to continue selecting spells
-
-
-
- //Calculate everything
-     monster.calculateEverything();
-
- //Store this creature back into the EntityManager
-     ArrayList<Monster> monsterList1 = new ArrayList<>();
-     monsterList1.add(monster);
-     EntityManager.saveMonsters(monsterList1);
-
-     //You are done!
 
 
 

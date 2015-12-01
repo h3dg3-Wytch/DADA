@@ -1,5 +1,6 @@
 package Models.Entity;
 
+import Models.Dice.Dice;
 import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.etc.Descriptions;
@@ -38,11 +39,17 @@ public class Character extends Entity
     @Override
     public void caluclateArmorClass()
     {
-        if(shield == null) {
-            setArmorClass(10 + currentlyEquippedArmor.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
-        }else {
-            setArmorClass(10 + currentlyEquippedArmor.getACBonus() + shield.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
+        if(currentlyEquippedArmor != null){
+            if(shield == null) {
+                setArmorClass(10 + currentlyEquippedArmor.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
+            }else {
+                setArmorClass(10 + currentlyEquippedArmor.getACBonus() + shield.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
+            }
+
+        } else{
+            setArmorClass(10 + getAttributes().getDexterity().getAbilityModifier());
         }
+
 
     }
 
@@ -94,7 +101,7 @@ public class Character extends Entity
                 setBaseAttackBonus(currentlyEquippedWeapon.getAttackBonus() + getAttributes().getStrength().getAbilityModifier());
             }
         }else {
-
+               setBaseAttackBonus(getAttributes().getStrength().getAbilityModifier());
         }
     }
 
@@ -165,4 +172,18 @@ public class Character extends Entity
     {
         return Integer.compare(this.getInitiative(), e.getInitiative());
     }
+
+    //True if the attack was succesful, false otherwise
+    public boolean attack(Entity e){
+        int result = getBaseAttackBonus() + Dice.rolld20();
+        if(result > e.getArmorClass()){
+            int damage;
+            damage = getCharacterClass().getTypeOfDie().rollDice();
+            e.setHealthPoints(e.getHealthPoints() - damage);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }

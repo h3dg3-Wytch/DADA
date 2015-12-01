@@ -133,11 +133,24 @@ public class Monster extends Entity implements Serializable {
         calculateCMD();
         calculateCMB();
         calculateFortitude();
-        caluclateArmorClass();
+
         calculateHP();
         calculateFortitude();
         calculateReflex();
         calculateWill();
         calculateInititiative();
+    }
+
+    //True if the attack was succesful, false otherwise
+    public boolean attack(Entity e){
+        int result = getBaseAttackBonus() + Dice.rolld20();
+        if(result > e.getArmorClass()){
+            int damage;
+            damage = getTypeOfDiceUsed().rollDice();
+            e.setHealthPoints(e.getHealthPoints() - damage);
+            return true;
+        }else {
+            return false;
+        }
     }
 }

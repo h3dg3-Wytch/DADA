@@ -2,6 +2,7 @@ package Models.Entity;
 
 import Models.Attributes.Attributes;
 import Models.Classes.CharacterClass;
+import Models.Dice.Dice;
 import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.Skills.Skills;
@@ -285,6 +286,7 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     public void setId(UUID id) {
         this.id = id;
     }
+
 
 
     public String getToolTip()
