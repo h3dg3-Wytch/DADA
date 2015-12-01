@@ -9,13 +9,14 @@ import Models.etc.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by Alex on 11/27/15.
  */
 public abstract class Entity implements Serializable, Comparable<Entity>
 {
-
+    protected UUID id;
     private Descriptions descriptions = new Descriptions();
     private Level level;
     private Attributes attributes;
@@ -27,6 +28,7 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     public int compareTo(Entity o) {
         return 0;
     }
+
 
     private Skills skills;
     private CharacterClass characterClass;
@@ -275,6 +277,15 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     {
         this.will = will;
     }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
 
     public String getToolTip()
     {

@@ -25,6 +25,10 @@ public class Spell implements Serializable {
         this.levelMultiplier = casterLevel.getLevel() / 4;
     }
 
+    public Spell() {
+
+    }
+
     public String castSpell(){
         int result = calculateSpell();
         return spellName + " was cast, " + description;

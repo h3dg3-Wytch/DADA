@@ -5,6 +5,7 @@
 
 package Models.Equipment;
 
+import Models.Entity.Entity;
 import Models.etc.Money;
 
 import java.io.Serializable;
@@ -94,11 +95,12 @@ public class Weapon implements Serializable
 
 
     public boolean canBePurchased(Money money){
-        if((money.getGold() - gold) > 0) {
+        System.out.println(money.getGold());
+        System.out.println(gold);
+        if((money.getGold() - this.gold) >= 0) {
             money.setGold(money.getGold() - gold);
             return true;
         }else{
-
             return false;
         }
 

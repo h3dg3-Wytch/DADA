@@ -11,9 +11,14 @@ import Models.Entity.Character;
 import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.Races.Gnome;
+import Models.etc.Descriptions;
 import Models.etc.Level;
 import Models.etc.Money;
+import Models.etc.Spell;
 import View.CharacterImage;
+import com.sun.org.glassfish.gmbal.Description;
+import org.w3c.dom.Attr;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.awt.image.WritableRaster;
@@ -28,70 +33,79 @@ public class Test {
 //testetsteststeet
 
     public static void main(String[] args) {
-     //We create a new Character
-     Models.Entity.Character character = new Character();
 
-     //We add things to the Descriptions class
-     character.getDescriptions().setName("Vael");
+     //Load all the monsters and allow them yo be displayed
+     List<Monster> monsterList = new ArrayList<Monster>();
+     monsterList.add(new Monster());
+     monsterList = EntityManager.loadMonsters();
 
-     character.setMoney(new Money());
-        character.getMoney().addMoney(5000,0,0);
+     for(Monster m : monsterList){
+       System.out.println(m.toString());
+     }
+     //This is how we will go about edit monster. One, load monsters, and let the user select which one
+     List<Monster> monsters = EntityManager.loadMonsters();
+     //Display them
+     for(Monster m : monsters){
+      System.out.println(m);
+     }
+     Monster monster = monsters.get(0);
 
-        List<Character> characters = new ArrayList<>();
-        characters = EntityManager.loadCharacters();
-        for(Character c : characters){
-            System.out.println(c.getDescriptions().getName());
-        }
 
-        //Ask if they wish level up
-        character.setLevel(new Level());
-        System.out.println(character.getLevel().getLevel());
-        for(int i = 0; i < 20; i++) {
-            character.getLevel().levelUp();
-            System.out.println(character.getLevel().getLevel());
-        }
 
-        //Allow them to edit the 6 attributes if they so wish
-        character.setAttributes(new Attributes());
-        character.getAttributes().setCharisma(new Charisma(20));
-        character.getAttributes().setStrength(new Strength(20));
-        //etc
+ //The users will then be able to name what type of creature it is
 
-        //let them add gold (if they want to) like so
-        character.setMoney(new Money());
-        character.getMoney().addMoney(4,4,4);
+     monster.setDescriptions(new Descriptions());
+     monster.getDescriptions().setName("Goblin");
 
-        //Load the armory, let them requip items or build new ones
-        List<Armor> armors = EquipmentManager.loadArmor();
-        List<Weapon> weapon = EquipmentManager.loadWeapons();
-        //Display the armor
-        //If they want to make a new weapon or armor, do so like this
-        //New Weapon, take a look athe constructor but on your ide it should fill in for you
-        Weapon weapon1 = new Weapon("putDescription here", "properties", "name" , 0, 0, false, 0);
-        Armor armor = new Armor(Armor.ArmorType.CLOTH, "description", "properties", "name", 0, 5, 0);
+     //the user will be allowed to set the 6 attributes to however they wish
+     Attributes attributes = new Attributes();
+     monster.setAttributes(attributes);
+     monster.getAttributes().setCharisma(new Charisma(5));
+     monster.getAttributes().setStrength(new Strength(10));
+     monster.getAttributes().setDexterity(new Dexterity(10));
+     //etc
 
-        Money money = new Money();
-        money.setGold(1000);
-        System.out.println(money.toString());
+     //Ask how old the mosnter is, this is its level 1-20
+     Level newLevel = new Level();
+     int input = 5;
+     for(int i = 0 ; i < input; i++){
+      newLevel.levelUp();
+     }
 
-        //If the person wants new armor to be equipped, they have to make this check pass
-        if(armor.canBePurchased(character.getMoney())){
-           character.setCurrentlyEquippedArmor(armor);
-            System.out.println("Purchased!");
-            //If you want to you can tell them thier current gold
-        }else {
-            //If you want you can tell them they can't have it, up to you
-            System.out.println("Didn't work");
-        }
+     monster.setLevel(newLevel);
 
-        if(weapon1.canBePurchased(character.getMoney())){
-            character.setCurrentlyEquippedArmor(armor);
-            //If you want to you can tell them thier current gold
-        }else {
-            //If you want you can tell them they can't have it, up to you
-        }
 
-        //Store all the items away
+
+     //The user will ask how strong the hide of this monster will be
+     int userInput = 5;
+     monster.setArmorClass(userInput);
+
+//     //The user will ask strong the monster is,weak. normal, or strong, and can assign a dice value to it
+     //weak = 4 sided dice
+     //normal = 6 sided dice
+     //strong = 10 sided dice
+     Dice dice = new Dice(6);
+     monster.setDice(dice);
+
+//     //Ak how mcuh exp this monster will drop
+     monster.setExperienceDropped(4000);
+
+  //Ask if you want this monster to know any spells from the SpellManager
+     monster.setSpells(new ArrayList<>());
+     monster.getSpells().add(new Spell());
+
+ //Calculate everything
+     monster.calculateEverything();
+
+ //Store this creature back into the EntityManager
+     ArrayList<Monster> monsterList1 = new ArrayList<>();
+     monsterList1.add(monster);
+     EntityManager.saveMonsters(monsterList1);
+
+     //You are done!
+
+
+
 
 
 

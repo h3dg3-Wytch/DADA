@@ -4,6 +4,8 @@ import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.etc.Descriptions;
 
+import java.util.UUID;
+
 /**
  * Created by Alex on 11/28/15.
  */
@@ -18,6 +20,9 @@ public class Character extends Entity
     {
         Descriptions descriptions = new Descriptions();
         setDescriptions(descriptions);
+
+        id = UUID.randomUUID();
+
     }
     public void setCurrentlyEquippedArmor(Armor currentlyEquippedArmor)
     {
@@ -27,7 +32,7 @@ public class Character extends Entity
     @Override
     public void calculateHP()
     {
-        setHealthPoints(getCharacterClass().getTypeOfDie().rollDice());
+        setHealthPoints(getCharacterClass().getTypeOfDie().rollDice() * getLevel().getLevel());
     }
 
     @Override
@@ -70,13 +75,13 @@ public class Character extends Entity
     @Override
     public void calculateCMD()
     {
-        setCMB(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier());
+        setCMD(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier());
     }
 
     @Override
     public void calculateInititiative()
     {
-        setCMB(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier() + getAttributes().getDexterity().getAbilityModifier());
+        setInitiative(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier() + getAttributes().getDexterity().getAbilityModifier());
     }
 
     @Override

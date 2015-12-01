@@ -113,7 +113,7 @@ public class Armor implements Serializable
     public boolean canBePurchased(Money money){
         System.out.println(money.getGold());
         System.out.println(gold);
-        if((money.getGold() - gold) >= 0) {
+        if((money.getGold() - this.gold) >= 0) {
             money.setGold(money.getGold() - gold);
             return true;
         }else{
