@@ -2,6 +2,7 @@ package Models.Entity;
 
 import Models.Attributes.Attributes;
 import Models.Classes.CharacterClass;
+import Models.Races.Race;
 import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.Skills.Skills;
@@ -9,6 +10,7 @@ import Models.etc.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by Alex on 11/27/15.
@@ -30,6 +32,7 @@ public abstract class Entity implements Serializable, Comparable<Entity>
 
     private Skills skills;
     private CharacterClass characterClass;
+    private Race race;
     private ArrayList<Spell> spells;
     private Money money;
 
@@ -45,6 +48,8 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     private int fortitude;
     private int reflex;
     private int will;
+    
+    private UUID id;
 
     public abstract void calculateHP();
 
@@ -134,6 +139,14 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     public void setSkills(Skills skills)
     {
         this.skills = skills;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
     }
 
     public CharacterClass getCharacterClass()
@@ -274,6 +287,14 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     public void setWill(int will)
     {
         this.will = will;
+    }
+
+    public String getID() {
+        return id.toString();
+    }
+
+    public void setID() {
+        id = UUID.randomUUID();
     }
 
     public String getToolTip()

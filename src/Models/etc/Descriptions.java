@@ -5,7 +5,15 @@ import java.io.Serializable;
 public class Descriptions implements Serializable
 {
 
-    private String name, playerName, deity, homeland, size, gender, hairColor, eyeColor;
+    private String name, description, playerName, deity, homeland, size, gender, hairColor, eyeColor;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     private int age, weight;
 
     public void setName(String s)
