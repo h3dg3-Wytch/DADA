@@ -126,7 +126,24 @@ public class MainMenuFrame extends javax.swing.JFrame
         // this is test data
         List<Models.Entity.Character> characterList = new ArrayList();
         List<Monster> monsterList = new ArrayList();
+        List<Models.Equipment.Armor> armor = new ArrayList();
+        List<Models.Equipment.Gear> gear = new ArrayList();
+        List<Models.Equipment.Weapon> weapons = new ArrayList();
 
+        for (int i=0;i<5;i++){
+            Models.Equipment.Armor ar = new Models.Equipment.Armor(Models.Equipment.Armor.ArmorType.MAIL,"a","a","a",1,1,1);
+            armor.add(ar);
+        }
+        
+        for (int i=0;i<5;i++){
+            Models.Equipment.Weapon we = new Models.Equipment.Weapon("s","s","s",1,1,true,1);
+            weapons.add(we);
+        }
+        
+        for (int i=0;i<5;i++){
+            Models.Equipment.Armor ar = new Models.Equipment.Armor(Models.Equipment.Armor.ArmorType.MAIL,"a","a","a",1,1,1);
+            armor.add(ar);
+        }
         for (int i = 0; i < 5; i++)
         {
             Models.Entity.Character character = new Models.Entity.Character();
