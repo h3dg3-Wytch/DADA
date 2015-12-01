@@ -17,9 +17,8 @@ import java.util.Random;
 public class MainMenuFrame extends javax.swing.JFrame
 {
 
-    /**
-     * Creates new form mainMenuFrame
-     */
+    private boolean buttonsEnabled = true;
+
     public MainMenuFrame()
     {
         initComponents();
@@ -32,7 +31,8 @@ public class MainMenuFrame extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         characterButton = new javax.swing.JButton();
         monsterButton = new javax.swing.JButton();
@@ -43,29 +43,37 @@ public class MainMenuFrame extends javax.swing.JFrame
         setTitle("Dungeons and Dragons Aid");
 
         characterButton.setText("Character");
-        characterButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        characterButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 characterButtonMouseClicked(evt);
             }
         });
 
         monsterButton.setText("Monster");
-        monsterButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        monsterButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 monsterButtonMouseClicked(evt);
             }
         });
 
         combatButton.setText("Combat");
-        combatButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        combatButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 combatButtonMouseClicked(evt);
             }
         });
 
         optionsButton.setText("Options");
-        optionsButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        optionsButton.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 optionsButtonMouseClicked(evt);
             }
         });
@@ -76,14 +84,14 @@ public class MainMenuFrame extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(characterButton)
-                    .addComponent(combatButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(monsterButton)
-                    .addComponent(optionsButton))
-                .addGap(71, 71, 71))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(characterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(combatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(monsterButton, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(optionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,57 +104,88 @@ public class MainMenuFrame extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(combatButton)
                     .addComponent(optionsButton))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void characterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_characterButtonMouseClicked
-        CharacterFrame frame = new CharacterFrame();
-        frame.setVisible(true);
+        if (buttonsEnabled)
+        {
+            CharacterFrame frame = new CharacterFrame();
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_characterButtonMouseClicked
 
     private void monsterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monsterButtonMouseClicked
-        MonsterFrame frame = new MonsterFrame();
-        frame.setVisible(true);
+
+        if (buttonsEnabled)
+        {
+            MonsterFrame frame = new MonsterFrame();
+            frame.setVisible(true);
+        }
+
     }//GEN-LAST:event_monsterButtonMouseClicked
 
     private void combatButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combatButtonMouseClicked
-        
-        // this is test data
-        List<Models.Entity.Character> characterList = new ArrayList();
-        List<Monster> monsterList = new ArrayList();
 
-        for (int i = 0; i < 5; i++)
+        if (buttonsEnabled)
         {
-            Models.Entity.Character character = new Models.Entity.Character();
-            character.getDescriptions().setName("Character " + i);
-            character.setInitiative(new Random().nextInt(20) + 1);
-            characterList.add(character);
-        }
+            // this is test data
+            List<Models.Entity.Character> characterList = new ArrayList();
+            List<Monster> monsterList = new ArrayList();
 
-        for (int i = 0; i < 5; i++)
-        {
-            Monster monster = new Monster();
-            monster.getDescriptions().setName("Monster " + i);
-            monster.setInitiative(new Random().nextInt(20) + 1);
-            monsterList.add(monster);
-        }
+            disableButtons();
 
-        CombatFrame frame = new CombatFrame(characterList, monsterList);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+            for (int i = 0; i < 5; i++)
+            {
+                Models.Entity.Character character = new Models.Entity.Character();
+                character.getDescriptions().setName("Character " + i);
+                character.setInitiative(new Random().nextInt(20) + 1);
+                characterList.add(character);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Monster monster = new Monster();
+                monster.getDescriptions().setName("Monster " + i);
+                monster.setInitiative(new Random().nextInt(20) + 1);
+                monsterList.add(monster);
+            }
+
+            CombatFrame frame = new CombatFrame(characterList, monsterList, this);
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_combatButtonMouseClicked
 
     private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsButtonMouseClicked
-        OptionsFrame frame = new OptionsFrame();
-        frame.setVisible(true);
+
+        if (buttonsEnabled)
+        {
+            OptionsFrame frame = new OptionsFrame();
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_optionsButtonMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    public void disableButtons()
+    {
+        optionsButton.setEnabled(false);
+        characterButton.setEnabled(false);
+        monsterButton.setEnabled(false);
+        combatButton.setEnabled(false);
+        buttonsEnabled = false;
+    }
+
+    public void enableButtons()
+    {
+        optionsButton.setEnabled(true);
+        characterButton.setEnabled(true);
+        monsterButton.setEnabled(true);
+        combatButton.setEnabled(true);
+        buttonsEnabled = true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton characterButton;

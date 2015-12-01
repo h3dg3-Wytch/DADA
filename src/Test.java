@@ -4,6 +4,7 @@ import Models.Attributes.Charisma;
 import Models.Attributes.Dexterity;
 import Models.Databases.EntityManager;
 import Models.Databases.EquipmentManager;
+import Models.Databases.SpellManager;
 import Models.Dice.Dice;
 import Models.Attributes.Strength;
 import Models.Entity.*;
@@ -37,18 +38,12 @@ public class Test {
      //Load all the monsters and allow them yo be displayed
      List<Monster> monsterList = new ArrayList<Monster>();
      monsterList.add(new Monster());
+     EntityManager.saveMonsters(monsterList);
+
      monsterList = EntityManager.loadMonsters();
 
-     for(Monster m : monsterList){
-       System.out.println(m.toString());
-     }
-     //This is how we will go about edit monster. One, load monsters, and let the user select which one
-     List<Monster> monsters = EntityManager.loadMonsters();
-     //Display them
-     for(Monster m : monsters){
-      System.out.println(m);
-     }
-     Monster monster = monsters.get(0);
+
+     Monster monster = monsterList.get(0);
 
 
 
@@ -76,7 +71,7 @@ public class Test {
 
 
 
-     //The user will ask how strong the hide of this monster will be
+     //The user will ask how strong the hide of this monster will be, this is the armor class
      int userInput = 5;
      monster.setArmorClass(userInput);
 
@@ -90,9 +85,25 @@ public class Test {
 //     //Ak how mcuh exp this monster will drop
      monster.setExperienceDropped(4000);
 
-  //Ask if you want this monster to know any spells from the SpellManager
-     monster.setSpells(new ArrayList<>());
-     monster.getSpells().add(new Spell());
+  //Ask if you want this monster to know any spells from the SpellManager or if they want to create any new spells
+     List<Spell> spells = SpellManager.loadSpells();
+     //let them choose how many they want, then add as many as they want
+     if(monster.getSpells() == null){
+      monster.setSpells(new ArrayList<>());
+      monster.getSpells().add(new Spell());
+     } else {
+      monster.getSpells().add(new Spell());
+     }
+
+     //If they want to create a new spell, here is how you do it. Please look at the spell constructor to understand
+     // all the parameters
+     Spell newSpell = new Spell("The name", 5, " The description", 9, monster.getLevel());
+     //Store it
+     List<Spell> newSpells = new ArrayList<>();
+     newSpells.add(newSpell);
+     //If you can go back to spell select and allow them to continue selecting spells
+
+
 
  //Calculate everything
      monster.calculateEverything();

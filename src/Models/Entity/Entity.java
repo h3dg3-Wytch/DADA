@@ -18,8 +18,8 @@ public abstract class Entity implements Serializable, Comparable<Entity>
 {
     protected UUID id;
     private Descriptions descriptions = new Descriptions();
-    private Level level;
-    private Attributes attributes;
+    private Level level = new Level();
+    private Attributes attributes = new Attributes();
     private ArrayList<Ability> abilities;
     private ArrayList<Weapon> weapons;
     private ArrayList<Armor> armory;
@@ -290,13 +290,15 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     public String getToolTip()
     {
         ToolTip tooltip = new ToolTip();
-        tooltip.add(new ToolTipObject("Level: ", "put info here"));
-        tooltip.add(new ToolTipObject("STR: ", "put info here"));
-        tooltip.add(new ToolTipObject("DEX: ", "put info here"));
-        tooltip.add(new ToolTipObject("CON: ", "put info here"));
-        tooltip.add(new ToolTipObject("INT: ", "put info here"));
-        tooltip.add(new ToolTipObject("WIS: ", "put info here"));
-        tooltip.add(new ToolTipObject("CHA: ", "put info here"));
+        tooltip.add(new ToolTipObject("Level: ",Integer.toString(level.getLevel())));
+        tooltip.add(new ToolTipObject("HP: ", Integer.toString(getHealthPoints())));
+        tooltip.add(new ToolTipObject("AC: ", Integer.toString(armorClass)));
+        tooltip.add(new ToolTipObject("STR: ", Integer.toString(attributes.getStrength().getAbilityScore())));
+        tooltip.add(new ToolTipObject("DEX: ", Integer.toString(attributes.getDexterity().getAbilityScore())));
+        tooltip.add(new ToolTipObject("CON: ", Integer.toString(attributes.getConstitution().getAbilityScore())));
+        tooltip.add(new ToolTipObject("INT: ", Integer.toString(attributes.getIntelligence().getAbilityScore())));
+        tooltip.add(new ToolTipObject("WIS: ", Integer.toString(attributes.getWisdom().getAbilityScore())));
+        tooltip.add(new ToolTipObject("CHA: ", Integer.toString(attributes.getCharisma().getAbilityScore())));
         
         return tooltip.getDisplayString();
     }
