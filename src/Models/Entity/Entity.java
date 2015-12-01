@@ -35,6 +35,8 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     private Skills skills;
     private CharacterClass characterClass;
     private Race race;
+    private String raceString;
+    private String classString;
     private ArrayList<Spell> spells;
     private Money money;
 
@@ -147,6 +149,22 @@ public abstract class Entity implements Serializable, Comparable<Entity>
 
     public void setRace(Race race) {
         this.race = race;
+    }
+
+    public String getRaceString() {
+        return raceString;
+    }
+
+    public void setRaceString(String raceString) {
+        this.raceString = raceString;
+    }
+
+    public String getClassString() {
+        return classString;
+    }
+
+    public void setClassString(String classString) {
+        this.classString = classString;
     }
 
     public CharacterClass getCharacterClass()

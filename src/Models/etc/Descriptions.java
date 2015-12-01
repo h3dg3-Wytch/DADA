@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Descriptions implements Serializable
 {
 
-    private String name, description, playerName, deity, homeland, size, gender, hairColor, eyeColor;
+    private String name, description, playerName, deity, homeland, size, gender, palette;
 
     public String getDescription() {
         return description;
@@ -41,19 +41,17 @@ public class Descriptions implements Serializable
         size = s;
     }
 
+    public String getPalette() {
+        return palette;
+    }
+
+    public void setPalette(String palette) {
+        this.palette = palette;
+    }
+
     public void setGender(String s)
     {
         gender = s;
-    }
-
-    public void setHairColor(String s)
-    {
-        hairColor = s;
-    }
-
-    public void setEyeColor(String s)
-    {
-        eyeColor = s;
     }
 
     public void setAge(int i)

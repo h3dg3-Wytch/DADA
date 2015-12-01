@@ -5,9 +5,15 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import Models.Entity.*;
 import Models.Races.*;
+import Models.Classes.*;
+import View.CharacterImage;
+import View.CharacterClasses;
+import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.swing.Icon;
 
 /**
  *
@@ -35,7 +41,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
     int abilitySelect = 0;
     Models.Entity.Character character = new Models.Entity.Character();
-    
+
     List<Models.Equipment.Armor> aList = new ArrayList();
     List<Models.Equipment.Weapon> wList = new ArrayList();
 
@@ -45,6 +51,8 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         namePane = new javax.swing.JTabbedPane();
         namePanel = new javax.swing.JPanel();
@@ -99,7 +107,8 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         paletteCButton = new javax.swing.JRadioButton();
         genderLabel = new javax.swing.JLabel();
         skinLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        drawButton = new javax.swing.JButton();
+        imageLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -422,43 +431,67 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
         namePane.addTab("Gold/Equipment", equipmentPanel);
 
+        buttonGroup2.add(masculineButton);
         masculineButton.setText("Masculine");
+        masculineButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                masculineButtonMouseClicked(evt);
+            }
+        });
 
+        buttonGroup2.add(feminineButton);
         feminineButton.setText("Feminine");
+        feminineButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                feminineButtonMouseClicked(evt);
+            }
+        });
 
+        buttonGroup3.add(paletteAButton);
         paletteAButton.setText("Medium");
+        paletteAButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paletteAButtonMouseClicked(evt);
+            }
+        });
 
+        buttonGroup3.add(paletteBButton);
         paletteBButton.setText("Light");
+        paletteBButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paletteBButtonMouseClicked(evt);
+            }
+        });
 
+        buttonGroup3.add(paletteCButton);
         paletteCButton.setText("Dark");
+        paletteCButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                paletteCButtonMouseClicked(evt);
+            }
+        });
 
         genderLabel.setText("Body Type");
 
         skinLabel.setText("Skin Tone");
 
-        jPanel1.setMaximumSize(new java.awt.Dimension(288, 288));
-        jPanel1.setMinimumSize(new java.awt.Dimension(288, 288));
-        jPanel1.setPreferredSize(new java.awt.Dimension(288, 288));
+        drawButton.setText("Draw");
+        drawButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                drawButtonMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
-        );
+        imageLabel.setText("  ");
 
         javax.swing.GroupLayout appearancePanelLayout = new javax.swing.GroupLayout(appearancePanel);
         appearancePanel.setLayout(appearancePanelLayout);
         appearancePanelLayout.setHorizontalGroup(
             appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appearancePanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(skinLabel)
                     .addComponent(genderLabel)
@@ -466,32 +499,34 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                     .addComponent(feminineButton)
                     .addComponent(masculineButton)
                     .addComponent(paletteAButton)
-                    .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(138, 138, 138))
+                    .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(drawButton))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         appearancePanelLayout.setVerticalGroup(
             appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appearancePanelLayout.createSequentialGroup()
-                .addGroup(appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(appearancePanelLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(genderLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(masculineButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(feminineButton)
-                        .addGap(32, 32, 32)
-                        .addComponent(skinLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(paletteAButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(paletteBButton))
-                    .addGroup(appearancePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(genderLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(masculineButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(feminineButton)
+                .addGap(32, 32, 32)
+                .addComponent(skinLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paletteAButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(paletteBButton)
+                .addGap(18, 18, 18)
+                .addComponent(drawButton)
+                .addContainerGap(93, Short.MAX_VALUE))
+            .addGroup(appearancePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         namePane.addTab("Appearance", appearancePanel);
@@ -557,27 +592,38 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
         switch (selectClass.getSelectedIndex()) {
             case 0:
-            character.setCharacterClass(new Models.Classes.Barbarian());
+                character.setCharacterClass(new Models.Classes.Barbarian());
+                character.setClassString("Barbarian");
             case 1:
-            character.setCharacterClass(new Models.Classes.Bard());
+                character.setCharacterClass(new Models.Classes.Bard());
+                character.setClassString("Bard");
             case 2:
-            character.setCharacterClass(new Models.Classes.Cleric());
+                character.setCharacterClass(new Models.Classes.Cleric());
+                character.setClassString("Cleric");
             case 3:
-            character.setCharacterClass(new Models.Classes.Druid());
+                character.setCharacterClass(new Models.Classes.Druid());
+                character.setClassString("Druid");
             case 4:
-            character.setCharacterClass(new Models.Classes.Fighter());
+                character.setCharacterClass(new Models.Classes.Fighter());
+                character.setClassString("Fighter");
             case 5:
-            character.setCharacterClass(new Models.Classes.Monk());
+                character.setCharacterClass(new Models.Classes.Monk());
+                character.setClassString("Monk");
             case 6:
-            character.setCharacterClass(new Models.Classes.Paladin());
+                character.setCharacterClass(new Models.Classes.Paladin());
+                character.setClassString("Paladin");
             case 7:
-            character.setCharacterClass(new Models.Classes.Ranger());
+                character.setCharacterClass(new Models.Classes.Ranger());
+                character.setClassString("Ranger");
             case 8:
-            character.setCharacterClass(new Models.Classes.Rogue());
+                character.setCharacterClass(new Models.Classes.Rogue());
+                character.setClassString("Rogue");
             case 9:
-            character.setCharacterClass(new Models.Classes.Sorcerer());
+                character.setCharacterClass(new Models.Classes.Sorcerer());
+                character.setClassString("Sorcerer");
             case 10:
-            character.setCharacterClass(new Models.Classes.Wizard());
+                character.setCharacterClass(new Models.Classes.Wizard());
+                character.setClassString("Wizard");
         }
     }//GEN-LAST:event_selectClassValueChanged
 
@@ -586,58 +632,65 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         //ability boost: {charisma, constitution, dexterity, intelligence, strength, widsom}
         switch (selectRace.getSelectedIndex()) {
             case 0://dwarf
-            character.setRace(new Models.Races.Dwarf());
+                character.setRace(new Models.Races.Dwarf());
+                character.setRaceString("Dwarf");
             case 1://elf
-            character.setRace(new Models.Races.Elf());
+                character.setRace(new Models.Races.Elf());
+                character.setRaceString("Elf");
             case 2://gnome
-            character.setRace(new Models.Races.Gnome());
+                character.setRace(new Models.Races.Gnome());
+                character.setRaceString("Gnome");
             case 3://half elf
-            switch (abilitySelect) {
-                case 0:
-                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));
-                case 1:
-                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CONSTITUTION));
-                case 2:
-                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.DEXTERITY));
-                case 3:
-                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.INTELLIGENCE));
-                case 4:
-                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.STRENGTH));
-                case 5:
-                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.WISDOM));
-            }
+                character.setRaceString("Half Elf");
+                switch (abilitySelect) {
+                    case 0:
+                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));
+                    case 1:
+                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CONSTITUTION));
+                    case 2:
+                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.DEXTERITY));
+                    case 3:
+                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.INTELLIGENCE));
+                    case 4:
+                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.STRENGTH));
+                    case 5:
+                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.WISDOM));
+                }
             case 4://half orc
-            switch (abilitySelect) {
-                case 0:
-                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CHARISMA));
-                case 1:
-                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CONSTITUTION));
-                case 2:
-                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.DEXTERITY));
-                case 3:
-                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.INTELLIGENCE));
-                case 4:
-                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.STRENGTH));
-                case 5:
-                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.WISDOM));
-            }
+                character.setRaceString("Half Orc");
+                switch (abilitySelect) {
+                    case 0:
+                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CHARISMA));
+                    case 1:
+                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CONSTITUTION));
+                    case 2:
+                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.DEXTERITY));
+                    case 3:
+                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.INTELLIGENCE));
+                    case 4:
+                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.STRENGTH));
+                    case 5:
+                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.WISDOM));
+                }
             case 5://halfling
-            character.setRace(new Models.Races.Halfling());
+                character.setRace(new Models.Races.Halfling());
+                character.setRaceString("Halfling");
             case 6://human
-            switch (abilitySelect) {
-                case 0:
-                character.setRace(new Models.Races.Human(Human.AbilityBoost.CHARISMA));
-                case 1:
-                character.setRace(new Models.Races.Human(Human.AbilityBoost.CONSTITUTION));
-                case 2:
-                character.setRace(new Models.Races.Human(Human.AbilityBoost.DEXTERITY));
-                case 3:
-                character.setRace(new Models.Races.Human(Human.AbilityBoost.INTELLIGENCE));
-                case 4:
-                character.setRace(new Models.Races.Human(Human.AbilityBoost.STRENGTH));
-                case 5:
-                character.setRace(new Models.Races.Human(Human.AbilityBoost.WISDOM));
-            }
+                character.setRaceString("Human");
+                switch (abilitySelect) {
+                    case 0:
+                        character.setRace(new Models.Races.Human(Human.AbilityBoost.CHARISMA));
+                    case 1:
+                        character.setRace(new Models.Races.Human(Human.AbilityBoost.CONSTITUTION));
+                    case 2:
+                        character.setRace(new Models.Races.Human(Human.AbilityBoost.DEXTERITY));
+                    case 3:
+                        character.setRace(new Models.Races.Human(Human.AbilityBoost.INTELLIGENCE));
+                    case 4:
+                        character.setRace(new Models.Races.Human(Human.AbilityBoost.STRENGTH));
+                    case 5:
+                        character.setRace(new Models.Races.Human(Human.AbilityBoost.WISDOM));
+                }
 
         }
     }//GEN-LAST:event_selectRaceValueChanged
@@ -650,20 +703,60 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         character.getDescriptions().setName(nameField.getText());
     }//GEN-LAST:event_nameFieldKeyPressed
 
+    private void drawButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawButtonMouseClicked
+        String charRace=character.getRaceString();
+        String charClass=character.getClassString();
+        String gender=character.getDescriptions().getGender();
+        String palette=character.getDescriptions().getPalette();
+        String ID = character.getId().toString();
+        View.CharacterImage charImage = new View.CharacterImage(ID, charRace, charClass, gender, palette);
+        character.setImage(charImage.drawImage());
+        
+        BufferedImage image = new BufferedImage(288, 288, BufferedImage.TYPE_INT_ARGB);
+        WritableRaster raster = (WritableRaster) image.getData();
+        raster.setPixels(0,0,288,288,character.getImage());
+        imageLabel.setIcon((Icon) image);
+        
+    }//GEN-LAST:event_drawButtonMouseClicked
+
+    private void masculineButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masculineButtonMouseClicked
+        character.getDescriptions().setGender("m");
+    }//GEN-LAST:event_masculineButtonMouseClicked
+
+    private void feminineButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feminineButtonMouseClicked
+        character.getDescriptions().setGender("f");
+    }//GEN-LAST:event_feminineButtonMouseClicked
+
+    private void paletteCButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteCButtonMouseClicked
+        character.getDescriptions().setPalette("c");
+    }//GEN-LAST:event_paletteCButtonMouseClicked
+
+    private void paletteAButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteAButtonMouseClicked
+        character.getDescriptions().setPalette("a");
+    }//GEN-LAST:event_paletteAButtonMouseClicked
+
+    private void paletteBButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteBButtonMouseClicked
+        character.getDescriptions().setPalette("b");
+    }//GEN-LAST:event_paletteBButtonMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appearancePanel;
     private javax.swing.JList armList;
     private javax.swing.JLabel armorLabel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JRadioButton charismaButton;
     private javax.swing.JLabel classLabel;
     private javax.swing.JRadioButton constitutionButton;
     private javax.swing.JTextPane descField;
     private javax.swing.JRadioButton dexterityButton;
+    private javax.swing.JButton drawButton;
     private javax.swing.JPanel equipmentPanel;
     private javax.swing.JRadioButton feminineButton;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JButton goldButton;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JRadioButton intelligenceButton;
     private javax.swing.JList invList;
     private javax.swing.JLabel inventoryLabel;
@@ -672,7 +765,6 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

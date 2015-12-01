@@ -22,6 +22,7 @@ public class CharacterImage {
         this.charGender = charGender;
         this.charPalette = charPalette;
     }
+    
 
     public int[] drawImage() {
 
