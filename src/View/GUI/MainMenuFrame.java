@@ -168,7 +168,8 @@ public class MainMenuFrame extends javax.swing.JFrame
 
         if (buttonsEnabled)
         {
-            OptionsFrame frame = new OptionsFrame();
+            disableButtons();
+            OptionsFrame frame = new OptionsFrame(this);
             frame.setLocationRelativeTo(this);
             frame.setVisible(true);
         }

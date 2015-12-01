@@ -86,8 +86,10 @@ public class MonsterFrame extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void newButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newButtonMouseClicked
-        EditMonsterFrame frame = new EditMonsterFrame();
+        EditMonsterFrame frame = new EditMonsterFrame(mainFrame);
+        frame.setLocationRelativeTo(this);
         frame.setVisible(true);
+        dispose();
     }//GEN-LAST:event_newButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
