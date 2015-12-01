@@ -118,6 +118,7 @@ public class Level implements Serializable
                 giveExperience(1000);
             }
         }
+
     }
 
 }

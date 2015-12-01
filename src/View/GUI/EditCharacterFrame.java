@@ -1,18 +1,43 @@
 package View.GUI;
 
+import java.awt.event.WindowAdapter;
+
+import java.awt.event.WindowEvent;
 import Models.Entity.*;
 import Models.Races.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ *
+ * @author Maia
+ */
 public class EditCharacterFrame extends javax.swing.JFrame {
- int abilitySelect = 0;
-    Models.Entity.Character character = new Models.Entity.Character();
 
-    public EditCharacterFrame() {
+    private final MainMenuFrame mainFrame;
+
+    public EditCharacterFrame(MainMenuFrame mainFrame) {
+        this.mainFrame = mainFrame;
         initComponents();
+        initListeners();
     }
+
+    private void initListeners() {
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                mainFrame.enableButtons();
+                dispose();
+            }
+        });
+    }
+
+    int abilitySelect = 0;
+    Models.Entity.Character character = new Models.Entity.Character();
+    
+    List<Models.Equipment.Armor> aList = new ArrayList();
+    List<Models.Equipment.Weapon> wList = new ArrayList();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -23,9 +48,9 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         namePane = new javax.swing.JTabbedPane();
         namePanel = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        nameField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        descField = new javax.swing.JTextPane();
         racePanel = new javax.swing.JPanel();
         raceLabel = new javax.swing.JLabel();
         classLabel = new javax.swing.JLabel();
@@ -41,23 +66,31 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         wisdomButton = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         skillsPanel = new javax.swing.JPanel();
-        featsPanel = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        skillsList = new javax.swing.JList();
+        skillsLabel = new javax.swing.JLabel();
         spellsPanel = new javax.swing.JPanel();
-        statsPanel = new javax.swing.JPanel();
         equipmentPanel = new javax.swing.JPanel();
         goldButton = new javax.swing.JButton();
         armorLabel = new javax.swing.JLabel();
         weaponsLabel = new javax.swing.JLabel();
-        gearLabel = new javax.swing.JLabel();
         inventoryLabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        List<String> aSList = new ArrayList();
+        for (Models.Equipment.Armor e : aList){
+            aSList.add(e.getName());
+        }
+        armList = new javax.swing.JList(aSList.toArray());
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList();
+        List<String> wSList = new ArrayList();
+        for (Models.Equipment.Weapon e : wList){
+            wSList.add(e.getName());
+        }
+        weapList = new javax.swing.JList(wSList.toArray());
         jScrollPane7 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList();
+        invList = new javax.swing.JList();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         appearancePanel = new javax.swing.JPanel();
         masculineButton = new javax.swing.JRadioButton();
         feminineButton = new javax.swing.JRadioButton();
@@ -84,9 +117,18 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Character Editor");
 
-        jTextField1.setText("jTextField1");
+        nameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameFieldKeyPressed(evt);
+            }
+        });
 
-        jScrollPane1.setViewportView(jTextPane1);
+        descField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                descFieldKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(descField);
 
         javax.swing.GroupLayout namePanelLayout = new javax.swing.GroupLayout(namePanel);
         namePanel.setLayout(namePanelLayout);
@@ -96,14 +138,14 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
+                    .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
                 .addContainerGap(366, Short.MAX_VALUE))
         );
         namePanelLayout.setVerticalGroup(
             namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(namePanelLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -257,31 +299,37 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
         namePane.addTab("Race/Class", racePanel);
 
+        skillsList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy", "Disable Device", "Disguise", "Esape Artist", "Fly", "Handle Animal", "Heal", "Intimidate", "Knowledge", "Linguistics", "Perception", "Perform", "Prefession", "Ride", "Sense Motive", "Sleight of Hand", "Spell Craft", "Stealth", "Survival", "Swim", "Use Magic Device" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane8.setViewportView(skillsList);
+
+        skillsLabel.setText("Skills");
+
         javax.swing.GroupLayout skillsPanelLayout = new javax.swing.GroupLayout(skillsPanel);
         skillsPanel.setLayout(skillsPanelLayout);
         skillsPanelLayout.setHorizontalGroup(
             skillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
+            .addGroup(skillsPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(skillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(skillsLabel)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(577, Short.MAX_VALUE))
         );
         skillsPanelLayout.setVerticalGroup(
             skillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, skillsPanelLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(skillsLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         namePane.addTab("Skills", skillsPanel);
-
-        javax.swing.GroupLayout featsPanelLayout = new javax.swing.GroupLayout(featsPanel);
-        featsPanel.setLayout(featsPanelLayout);
-        featsPanelLayout.setHorizontalGroup(
-            featsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
-        );
-        featsPanelLayout.setVerticalGroup(
-            featsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
-        );
-
-        namePane.addTab("Feats", featsPanel);
 
         javax.swing.GroupLayout spellsPanelLayout = new javax.swing.GroupLayout(spellsPanel);
         spellsPanel.setLayout(spellsPanelLayout);
@@ -296,56 +344,28 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
         namePane.addTab("Spells", spellsPanel);
 
-        javax.swing.GroupLayout statsPanelLayout = new javax.swing.GroupLayout(statsPanel);
-        statsPanel.setLayout(statsPanelLayout);
-        statsPanelLayout.setHorizontalGroup(
-            statsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 739, Short.MAX_VALUE)
-        );
-        statsPanelLayout.setVerticalGroup(
-            statsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
-        );
-
-        namePane.addTab("Stats", statsPanel);
-
         goldButton.setText("Generate Gold");
 
         armorLabel.setText("Armor");
 
         weaponsLabel.setText("Weapons");
 
-        gearLabel.setText("Gear");
-
         inventoryLabel.setText("Character Inventory");
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(jList1);
+        jScrollPane4.setViewportView(armList);
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(jList2);
+        jScrollPane5.setViewportView(weapList);
 
-        jList3.setModel(new javax.swing.AbstractListModel() {
+        invList.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane6.setViewportView(jList3);
+        jScrollPane7.setViewportView(invList);
 
-        jList4.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane7.setViewportView(jList4);
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
 
         javax.swing.GroupLayout equipmentPanelLayout = new javax.swing.GroupLayout(equipmentPanel);
         equipmentPanel.setLayout(equipmentPanelLayout);
@@ -358,23 +378,25 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                         .addComponent(goldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(equipmentPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(327, 327, 327))
-                    .addGroup(equipmentPanelLayout.createSequentialGroup()
                         .addComponent(inventoryLabel)
                         .addGap(51, 51, 51)
                         .addComponent(armorLabel)
                         .addGap(61, 61, 61)
                         .addComponent(weaponsLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(gearLabel)
-                        .addGap(376, 376, 376))))
+                        .addGap(376, 444, Short.MAX_VALUE))
+                    .addGroup(equipmentPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(equipmentPanelLayout.createSequentialGroup()
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(equipmentPanelLayout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)))
+                        .addGap(415, 415, 415))))
         );
         equipmentPanelLayout.setVerticalGroup(
             equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,14 +407,17 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(armorLabel)
                     .addComponent(weaponsLabel)
-                    .addComponent(inventoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gearLabel))
+                    .addComponent(inventoryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                     .addComponent(jScrollPane4)
-                    .addComponent(jScrollPane5)
-                    .addComponent(jScrollPane6)))
+                    .addComponent(jScrollPane5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
         );
 
         namePane.addTab("Gold/Equipment", equipmentPanel);
@@ -503,154 +528,160 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void charismaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_charismaButtonMouseClicked
-        abilitySelect = 0;
-    }//GEN-LAST:event_charismaButtonMouseClicked
-
-    private void constitutionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_constitutionButtonMouseClicked
-        abilitySelect = 1;
-    }//GEN-LAST:event_constitutionButtonMouseClicked
-
-    private void dexterityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dexterityButtonMouseClicked
-        abilitySelect = 2;
-    }//GEN-LAST:event_dexterityButtonMouseClicked
-
-    private void intelligenceButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_intelligenceButtonMouseClicked
-        abilitySelect = 3;
-    }//GEN-LAST:event_intelligenceButtonMouseClicked
+    private void wisdomButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wisdomButtonMouseClicked
+        abilitySelect = 5;
+    }//GEN-LAST:event_wisdomButtonMouseClicked
 
     private void strengthButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strengthButtonMouseClicked
         abilitySelect = 4;
     }//GEN-LAST:event_strengthButtonMouseClicked
 
-    private void wisdomButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wisdomButtonMouseClicked
-        abilitySelect = 5;
-    }//GEN-LAST:event_wisdomButtonMouseClicked
+    private void intelligenceButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_intelligenceButtonMouseClicked
+        abilitySelect = 3;
+    }//GEN-LAST:event_intelligenceButtonMouseClicked
 
-    private void selectRaceValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectRaceValueChanged
-        //String[] strings = { "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfing", "Human" };
-        //ability boost: {charisma, constitution, dexterity, intelligence, strength, widsom}
-        switch (selectRace.getSelectedIndex()) {
-            case 0://dwarf
-                character.setRace(new Models.Races.Dwarf());
-            case 1://elf
-                character.setRace(new Models.Races.Elf());
-            case 2://gnome
-                character.setRace(new Models.Races.Gnome());
-            case 3://half elf
-                switch (abilitySelect) {
-                    case 0:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));
-                    case 1:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CONSTITUTION));
-                    case 2:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.DEXTERITY));
-                    case 3:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.INTELLIGENCE));
-                    case 4:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.STRENGTH));
-                    case 5:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.WISDOM));
-                }
-            case 4://half orc
-                switch (abilitySelect) {
-                    case 0:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CHARISMA));
-                    case 1:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CONSTITUTION));
-                    case 2:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.DEXTERITY));
-                    case 3:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.INTELLIGENCE));
-                    case 4:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.STRENGTH));
-                    case 5:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.WISDOM));
-                }
-            case 5://halfling
-                character.setRace(new Models.Races.Halfling());
-            case 6://human
-                switch (abilitySelect) {
-                    case 0:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.CHARISMA));
-                    case 1:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.CONSTITUTION));
-                    case 2:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.DEXTERITY));
-                    case 3:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.INTELLIGENCE));
-                    case 4:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.STRENGTH));
-                    case 5:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.WISDOM));
-                }               
+    private void dexterityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dexterityButtonMouseClicked
+        abilitySelect = 2;
+    }//GEN-LAST:event_dexterityButtonMouseClicked
 
-        }
-    }//GEN-LAST:event_selectRaceValueChanged
+    private void constitutionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_constitutionButtonMouseClicked
+        abilitySelect = 1;
+    }//GEN-LAST:event_constitutionButtonMouseClicked
+
+    private void charismaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_charismaButtonMouseClicked
+        abilitySelect = 0;
+    }//GEN-LAST:event_charismaButtonMouseClicked
 
     private void selectClassValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectClassValueChanged
         //strings = {"Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard" }
 
         switch (selectClass.getSelectedIndex()) {
             case 0:
-                character.setCharacterClass(new Models.Classes.Barbarian());
+            character.setCharacterClass(new Models.Classes.Barbarian());
             case 1:
-                character.setCharacterClass(new Models.Classes.Bard());
+            character.setCharacterClass(new Models.Classes.Bard());
             case 2:
-                character.setCharacterClass(new Models.Classes.Cleric());
+            character.setCharacterClass(new Models.Classes.Cleric());
             case 3:
-                character.setCharacterClass(new Models.Classes.Druid());
+            character.setCharacterClass(new Models.Classes.Druid());
             case 4:
-                character.setCharacterClass(new Models.Classes.Fighter());
+            character.setCharacterClass(new Models.Classes.Fighter());
             case 5:
-                character.setCharacterClass(new Models.Classes.Monk());
+            character.setCharacterClass(new Models.Classes.Monk());
             case 6:
-                character.setCharacterClass(new Models.Classes.Paladin());
+            character.setCharacterClass(new Models.Classes.Paladin());
             case 7:
-                character.setCharacterClass(new Models.Classes.Ranger());
+            character.setCharacterClass(new Models.Classes.Ranger());
             case 8:
-                character.setCharacterClass(new Models.Classes.Rogue());
+            character.setCharacterClass(new Models.Classes.Rogue());
             case 9:
-                character.setCharacterClass(new Models.Classes.Sorcerer());
+            character.setCharacterClass(new Models.Classes.Sorcerer());
             case 10:
-                character.setCharacterClass(new Models.Classes.Wizard());
+            character.setCharacterClass(new Models.Classes.Wizard());
         }
     }//GEN-LAST:event_selectClassValueChanged
 
+    private void selectRaceValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectRaceValueChanged
+        //String[] strings = { "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfing", "Human" };
+        //ability boost: {charisma, constitution, dexterity, intelligence, strength, widsom}
+        switch (selectRace.getSelectedIndex()) {
+            case 0://dwarf
+            character.setRace(new Models.Races.Dwarf());
+            case 1://elf
+            character.setRace(new Models.Races.Elf());
+            case 2://gnome
+            character.setRace(new Models.Races.Gnome());
+            case 3://half elf
+            switch (abilitySelect) {
+                case 0:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));
+                case 1:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CONSTITUTION));
+                case 2:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.DEXTERITY));
+                case 3:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.INTELLIGENCE));
+                case 4:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.STRENGTH));
+                case 5:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.WISDOM));
+            }
+            case 4://half orc
+            switch (abilitySelect) {
+                case 0:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CHARISMA));
+                case 1:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CONSTITUTION));
+                case 2:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.DEXTERITY));
+                case 3:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.INTELLIGENCE));
+                case 4:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.STRENGTH));
+                case 5:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.WISDOM));
+            }
+            case 5://halfling
+            character.setRace(new Models.Races.Halfling());
+            case 6://human
+            switch (abilitySelect) {
+                case 0:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.CHARISMA));
+                case 1:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.CONSTITUTION));
+                case 2:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.DEXTERITY));
+                case 3:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.INTELLIGENCE));
+                case 4:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.STRENGTH));
+                case 5:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.WISDOM));
+            }
+
+        }
+    }//GEN-LAST:event_selectRaceValueChanged
+
+    private void descFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descFieldKeyPressed
+        character.getDescriptions().setDescription(descField.getText());
+    }//GEN-LAST:event_descFieldKeyPressed
+
+    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
+        character.getDescriptions().setName(nameField.getText());
+    }//GEN-LAST:event_nameFieldKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appearancePanel;
+    private javax.swing.JList armList;
     private javax.swing.JLabel armorLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton charismaButton;
     private javax.swing.JLabel classLabel;
     private javax.swing.JRadioButton constitutionButton;
+    private javax.swing.JTextPane descField;
     private javax.swing.JRadioButton dexterityButton;
     private javax.swing.JPanel equipmentPanel;
-    private javax.swing.JPanel featsPanel;
     private javax.swing.JRadioButton feminineButton;
-    private javax.swing.JLabel gearLabel;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JButton goldButton;
     private javax.swing.JRadioButton intelligenceButton;
+    private javax.swing.JList invList;
     private javax.swing.JLabel inventoryLabel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
-    private javax.swing.JList jList3;
-    private javax.swing.JList jList4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JRadioButton masculineButton;
+    private javax.swing.JTextField nameField;
     private javax.swing.JTabbedPane namePane;
     private javax.swing.JPanel namePanel;
     private javax.swing.JRadioButton paletteAButton;
@@ -661,11 +692,13 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     private javax.swing.JButton saveButton;
     private javax.swing.JList selectClass;
     private javax.swing.JList selectRace;
+    private javax.swing.JLabel skillsLabel;
+    private javax.swing.JList skillsList;
     private javax.swing.JPanel skillsPanel;
     private javax.swing.JLabel skinLabel;
     private javax.swing.JPanel spellsPanel;
-    private javax.swing.JPanel statsPanel;
     private javax.swing.JRadioButton strengthButton;
+    private javax.swing.JList weapList;
     private javax.swing.JLabel weaponsLabel;
     private javax.swing.JRadioButton wisdomButton;
     // End of variables declaration//GEN-END:variables

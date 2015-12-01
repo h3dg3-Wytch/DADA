@@ -1,8 +1,11 @@
 package Models.Entity;
 
+import Models.Dice.Dice;
 import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.etc.Descriptions;
+
+import java.util.UUID;
 
 /**
  * Created by Alex on 11/28/15.
@@ -18,6 +21,9 @@ public class Character extends Entity
     {
         Descriptions descriptions = new Descriptions();
         setDescriptions(descriptions);
+
+        id = UUID.randomUUID();
+
     }
     public void setCurrentlyEquippedArmor(Armor currentlyEquippedArmor)
     {
@@ -27,17 +33,23 @@ public class Character extends Entity
     @Override
     public void calculateHP()
     {
-        setHealthPoints(getCharacterClass().getTypeOfDie().rollDice());
+        setHealthPoints(getCharacterClass().getTypeOfDie().rollDice() * getLevel().getLevel());
     }
 
     @Override
     public void caluclateArmorClass()
     {
-        if(shield == null) {
-            setArmorClass(10 + currentlyEquippedArmor.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
-        }else {
-            setArmorClass(10 + currentlyEquippedArmor.getACBonus() + shield.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
+        if(currentlyEquippedArmor != null){
+            if(shield == null) {
+                setArmorClass(10 + currentlyEquippedArmor.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
+            }else {
+                setArmorClass(10 + currentlyEquippedArmor.getACBonus() + shield.getACBonus() + getAttributes().getDexterity().getAbilityModifier());
+            }
+
+        } else{
+            setArmorClass(10 + getAttributes().getDexterity().getAbilityModifier());
         }
+
 
     }
 
@@ -70,13 +82,13 @@ public class Character extends Entity
     @Override
     public void calculateCMD()
     {
-        setCMB(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier());
+        setCMD(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier());
     }
 
     @Override
     public void calculateInititiative()
     {
-        setCMB(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier() + getAttributes().getDexterity().getAbilityModifier());
+        setInitiative(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier() + getAttributes().getDexterity().getAbilityModifier());
     }
 
     @Override
@@ -89,7 +101,7 @@ public class Character extends Entity
                 setBaseAttackBonus(currentlyEquippedWeapon.getAttackBonus() + getAttributes().getStrength().getAbilityModifier());
             }
         }else {
-
+               setBaseAttackBonus(getAttributes().getStrength().getAbilityModifier());
         }
     }
 
@@ -160,4 +172,18 @@ public class Character extends Entity
     {
         return Integer.compare(this.getInitiative(), e.getInitiative());
     }
+
+    //True if the attack was succesful, false otherwise
+    public boolean attack(Entity e){
+        int result = getBaseAttackBonus() + Dice.rolld20();
+        if(result > e.getArmorClass()){
+            int damage;
+            damage = getCharacterClass().getTypeOfDie().rollDice();
+            e.setHealthPoints(e.getHealthPoints() - damage);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }

@@ -2,8 +2,10 @@
 import Models.Attributes.Attributes;
 import Models.Attributes.Charisma;
 import Models.Attributes.Dexterity;
+import Models.Classes.Wizard;
 import Models.Databases.EntityManager;
 import Models.Databases.EquipmentManager;
+import Models.Databases.SpellManager;
 import Models.Dice.Dice;
 import Models.Attributes.Strength;
 import Models.Entity.*;
@@ -11,9 +13,14 @@ import Models.Entity.Character;
 import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.Races.Gnome;
+import Models.etc.Descriptions;
 import Models.etc.Level;
 import Models.etc.Money;
+import Models.etc.Spell;
 import View.CharacterImage;
+import com.sun.org.glassfish.gmbal.Description;
+import org.w3c.dom.Attr;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.awt.image.WritableRaster;
@@ -28,70 +35,69 @@ public class Test {
 //testetsteststeet
 
     public static void main(String[] args) {
-     //We create a new Character
-     Models.Entity.Character character = new Character();
 
-     //We add things to the Descriptions class
-     character.getDescriptions().setName("Vael");
+     Character character = new Character();
+     Dice dice = new Dice(20);
+     int[] array = dice.generateIntialDice();
+     Attributes attributes = new Attributes();
+     attributes.setCharisma(new Charisma(array[1]));
+     attributes.setDexterity(new Dexterity((array[0])));
+     attributes.setStrength(new Strength(array[0]));
+     character.setAttributes(attributes);
+     character.setCharacterClass(new Wizard());
+     character.caluclateArmorClass();
 
-     character.setMoney(new Money());
-        character.getMoney().addMoney(5000,0,0);
+     Monster monster = new Monster();
+     monster.setTypeOfDiceUsed(dice);
 
-        List<Character> characters = new ArrayList<>();
-        characters = EntityManager.loadCharacters();
-        for(Character c : characters){
-            System.out.println(c.getDescriptions().getName());
-        }
+     monster.setAttributes(attributes);
+     monster.setToughnessOfHide(5);
+     monster.caluclateArmorClass();
+     monster.calculateHP();
+     monster.setLevel(new Level());
 
-        //Ask if they wish level up
-        character.setLevel(new Level());
-        System.out.println(character.getLevel().getLevel());
-        for(int i = 0; i < 20; i++) {
-            character.getLevel().levelUp();
-            System.out.println(character.getLevel().getLevel());
-        }
+     character.attack(monster);
 
-        //Allow them to edit the 6 attributes if they so wish
-        character.setAttributes(new Attributes());
-        character.getAttributes().setCharisma(new Charisma(20));
-        character.getAttributes().setStrength(new Strength(20));
-        //etc
+     System.out.println("Character V Monster");
+     for(int i = 0; i < 20; i++) {
+       System.out.print(i + " ");
+       if(character.attack(monster)){
+        System.out.println(monster.getHealthPoints());
+       }else{
+        System.out.println("You missed!");
+       }
+     }
+     System.out.println("Monster v Character");
+     for(int i = 0; i < 20; i++) {
+      System.out.print(i + " ");
+      if(monster.attack(character)){
+       System.out.println(character.getHealthPoints());
+      }else{
+       System.out.println("You missed!");
+      }
+     }
+     System.out.println("Character V character");
+     for(int i = 0; i < 20; i++) {
+      System.out.print(i + " ");
+      if(character.attack(character)){
+       System.out.println(character.getHealthPoints());
+      }else{
+       System.out.println("You missed!");
+      }
+     }
+     System.out.println("monster V monster");
+     for(int i = 0; i < 20; i++) {
+      System.out.print(i + " ");
+      if(monster.attack(monster)){
+       System.out.println(monster.getHealthPoints());
+      }else{
+       System.out.println("You missed!");
+      }
+     }
 
-        //let them add gold (if they want to) like so
-        character.setMoney(new Money());
-        character.getMoney().addMoney(4,4,4);
 
-        //Load the armory, let them requip items or build new ones
-        List<Armor> armors = EquipmentManager.loadArmor();
-        List<Weapon> weapon = EquipmentManager.loadWeapons();
-        //Display the armor
-        //If they want to make a new weapon or armor, do so like this
-        //New Weapon, take a look athe constructor but on your ide it should fill in for you
-        Weapon weapon1 = new Weapon("putDescription here", "properties", "name" , 0, 0, false, 0);
-        Armor armor = new Armor(Armor.ArmorType.CLOTH, "description", "properties", "name", 0, 5, 0);
 
-        Money money = new Money();
-        money.setGold(1000);
-        System.out.println(money.toString());
 
-        //If the person wants new armor to be equipped, they have to make this check pass
-        if(armor.canBePurchased(character.getMoney())){
-           character.setCurrentlyEquippedArmor(armor);
-            System.out.println("Purchased!");
-            //If you want to you can tell them thier current gold
-        }else {
-            //If you want you can tell them they can't have it, up to you
-            System.out.println("Didn't work");
-        }
-
-        if(weapon1.canBePurchased(character.getMoney())){
-            character.setCurrentlyEquippedArmor(armor);
-            //If you want to you can tell them thier current gold
-        }else {
-            //If you want you can tell them they can't have it, up to you
-        }
-
-        //Store all the items away
 
 
 

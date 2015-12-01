@@ -3,6 +3,7 @@ package Models.Entity;
 import Models.Attributes.Attributes;
 import Models.Classes.CharacterClass;
 import Models.Races.Race;
+import Models.Dice.Dice;
 import Models.Equipment.Armor;
 import Models.Equipment.Weapon;
 import Models.Skills.Skills;
@@ -17,10 +18,10 @@ import java.util.UUID;
  */
 public abstract class Entity implements Serializable, Comparable<Entity>
 {
-
+    protected UUID id;
     private Descriptions descriptions = new Descriptions();
-    private Level level;
-    private Attributes attributes;
+    private Level level = new Level();
+    private Attributes attributes = new Attributes();
     private ArrayList<Ability> abilities;
     private ArrayList<Weapon> weapons;
     private ArrayList<Armor> armory;
@@ -29,6 +30,7 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     public int compareTo(Entity o) {
         return 0;
     }
+
 
     private Skills skills;
     private CharacterClass characterClass;
@@ -48,8 +50,6 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     private int fortitude;
     private int reflex;
     private int will;
-    
-    private UUID id;
 
     public abstract void calculateHP();
 
@@ -288,25 +288,26 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     {
         this.will = will;
     }
-
-    public String getID() {
-        return id.toString();
+    public UUID getId() {
+        return id;
     }
 
-    public void setID() {
-        id = UUID.randomUUID();
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getToolTip()
     {
         ToolTip tooltip = new ToolTip();
-        tooltip.add(new ToolTipObject("Level: ", "put info here"));
-        tooltip.add(new ToolTipObject("STR: ", "put info here"));
-        tooltip.add(new ToolTipObject("DEX: ", "put info here"));
-        tooltip.add(new ToolTipObject("CON: ", "put info here"));
-        tooltip.add(new ToolTipObject("INT: ", "put info here"));
-        tooltip.add(new ToolTipObject("WIS: ", "put info here"));
-        tooltip.add(new ToolTipObject("CHA: ", "put info here"));
+        tooltip.add(new ToolTipObject("Level: ",Integer.toString(level.getLevel())));
+        tooltip.add(new ToolTipObject("HP: ", Integer.toString(getHealthPoints())));
+        tooltip.add(new ToolTipObject("AC: ", Integer.toString(armorClass)));
+        tooltip.add(new ToolTipObject("STR: ", Integer.toString(attributes.getStrength().getAbilityScore())));
+        tooltip.add(new ToolTipObject("DEX: ", Integer.toString(attributes.getDexterity().getAbilityScore())));
+        tooltip.add(new ToolTipObject("CON: ", Integer.toString(attributes.getConstitution().getAbilityScore())));
+        tooltip.add(new ToolTipObject("INT: ", Integer.toString(attributes.getIntelligence().getAbilityScore())));
+        tooltip.add(new ToolTipObject("WIS: ", Integer.toString(attributes.getWisdom().getAbilityScore())));
+        tooltip.add(new ToolTipObject("CHA: ", Integer.toString(attributes.getCharisma().getAbilityScore())));
         
         return tooltip.getDisplayString();
     }
