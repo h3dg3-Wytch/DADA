@@ -113,7 +113,9 @@ public class MainMenuFrame extends javax.swing.JFrame
     private void characterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_characterButtonMouseClicked
         if (buttonsEnabled)
         {
-            CharacterFrame frame = new CharacterFrame();
+            disableButtons();
+            CharacterFrame frame = new CharacterFrame(this);
+            frame.setLocationRelativeTo(this);
             frame.setVisible(true);
         }
     }//GEN-LAST:event_characterButtonMouseClicked
@@ -122,7 +124,9 @@ public class MainMenuFrame extends javax.swing.JFrame
 
         if (buttonsEnabled)
         {
-            MonsterFrame frame = new MonsterFrame();
+            disableButtons();
+            MonsterFrame frame = new MonsterFrame(this);
+            frame.setLocationRelativeTo(this);
             frame.setVisible(true);
         }
 
@@ -164,7 +168,9 @@ public class MainMenuFrame extends javax.swing.JFrame
 
         if (buttonsEnabled)
         {
-            OptionsFrame frame = new OptionsFrame();
+            disableButtons();
+            OptionsFrame frame = new OptionsFrame(this);
+            frame.setLocationRelativeTo(this);
             frame.setVisible(true);
         }
     }//GEN-LAST:event_optionsButtonMouseClicked
