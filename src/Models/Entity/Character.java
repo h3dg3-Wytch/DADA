@@ -73,6 +73,12 @@ public class Character extends Entity
     }
 
     @Override
+    public Dice figureOutDice() {
+        setTypeOfDiceUsed(getCharacterClass().getTypeOfDie());
+        return getTypeOfDiceUsed();
+    }
+
+    @Override
     public void calculateCMB()
     {
         setCMB(getBaseAttackBonus() + getAttributes().getStrength().getAbilityModifier());

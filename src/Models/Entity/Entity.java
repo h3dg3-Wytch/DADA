@@ -26,6 +26,10 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     private ArrayList<Weapon> weapons;
     private ArrayList<Armor> armory;
 
+
+    protected Dice typeOfDiceUsed;
+    protected int expDropped;
+
     @Override
     public int compareTo(Entity o) {
         return 0;
@@ -329,4 +333,21 @@ public abstract class Entity implements Serializable, Comparable<Entity>
         
         return tooltip.getDisplayString();
     }
+
+    public Dice getTypeOfDiceUsed() {
+        return typeOfDiceUsed;
+    }
+
+    public void setTypeOfDiceUsed(Dice typeOfDiceUsed) {
+        this.typeOfDiceUsed = typeOfDiceUsed;
+    }
+    public int getExpDropped() {
+        return expDropped;
+    }
+
+    public void setExpDropped(int expDropped) {
+        this.expDropped = expDropped;
+    }
+
+    public abstract Dice figureOutDice();
 }

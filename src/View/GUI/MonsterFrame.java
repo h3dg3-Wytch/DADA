@@ -96,4 +96,6 @@ public class MonsterFrame extends javax.swing.JFrame
     private javax.swing.JButton editButton;
     private javax.swing.JButton newButton;
     // End of variables declaration//GEN-END:variables
+
+
 }

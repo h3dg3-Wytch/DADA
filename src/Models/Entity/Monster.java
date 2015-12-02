@@ -12,9 +12,8 @@ import java.util.UUID;
  */
 public class Monster extends Entity implements Serializable {
 
-    private Dice typeOfDiceUsed;
     private int toughnessOfHide;
-    private int experienceDropped;
+//    private int experienceDropped;
 
 
     public void Monster()
@@ -115,13 +114,7 @@ public class Monster extends Entity implements Serializable {
         this.toughnessOfHide = toughnessOfHide;
     }
 
-    public int getExperienceDropped() {
-        return experienceDropped;
-    }
 
-    public void setExperienceDropped(int experienceDropped) {
-        this.experienceDropped = experienceDropped;
-    }
 
 
     public void calculateEverything(){
@@ -139,6 +132,12 @@ public class Monster extends Entity implements Serializable {
         calculateReflex();
         calculateWill();
         calculateInititiative();
+    }
+
+    @Override
+    public Dice figureOutDice() {
+        return getTypeOfDiceUsed();
+
     }
 
     //True if the attack was succesful, false otherwise
