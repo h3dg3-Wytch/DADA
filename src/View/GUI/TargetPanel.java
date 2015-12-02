@@ -59,48 +59,79 @@ public class TargetPanel extends JPanel
                 }
                 else
                 {
+                    String action = parent.getAction();
                     String die = parent.getDie();
-                    int roll = 0;
+                    Dice dice = null;
 
                     switch (die)
                     {
                         case "4":
                         {
-                            roll = Dice.rolld4();
+                            dice = new Dice(4);
                             break;
                         }
                         case "6":
                         {
-                            roll = Dice.rolld6();
+                            dice = new Dice(6);
                             break;
                         }
                         case "8":
                         {
-                            roll = Dice.rolld8();
+                            dice = new Dice(8);
                             break;
                         }
                         case "10":
                         {
-                            roll = Dice.rolld10();
+                            dice = new Dice(10);
                             break;
                         }
                         case "12":
                         {
-                            roll = Dice.rolld12();
+                            dice = new Dice(12);
                             break;
                         }
                         case "20":
                         {
-                            roll = Dice.rolld20();
+                            dice = new Dice(20);
                             break;
                         }
                     };
 
-                    System.out.println(roll);
-                    entity.setHealthPoints(entity.getHealthPoints() - roll);
+                    Entity attacker = parent.getCurrentEntity();
+                    switch (action)
+                    {
+                        case "Attack":
+                        {
+                            int hp = entity.getHealthPoints();
+                            
+                            attacker.setTypeOfDiceUsed(dice);
+                            attacker.attack(entity);
+                            
+                            if(entity.getHealthPoints() < hp)
+                            {
+                                int damage = Math.abs(hp - entity.getHealthPoints());
+                                JOptionPane.showMessageDialog(parent, "Attack successful dealing " + damage + " damage!"
+                                        , "Succsess" , JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            else
+                            {
+                                JOptionPane.showMessageDialog(parent, "Attack Failed!"
+                                        , "Attack Failed" , JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            break;
+                        }
+                        case "Spell":
+                        {
+                            attacker.setTypeOfDiceUsed(dice);
+                            
+                            break;
+                        }
+                    };
+
 
                     if (entity.getHealthPoints() < 0)
                     {
+                        attacker.getLevel().giveExperience(entity.getExpDropped());
                         parent.removeTarget(panel);
                     }
                 }

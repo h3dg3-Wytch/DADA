@@ -36,73 +36,78 @@ public class Test {
 
     public static void main(String[] args) {
 
-     Character character = new Character();
-     Dice dice = new Dice(20);
-     int[] array = dice.generateIntialDice();
-     Attributes attributes = new Attributes();
-     attributes.setCharisma(new Charisma(array[1]));
-     attributes.setDexterity(new Dexterity((array[0])));
-     attributes.setStrength(new Strength(array[0]));
-     character.setAttributes(attributes);
-     character.setCharacterClass(new Wizard());
-     character.caluclateArmorClass();
-
      Monster monster = new Monster();
-     monster.setTypeOfDiceUsed(dice);
-
-     monster.setAttributes(attributes);
-     monster.setToughnessOfHide(5);
-     monster.caluclateArmorClass();
-     monster.calculateHP();
-     monster.setLevel(new Level());
-
-     character.attack(monster);
-
-     System.out.println("Character V Monster");
-     for(int i = 0; i < 20; i++) {
-       System.out.print(i + " ");
-       if(character.attack(monster)){
-        System.out.println(monster.getHealthPoints());
-       }else{
-        System.out.println("You missed!");
-       }
-     }
-     System.out.println("Monster v Character");
-     for(int i = 0; i < 20; i++) {
-      System.out.print(i + " ");
-      if(monster.attack(character)){
-       System.out.println(character.getHealthPoints());
-      }else{
-       System.out.println("You missed!");
-      }
-     }
-     System.out.println("Character V character");
-     for(int i = 0; i < 20; i++) {
-      System.out.print(i + " ");
-      if(character.attack(character)){
-       System.out.println(character.getHealthPoints());
-      }else{
-       System.out.println("You missed!");
-      }
-     }
-     System.out.println("monster V monster");
-     for(int i = 0; i < 20; i++) {
-      System.out.print(i + " ");
-      if(monster.attack(monster)){
-       System.out.println(monster.getHealthPoints());
-      }else{
-       System.out.println("You missed!");
-      }
-     }
-
-
-
-
-
-
-
-
-
+     monster.setTypeOfDiceUsed(new Dice(6));
+     Dice dice =   monster.figureOutDice();
+     System.out.println(dice.rollDice());
+//
+//     Character character = new Character();
+//     Dice dice = new Dice(20);
+//     int[] array = dice.generateIntialDice();
+//     Attributes attributes = new Attributes();
+//     attributes.setCharisma(new Charisma(array[1]));
+//     attributes.setDexterity(new Dexterity((array[0])));
+//     attributes.setStrength(new Strength(array[0]));
+//     character.setAttributes(attributes);
+//     character.setCharacterClass(new Wizard());
+//     character.caluclateArmorClass();
+//
+//     Monster monster = new Monster();
+//     monster.setTypeOfDiceUsed(dice);
+//
+//     monster.setAttributes(attributes);
+//     monster.setToughnessOfHide(5);
+//     monster.caluclateArmorClass();
+//     monster.calculateHP();
+//     monster.setLevel(new Level());
+//
+//     character.attack(monster);
+//
+//     System.out.println("Character V Monster");
+//     for(int i = 0; i < 20; i++) {
+//       System.out.print(i + " ");
+//       if(character.attack(monster)){
+//        System.out.println(monster.getHealthPoints());
+//       }else{
+//        System.out.println("You missed!");
+//       }
+//     }
+//     System.out.println("Monster v Character");
+//     for(int i = 0; i < 20; i++) {
+//      System.out.print(i + " ");
+//      if(monster.attack(character)){
+//       System.out.println(character.getHealthPoints());
+//      }else{
+//       System.out.println("You missed!");
+//      }
+//     }
+//     System.out.println("Character V character");
+//     for(int i = 0; i < 20; i++) {
+//      System.out.print(i + " ");
+//      if(character.attack(character)){
+//       System.out.println(character.getHealthPoints());
+//      }else{
+//       System.out.println("You missed!");
+//      }
+//     }
+//     System.out.println("monster V monster");
+//     for(int i = 0; i < 20; i++) {
+//      System.out.print(i + " ");
+//      if(monster.attack(monster)){
+//       System.out.println(monster.getHealthPoints());
+//      }else{
+//       System.out.println("You missed!");
+//      }
+//     }
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 //     System.out.println(character.getFortitude());
 //
