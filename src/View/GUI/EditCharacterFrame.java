@@ -3,16 +3,11 @@ package View.GUI;
 import java.awt.event.WindowAdapter;
 
 import java.awt.event.WindowEvent;
-import Models.Entity.*;
 import Models.Races.*;
-import Models.Classes.*;
-import View.CharacterImage;
-import View.CharacterClasses;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import javax.swing.Icon;
 
 /**
@@ -40,6 +35,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     }
 
     int abilitySelect = 0;
+    int gold = 0;
     Models.Entity.Character character = new Models.Entity.Character();
 
     List<Models.Equipment.Armor> aList = new ArrayList();
@@ -106,6 +102,8 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         invList = new javax.swing.JList();
         removeButton = new javax.swing.JButton();
+        labelLabel = new javax.swing.JLabel();
+        goldLabel = new javax.swing.JLabel();
         appearancePanel = new javax.swing.JPanel();
         masculineButton = new javax.swing.JRadioButton();
         feminineButton = new javax.swing.JRadioButton();
@@ -386,6 +384,10 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
         removeButton.setText("Remove");
 
+        labelLabel.setText("Current Gold: ");
+
+        goldLabel.setText(Integer.toString(gold));
+
         javax.swing.GroupLayout equipmentPanelLayout = new javax.swing.GroupLayout(equipmentPanel);
         equipmentPanel.setLayout(equipmentPanelLayout);
         equipmentPanelLayout.setHorizontalGroup(
@@ -402,14 +404,19 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                         .addGap(417, 417, 417))
                     .addGroup(equipmentPanelLayout.createSequentialGroup()
                         .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(goldButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, equipmentPanelLayout.createSequentialGroup()
+                                .addComponent(goldButton, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(labelLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(goldLabel))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, equipmentPanelLayout.createSequentialGroup()
                                 .addComponent(inventoryLabel)
                                 .addGap(51, 51, 51)
                                 .addComponent(armorLabel)
                                 .addGap(61, 61, 61)
                                 .addComponent(weaponsLabel)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(301, Short.MAX_VALUE))
                     .addGroup(equipmentPanelLayout.createSequentialGroup()
                         .addComponent(removeButton)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -418,7 +425,10 @@ public class EditCharacterFrame extends javax.swing.JFrame {
             equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(equipmentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(goldButton)
+                .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(goldButton)
+                    .addComponent(labelLabel)
+                    .addComponent(goldLabel))
                 .addGap(24, 24, 24)
                 .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(armorLabel)
@@ -792,7 +802,11 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonMouseClicked
 
     private void goldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goldButtonMouseClicked
-        // TODO add your handling code here:
+        Models.Dice.Dice dice = new Models.Dice.Dice(6);
+        Models.etc.Money money = new Models.etc.Money();
+        gold = money.generateStartingGold();
+        character.setMoney(money);
+        goldLabel.setText(Integer.toString(gold));
     }//GEN-LAST:event_goldButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -812,6 +826,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton feminineButton;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JButton goldButton;
+    private javax.swing.JLabel goldLabel;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JRadioButton intelligenceButton;
     private javax.swing.JList invList;
@@ -826,6 +841,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JLabel labelLabel;
     private javax.swing.JRadioButton masculineButton;
     private javax.swing.JTextField nameField;
     private javax.swing.JTabbedPane namePane;

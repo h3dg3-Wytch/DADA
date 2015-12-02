@@ -84,9 +84,8 @@ public class Money implements Serializable
         this.gold -= gold;
     }
 
-    public void generateStartingGold(){
-        gold = Dice.rolld6() * 50;
-        System.out.println(gold);
+    public int generateStartingGold(){
+        return Dice.rolld6() * 50;
     }
 
     @Override

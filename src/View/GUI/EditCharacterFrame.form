@@ -510,7 +510,13 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="goldButton" alignment="0" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="goldButton" min="-2" pref="258" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="labelLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="goldLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="inventoryLabel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
@@ -519,7 +525,7 @@
                                       <Component id="weaponsLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="301" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="removeButton" min="-2" max="-2" attributes="0"/>
@@ -533,7 +539,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="goldButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="goldButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="goldLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="armorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -632,6 +642,18 @@
             <Component class="javax.swing.JButton" name="removeButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Current Gold: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="goldLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Integer.toString(gold)" type="code"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
