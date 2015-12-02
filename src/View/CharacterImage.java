@@ -23,8 +23,65 @@ public class CharacterImage {
         this.charPalette = charPalette;
     }
     
+        public void drawImage() {
 
-    public int[] drawImage() {
+            BufferedImage image = new BufferedImage(288, 288, BufferedImage.TYPE_INT_ARGB);
+        try {
+
+            //FIRST LOAD UP TORSO BASED ON PALETTE
+            String torsoPath = getTorso(charPalette, charRace);
+            if (torsoPath == null) {
+                System.out.println("Invalid palette. Please input 'a', 'b', or 'c' for palette.");
+                System.exit(2);
+            }//if imagepath = null
+            BufferedImage torso = ImageIO.read(new File(torsoPath));
+
+            //CREATE FINAL IMAGE, GRAPHICS OBJECT
+            Graphics g = image.getGraphics();
+
+            g.drawImage(torso, 0, 0, null); //DRAW TORSO LAYER
+
+            //LOAD UP CLOTHING BASED ON CLASS
+            String clothesPath = getClothes(charClass);
+            if (clothesPath == null) {
+                System.out.println("Invalid class.");
+                System.exit(3);
+            }//if imagepath = null
+            BufferedImage clothes = ImageIO.read(new File(clothesPath));
+
+            g.drawImage(clothes, 0, 0, null); //DRAW CLOTHES LAYER
+
+            //LOAD UP FACE IMAGE BASED ON GENDER RACE AND PALETTE
+            String headPath = getHead(charRace, charGender, charPalette);
+            if (headPath == null) {
+                System.out.println("Invalid race. Use spaces between multiple words.");
+                System.exit(4);
+            }//if imagepath = null
+            BufferedImage head = ImageIO.read(new File(headPath));
+
+            g.drawImage(head, 0, 0, null); //DRAW HEAD LAYER
+
+            //IF HAT IS TRUE LOAD UP HAT IMAGE
+            if (hasHat(charClass)) {
+                String hatPath = getHat(charClass);
+                if (hatPath == null) {
+                    System.out.println("Invalid class.");
+                    System.exit(5);
+                }//if imagepath = null
+                BufferedImage hat = ImageIO.read(new File(hatPath));
+
+                g.drawImage(hat, 0, 0, null); //DRAW HAT LAYER
+            }//if hasHat
+            File outputfile = new File("temp.png");
+            ImageIO.write(image, "png", outputfile);
+
+        } catch (IOException e) {
+        }//catch
+
+    }//drawImage
+    
+
+    public int[] writePixels() {
 
         try {
 
@@ -85,7 +142,7 @@ public class CharacterImage {
         }//catch
         return pixels;
 
-    }//generateImage
+    }//writePixels
 
     private static String getTorso(String palette, String charRace) {
         if ("half orc".equals(charRace.toLowerCase())) {
@@ -93,11 +150,11 @@ public class CharacterImage {
         } else {
             switch (palette.toLowerCase()) {
                 case "a":
-                    return "Images\\Torsos\\torso a.png";
+                    return "\\src\\View\\Images\\Torsos\\torso a.png";
                 case "b":
-                    return "Images\\Torsos\\torso b.png";
+                    return "\\src\\View\\Images\\Torsos\\torso b.png";
                 case "c":
-                    return "Images\\Torsos\\torso c.png";
+                    return "\\src\\View\\Images\\Torsos\\torso c.png";
                 default:
                     return null;
             }
@@ -111,19 +168,19 @@ public class CharacterImage {
                     //gender = m  palette = a
                     switch (race.toLowerCase()) {
                         case "dwarf":
-                            return "Images\\Heads\\Dwarf (m) (A).png";
+                            return "\\src\\View\\Images\\Heads\\Dwarf (m) (A).png";
                         case "elf":
-                            return "Images\\Heads\\Elf (m) (A).png";
+                            return "\\src\\View\\Images\\Heads\\Elf (m) (A).png";
                         case "gnome":
-                            return "Images\\Heads\\Gnome (m) (A).png";
+                            return "\\src\\View\\Images\\Heads\\Gnome (m) (A).png";
                         case "half elf":
-                            return "Images\\Heads\\Half Elf (m) (A).png";
+                            return "src\\View\\Images\\Heads\\Half Elf (m) (A).png";
                         case "halfling":
-                            return "Images\\Heads\\Halfling (m) (A).png";
+                            return "src\\View\\Images\\Heads\\Halfling (m) (A).png";
                         case "half orc":
-                            return "Images\\Heads\\Half Orc (m).png";
+                            return "src\\View\\Images\\Heads\\Half Orc (m).png";
                         case "human":
-                            return "Images\\Heads\\Human (m) (A).png";
+                            return "src\\View\\Images\\Heads\\Human (m) (A).png";
                         default:
                             return null;
                     }//switch (race.toLowerCase())
@@ -132,19 +189,19 @@ public class CharacterImage {
                     //gender = m  palette = b                    
                     switch (race.toLowerCase()) {
                         case "dwarf":
-                            return "Images\\Heads\\Dwarf (m) (B).png";
+                            return "src\\View\\Images\\Heads\\Dwarf (m) (B).png";
                         case "elf":
-                            return "Images\\Heads\\Elf (m) (B).png";
+                            return "src\\View\\Images\\Heads\\Elf (m) (B).png";
                         case "gnome":
-                            return "Images\\Heads\\Gnome (m) (B).png";
+                            return "src\\View\\Images\\Heads\\Gnome (m) (B).png";
                         case "half elf":
-                            return "Images\\Heads\\Half Elf (m) (B).png";
+                            return "src\\View\\Images\\Heads\\Half Elf (m) (B).png";
                         case "halfling":
-                            return "Images\\Heads\\Halfling (m) (B).png";
+                            return "src\\View\\Images\\Heads\\Halfling (m) (B).png";
                         case "half orc":
-                            return "Images\\Heads\\Half Orc (m).png";
+                            return "src\\View\\Images\\Heads\\Half Orc (m).png";
                         case "human":
-                            return "Images\\Heads\\Human (m) (B).png";
+                            return "src\\View\\Images\\Heads\\Human (m) (B).png";
                         default:
                             return null;
                     }//switch (race.toLowerCase())
@@ -153,19 +210,19 @@ public class CharacterImage {
                     //gender = m  palette = c
                     switch (race.toLowerCase()) {
                         case "dwarf":
-                            return "Images\\Heads\\warf (m) (C).png";
+                            return "src\\View\\Images\\Heads\\warf (m) (C).png";
                         case "elf":
-                            return "Images\\Heads\\Elf (m) (C).png";
+                            return "src\\View\\Images\\Heads\\Elf (m) (C).png";
                         case "gnome":
-                            return "Images\\Heads\\Gnome (m) (C).png";
+                            return "src\\View\\Images\\Heads\\Gnome (m) (C).png";
                         case "half elf":
-                            return "Images\\Heads\\Half Elf (m) (C).png";
+                            return "src\\View\\Images\\Heads\\Half Elf (m) (C).png";
                         case "halfling":
-                            return "Images\\Heads\\Halfling (m) (C).png";
+                            return "src\\View\\Images\\Heads\\Halfling (m) (C).png";
                         case "half orc":
-                            return "Images\\Heads\\Half Orc (m).png";
+                            return "src\\View\\Images\\Heads\\Half Orc (m).png";
                         case "human":
-                            return "Images\\Heads\\Human (m) (C).png";
+                            return "src\\View\\Images\\Heads\\Human (m) (C).png";
                         default:
                             return null;
                     }//switch (race.toLowerCase())
@@ -179,19 +236,19 @@ public class CharacterImage {
                     //gender = f  palette = a                   
                     switch (race.toLowerCase()) {
                         case "dwarf":
-                            return "Images\\Heads\\Dwarf (f) (A).png";
+                            return "src\\View\\Images\\Heads\\Dwarf (f) (A).png";
                         case "elf":
-                            return "Images\\Heads\\Elf (f) (A).png";
+                            return "src\\View\\Images\\Heads\\Elf (f) (A).png";
                         case "gnome":
-                            return "Images\\Heads\\Gnome (f) (A).png";
+                            return "src\\View\\Images\\Heads\\Gnome (f) (A).png";
                         case "half elf":
-                            return "Images\\Heads\\Half Elf (f) (A).png";
+                            return "src\\View\\Images\\Heads\\Half Elf (f) (A).png";
                         case "halfling":
-                            return "Images\\Heads\\Halfling (f) (A).png";
+                            return "src\\View\\Images\\Heads\\Halfling (f) (A).png";
                         case "half orc":
-                            return "Images\\Heads\\Half Orc (f).png";
+                            return "src\\View\\Images\\Heads\\Half Orc (f).png";
                         case "human":
-                            return "Images\\Heads\\Human (f) (A).png";
+                            return "src\\View\\Images\\Heads\\Human (f) (A).png";
                         default:
                             return null;
                     }//switch (race.toLowerCase())
@@ -200,19 +257,19 @@ public class CharacterImage {
                     //gender = f  palette = a                     
                     switch (race.toLowerCase()) {
                         case "dwarf":
-                            return "Images\\Heads\\Dwarf (f) (B).png";
+                            return "src\\View\\Images\\Heads\\Dwarf (f) (B).png";
                         case "elf":
-                            return "Images\\Heads\\Elf (f) (B).png";
+                            return "src\\View\\Images\\Heads\\Elf (f) (B).png";
                         case "gnome":
-                            return "Images\\Heads\\Gnome (f) (B).png";
+                            return "src\\View\\Images\\Heads\\Gnome (f) (B).png";
                         case "half elf":
-                            return "Images\\Heads\\Half Elf (f) (B).png";
+                            return "src\\View\\Images\\Heads\\Half Elf (f) (B).png";
                         case "halfling":
-                            return "Images\\Heads\\Halfling (f) (B).png";
+                            return "src\\View\\Images\\Heads\\Halfling (f) (B).png";
                         case "half orc":
-                            return "Images\\Heads\\Half Orc (f).png";
+                            return "src\\View\\Images\\Heads\\Half Orc (f).png";
                         case "human":
-                            return "Images\\Heads\\Human (f) (B).png";
+                            return "src\\View\\Images\\Heads\\Human (f) (B).png";
                         default:
                             return null;
                     }//switch (race.toLowerCase())
@@ -221,19 +278,19 @@ public class CharacterImage {
                     //gender = f  palette = a                     
                     switch (race.toLowerCase()) {
                         case "dwarf":
-                            return "Images\\Heads\\Dwarf (f) (C).png";
+                            return "src\\View\\Images\\Heads\\Dwarf (f) (C).png";
                         case "elf":
-                            return "Images\\Heads\\Elf (f) (C).png";
+                            return "src\\View\\Images\\Heads\\Elf (f) (C).png";
                         case "gnome":
-                            return "Images\\Heads\\Gnome (f) (C).png";
+                            return "src\\View\\Images\\Heads\\Gnome (f) (C).png";
                         case "half elf":
-                            return "Images\\Heads\\Half Elf (f) (C).png";
+                            return "src\\View\\Images\\Heads\\Half Elf (f) (C).png";
                         case "halfling":
-                            return "Images\\Heads\\Halfling (f) (C).png";
+                            return "src\\View\\Images\\Heads\\Halfling (f) (C).png";
                         case "half orc":
-                            return "Images\\Heads\\Half Orc (f).png";
+                            return "src\\View\\Images\\Heads\\Half Orc (f).png";
                         case "human":
-                            return "Images\\Heads\\Human (f) (C).png";
+                            return "src\\View\\Images\\Heads\\Human (f) (C).png";
                         default:
                             return null;
                     }//switch (race.toLowerCase())
@@ -249,25 +306,25 @@ public class CharacterImage {
     private static String getClothes(String charClass) {
         switch (charClass.toLowerCase()) {
             case "barbarian":
-                return "Images\\Clothes\\Barbarian.png";
+                return "src\\View\\Images\\Clothes\\Barbarian.png";
             case "bard":
-                return "Images\\Clothes\\Bard.png";
+                return "src\\View\\Images\\Clothes\\Bard.png";
             case "druid":
-                return "Images\\Clothes\\Druid.png";
+                return "src\\View\\Images\\Clothes\\Druid.png";
             case "fighter":
-                return "Images\\Clothes\\Fighter.png";
+                return "src\\View\\Images\\Clothes\\Fighter.png";
             case "monk":
-                return "Images\\Clothes\\Monk.png";
+                return "src\\View\\Images\\Clothes\\Monk.png";
             case "paladin":
-                return "Images\\Clothes\\Paladin.png";
+                return "src\\View\\Images\\Clothes\\Paladin.png";
             case "ranger":
-                return "Images\\Clothes\\ranger.png";
+                return "src\\View\\Images\\Clothes\\ranger.png";
             case "rogue":
-                return "Images\\Clothes\\Rogue.png";
+                return "src\\View\\Images\\Clothes\\Rogue.png";
             case "sorcerer":
-                return "Images\\Clothes\\Sorcerer.png";
+                return "src\\View\\Images\\Clothes\\Sorcerer.png";
             case "wizard":
-                return "Images\\Clothes\\Wizard.png";
+                return "src\\View\\Images\\Clothes\\Wizard.png";
             default:
                 return null;
         }//switch
@@ -294,15 +351,15 @@ public class CharacterImage {
     private static String getHat(String charClass) {
         switch (charClass.toLowerCase()) {
             case "druid":
-                return "Images\\Hats\\Druid Hat.png";
+                return "src\\View\\Images\\Hats\\Druid Hat.png";
             case "monk":
-                return "Images\\Hats\\Monk Hat.png";
+                return "src\\View\\Images\\Hats\\Monk Hat.png";
             case "rogue":
-                return "Images\\Hats\\Rogue hat.png";
+                return "src\\View\\Images\\Hats\\Rogue hat.png";
             case "sorcerer":
-                return "Images\\Hats\\Sorcerer Hat.png";
+                return "src\\View\\Images\\Hats\\Sorcerer Hat.png";
             case "wizard":
-                return "Images\\Hats\\Wizard Hat.png";
+                return "src\\View\\Images\\Hats\\Wizard Hat.png";
             default:
                 return null;
         }//switch

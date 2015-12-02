@@ -18,15 +18,18 @@ import Models.etc.Level;
 import Models.etc.Money;
 import Models.etc.Spell;
 import View.CharacterImage;
-import com.sun.org.glassfish.gmbal.Description;
 import org.w3c.dom.Attr;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.awt.image.WritableRaster;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
 
 /**
  * Created by Rex on 11/6/2015.
@@ -36,10 +39,14 @@ public class Test {
 
     public static void main(String[] args) {
 
-     Monster monster = new Monster();
-     monster.setTypeOfDiceUsed(new Dice(6));
-     Dice dice =   monster.figureOutDice();
-     System.out.println(dice.rollDice());
+        System.out.println(new File("").getAbsolutePath());
+        View.CharacterImage charImage = new View.CharacterImage("La", "Elf", "Wizard", "m", "c");
+        charImage.drawImage();
+
+//     Monster monster = new Monster();
+//     monster.setTypeOfDiceUsed(new Dice(6));
+//     Dice dice =   monster.figureOutDice();
+        //    System.out.println(dice.rollDice());
 //
 //     Character character = new Character();
 //     Dice dice = new Dice(20);
@@ -108,20 +115,11 @@ public class Test {
 //
 //
 //
-
 //     System.out.println(character.getFortitude());
 //
         //If the class is a wizard or sorcerer, have them select two spells
         //Morgan will add the spellManager
-
         //Go ahead and create the visual representation of the character, you are done with character creation!
-
-
-
-
-
-        
-
         /*
          Attributes attributes = new Attributes();
          attributes.setStrength(new Strength(10));
