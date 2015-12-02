@@ -5,6 +5,14 @@
  */
 package View.GUI;
 
+import Models.Attributes.Attributes;
+import Models.Attributes.Charisma;
+import Models.Attributes.Constitution;
+import Models.Attributes.Dexterity;
+import Models.Attributes.Intelligence;
+import Models.Attributes.Strength;
+import Models.Attributes.Wisdom;
+import Models.Classes.Wizard;
 import Models.Entity.Monster;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,7 +119,7 @@ public class MainMenuFrame extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void characterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_characterButtonMouseClicked
-          
+
         if (buttonsEnabled)
         {
             disableButtons();
@@ -135,8 +143,7 @@ public class MainMenuFrame extends javax.swing.JFrame
 
     private void combatButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combatButtonMouseClicked
 
-        
-        /*// this is test data
+        // this is test data
         List<Models.Entity.Character> characterList = new ArrayList();
         List<Monster> monsterList = new ArrayList();
 
@@ -149,6 +156,21 @@ public class MainMenuFrame extends javax.swing.JFrame
             for (int i = 0; i < 5; i++)
             {
                 Models.Entity.Character character = new Models.Entity.Character();
+
+                Attributes attributes = new Attributes();
+                attributes.setCharisma(new Charisma(new Random().nextInt(12)+1));
+                attributes.setDexterity(new Dexterity(new Random().nextInt(12)+1));
+                attributes.setStrength(new Strength(new Random().nextInt(12)+1));
+                attributes.setWisdom(new Wisdom(new Random().nextInt(12)+1));
+                attributes.setIntelligence(new Intelligence(new Random().nextInt(12)+1));
+                attributes.setConstitution(new Constitution(new Random().nextInt(12)+1));
+                
+                
+                character.setAttributes(attributes);
+                character.setCharacterClass(new Wizard());
+                character.caluclateArmorClass();
+                
+                character.setHealthPoints(20);
                 character.getDescriptions().setName("Character " + i);
                 character.setInitiative(new Random().nextInt(20) + 1);
                 characterList.add(character);
@@ -157,6 +179,20 @@ public class MainMenuFrame extends javax.swing.JFrame
             for (int i = 0; i < 5; i++)
             {
                 Monster monster = new Monster();
+                
+                Attributes attributes = new Attributes();
+                attributes.setCharisma(new Charisma(new Random().nextInt(12)+1));
+                attributes.setDexterity(new Dexterity(new Random().nextInt(12)+1));
+                attributes.setStrength(new Strength(new Random().nextInt(12)+1));
+                attributes.setWisdom(new Wisdom(new Random().nextInt(12)+1));
+                attributes.setIntelligence(new Intelligence(new Random().nextInt(12)+1));
+                attributes.setConstitution(new Constitution(new Random().nextInt(12)+1));
+                
+                monster.setAttributes(attributes);
+                monster.caluclateArmorClass();
+                
+                monster.setHealthPoints(20);
+                monster.setExpDropped(2000);
                 monster.getDescriptions().setName("Monster " + i);
                 monster.setInitiative(new Random().nextInt(20) + 1);
                 monsterList.add(monster);
@@ -165,7 +201,7 @@ public class MainMenuFrame extends javax.swing.JFrame
             CombatFrame frame = new CombatFrame(characterList, monsterList, this);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-            */
+        }
     }//GEN-LAST:event_combatButtonMouseClicked
 
     private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsButtonMouseClicked

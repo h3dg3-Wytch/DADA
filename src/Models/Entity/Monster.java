@@ -141,6 +141,7 @@ public class Monster extends Entity implements Serializable {
     }
 
     //True if the attack was succesful, false otherwise
+    @Override
     public boolean attack(Entity e){
         int result = getBaseAttackBonus() + Dice.rolld20();
         if(result > e.getArmorClass()){

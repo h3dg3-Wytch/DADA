@@ -180,6 +180,7 @@ public class Character extends Entity
     }
 
     //True if the attack was succesful, false otherwise
+    @Override
     public boolean attack(Entity e){
         int result = getBaseAttackBonus() + Dice.rolld20();
         if(result > e.getArmorClass()){

@@ -76,6 +76,7 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     public abstract void calculateFortitude();
     public abstract void calculateReflex();
     public abstract void calculateWill();
+    public abstract boolean attack(Entity e);
 
     public Descriptions getDescriptions()
     {
