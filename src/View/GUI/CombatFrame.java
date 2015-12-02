@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- *
- * @author Maia
- */
 public class CombatFrame extends javax.swing.JFrame
 {
 

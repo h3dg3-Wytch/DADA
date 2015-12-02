@@ -6,7 +6,6 @@ package View.GUI;
 
 import Models.Entity.Entity;
 import java.awt.Color;
-import java.awt.Component;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
