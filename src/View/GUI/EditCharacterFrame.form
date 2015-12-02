@@ -77,11 +77,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Character Editor"/>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JTabbedPane" name="namePane">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
@@ -378,337 +373,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="spellsPanel">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Spells">
-                <Property name="tabTitle" type="java.lang.String" value="Spells"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="889" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="347" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
-        <Container class="javax.swing.JPanel" name="equipmentPanel">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Gold/Equipment">
-                <Property name="tabTitle" type="java.lang.String" value="Gold/Equipment"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jScrollPane7" min="-2" pref="77" max="-2" attributes="0"/>
-                              <EmptySpace pref="223" max="32767" attributes="0"/>
-                              <Component id="jScrollPane4" min="-2" pref="72" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" min="-2" pref="72" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="417" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="goldButton" min="-2" pref="258" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="labelLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="goldLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="inventoryLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                      <Component id="armorLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                      <Component id="weaponsLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace pref="451" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="removeButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="goldButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="goldLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="armorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="weaponsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="inventoryLabel" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jScrollPane7" pref="224" max="32767" attributes="0"/>
-                          <Component id="jScrollPane4" max="32767" attributes="0"/>
-                          <Component id="jScrollPane5" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="removeButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="goldButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Generate Gold"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="goldButtonMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="armorLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Armor"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="weaponsLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Weapons"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="inventoryLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Character Inventory"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="armList">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value=" new javax.swing.JList(aSList.toArray())"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//test character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));&#xa;for (int i = 0; i &lt; 5; i++){&#xa;    aList.add(new Models.Equipment.Armor(Models.Equipment.Armor.ArmorType.PLATE, &quot;&quot;, &quot;&quot;, &quot;armor &quot; + i, i, i, i));&#xa;}&#xa;List&lt;String&gt; aSList = new ArrayList();&#xa;for (Models.Equipment.Armor e : aList){&#xa;    aSList.add(e.getName());&#xa;}"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="weapList">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList(wSList.toArray())"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="for (int i = 0; i &lt; 5; i++){&#xa;            wList.add(new Models.Equipment.Weapon(&quot;&quot;, &quot;&quot;, &quot;weapon &quot; + i, i, i, true, i));&#xa;        }&#xa;        List&lt;String&gt; wSList = new ArrayList();&#xa;        for (Models.Equipment.Weapon e : wList){&#xa;            wSList.add(e.getName());&#xa;        }"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane7">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="invList">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList(chSList.toArray())"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//test&#xa;for (int i = 0; i &lt; 3; i++) {&#xa;    aList.add(new Models.Equipment.Armor(Models.Equipment.Armor.ArmorType.PLATE, &quot;&quot;, &quot;&quot;, &quot;armor &quot; + i, i, i, i));&#xa;}&#xa;character.setArmory(aChList);&#xa;for (int i = 0; i &lt; 3; i++) {&#xa;    wList.add(new Models.Equipment.Weapon(&quot;&quot;, &quot;&quot;, &quot;weapon &quot; + i, i, i, true, i));&#xa;}&#xa;character.setWeapons(wChList);&#xa;//test&#xa;//pull armor character list to add and remove from&#xa;for (Models.Equipment.Armor e : character.getArmory()) {&#xa;            aChList.add(e);&#xa;        }&#xa;//pull weapon character list to add and remove from&#xa;for (Models.Equipment.Weapon e : character.getWeapons()) {&#xa;            wChList.add(e);&#xa;        }&#xa;//make string list for armor and weapons in character inv&#xa;for (Models.Equipment.Armor e : aChList){    //add armor&#xa;    chSList.add(e.getName());&#xa;}&#xa;for (Models.Equipment.Weapon e : wChList){  //add weapons&#xa;    chSList.add(e.getName());&#xa;}"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JButton" name="removeButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Remove"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="labelLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Current Gold: "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="goldLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Integer.toString(gold)" type="code"/>
-                </Property>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="appearancePanel">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Appearance">
-                <Property name="tabTitle" type="java.lang.String" value="Appearance"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="imageLabel" min="-2" pref="286" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="skinLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="paletteBButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="feminineButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="masculineButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="paletteAButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="paletteCButton" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="drawButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="495" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="masculineButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="feminineButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="skinLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="paletteCButton" min="-2" pref="23" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="paletteAButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="paletteBButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="drawButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="93" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="imageLabel" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JRadioButton" name="masculineButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup2"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Masculine"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="masculineButtonMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="feminineButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup2"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Feminine"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="feminineButtonMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="paletteAButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup3"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Medium"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="paletteAButtonMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="paletteBButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup3"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Light"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="paletteBButtonMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="paletteCButton">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup3"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Dark"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="paletteCButtonMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="genderLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Body Type"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="skinLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Skin Tone"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="drawButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Draw"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="drawButtonMouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="imageLabel">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/View/Images/question mark.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="  "/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JPanel" name="skillsPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -729,12 +393,7 @@
                           <Component id="jScrollPane6" min="-2" pref="87" max="-2" attributes="0"/>
                           <Component id="generateStatsButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane8" min="-2" pref="144" max="-2" attributes="0"/>
-                          <Component id="skillsLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="340" max="32767" attributes="0"/>
+                      <EmptySpace pref="558" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -746,71 +405,16 @@
                       <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="skillsLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="jScrollPane6" min="-2" pref="188" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane8" min="-2" pref="228" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane6" min="-2" pref="188" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="generateStatsButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="generateStatsButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane8">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="skillsList">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="26">
-                        <StringItem index="0" value="Acrobatics"/>
-                        <StringItem index="1" value="Appraise"/>
-                        <StringItem index="2" value="Bluff"/>
-                        <StringItem index="3" value="Climb"/>
-                        <StringItem index="4" value="Craft"/>
-                        <StringItem index="5" value="Diplomacy"/>
-                        <StringItem index="6" value="Disable Device"/>
-                        <StringItem index="7" value="Disguise"/>
-                        <StringItem index="8" value="Esape Artist"/>
-                        <StringItem index="9" value="Fly"/>
-                        <StringItem index="10" value="Handle Animal"/>
-                        <StringItem index="11" value="Heal"/>
-                        <StringItem index="12" value="Intimidate"/>
-                        <StringItem index="13" value="Knowledge"/>
-                        <StringItem index="14" value="Linguistics"/>
-                        <StringItem index="15" value="Perception"/>
-                        <StringItem index="16" value="Perform"/>
-                        <StringItem index="17" value="Prefession"/>
-                        <StringItem index="18" value="Ride"/>
-                        <StringItem index="19" value="Sense Motive"/>
-                        <StringItem index="20" value="Sleight of Hand"/>
-                        <StringItem index="21" value="Spell Craft"/>
-                        <StringItem index="22" value="Stealth"/>
-                        <StringItem index="23" value="Survival"/>
-                        <StringItem index="24" value="Swim"/>
-                        <StringItem index="25" value="Use Magic Device"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="skillsLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Skills"/>
-              </Properties>
-            </Component>
             <Container class="javax.swing.JPanel" name="jPanel1">
 
               <Layout>
@@ -1117,8 +721,342 @@
             </Container>
           </SubComponents>
         </Container>
+        <Container class="javax.swing.JPanel" name="spellsPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Spells">
+                <Property name="tabTitle" type="java.lang.String" value="Spells"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="889" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="347" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="javax.swing.JPanel" name="equipmentPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Gold/Equipment">
+                <Property name="tabTitle" type="java.lang.String" value="Gold/Equipment"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="goldButton" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jScrollPane4" alignment="0" pref="72" max="32767" attributes="0"/>
+                                  <Component id="armorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="armEquip" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="weaponsLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane5" pref="72" max="32767" attributes="0"/>
+                                  <Component id="weapEquip" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="setGoldButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="goldLabel" max="32767" attributes="0"/>
+                          <Component id="setGoldField" min="-2" pref="66" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="510" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="goldButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="goldLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="armorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="weaponsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="setGoldField" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="setGoldButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane5" pref="172" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="armEquip" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="weapEquip" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="66" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="goldButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Generate Gold"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="goldButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="armorLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Armor"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="weaponsLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Weapons"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="armList">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value=" new javax.swing.JList(aSList.toArray())"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//test character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));&#xa;for (int i = 0; i &lt; 5; i++){&#xa;    aList.add(new Models.Equipment.Armor(Models.Equipment.Armor.ArmorType.PLATE, &quot;&quot;, &quot;&quot;, &quot;armor &quot; + i, i, i, i));&#xa;}&#xa;List&lt;String&gt; aSList = new ArrayList();&#xa;for (Models.Equipment.Armor e : aList){&#xa;    aSList.add(e.getName());&#xa;}"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="weapList">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList(wSList.toArray())"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="for (int i = 0; i &lt; 5; i++){&#xa;            wList.add(new Models.Equipment.Weapon(&quot;&quot;, &quot;&quot;, &quot;weapon &quot; + i, i, i, true, i));&#xa;        }&#xa;        List&lt;String&gt; wSList = new ArrayList();&#xa;        for (Models.Equipment.Weapon e : wList){&#xa;            wSList.add(e.getName());&#xa;        }"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="labelLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Current Gold: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="goldLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="Integer.toString(gold)" type="code"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="armEquip">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Equip"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="armEquipMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="weapEquip">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Equip"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="weapEquipMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="setGoldField">
+            </Component>
+            <Component class="javax.swing.JButton" name="setGoldButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Set Gold"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="setGoldButtonMouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="appearancePanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Appearance">
+                <Property name="tabTitle" type="java.lang.String" value="Appearance"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="imageLabel" min="-2" pref="286" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="skinLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="paletteBButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="feminineButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="masculineButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="paletteAButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="paletteCButton" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="drawButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="495" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="masculineButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="feminineButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="skinLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="paletteCButton" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="paletteAButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="paletteBButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="drawButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="93" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="imageLabel" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JRadioButton" name="masculineButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup2"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Masculine"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="masculineButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="feminineButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup2"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Feminine"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="feminineButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="paletteAButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Medium"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="paletteAButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="paletteBButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Light"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="paletteBButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="paletteCButton">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Dark"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="paletteCButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="genderLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Body Type"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="skinLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Skin Tone"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="drawButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Draw"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="drawButtonMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="imageLabel">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/View/Images/question mark.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="  "/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Character Editor"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="saveButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
