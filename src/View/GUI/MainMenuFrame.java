@@ -140,7 +140,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
     private void combatButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combatButtonMouseClicked
 
-        // this is test data
+         // this is test data
         List<Models.Entity.Character> characterList = new ArrayList();
         List<Monster> monsterList = new ArrayList();
 
