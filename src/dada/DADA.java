@@ -22,7 +22,7 @@ public class DADA {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(DADA.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

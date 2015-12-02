@@ -6,6 +6,7 @@ package View.GUI;
 
 import Models.Dice.Dice;
 import Models.Entity.Entity;
+import Models.etc.Spell;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -100,38 +101,93 @@ public class TargetPanel extends JPanel
                     Entity attacker = parent.getCurrentEntity();
                     switch (action)
                     {
-                        case "Attack":
+                        case "attack":
                         {
                             int hp = entity.getHealthPoints();
-                            
+
                             attacker.setTypeOfDiceUsed(dice);
                             attacker.attack(entity);
-                            
-                            if(entity.getHealthPoints() < hp)
+
+                            if (entity.getHealthPoints() < hp)
                             {
                                 int damage = Math.abs(hp - entity.getHealthPoints());
-                                JOptionPane.showMessageDialog(parent, "Attack successful dealing " + damage + " damage!"
-                                        , "Succsess" , JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(parent, "Attack successful dealing " + damage + " damage!", "Succsess", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else
                             {
-                                JOptionPane.showMessageDialog(parent, "Attack Failed!"
-                                        , "Attack Failed" , JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(parent, "Attack Failed!", "Attack Failed", JOptionPane.INFORMATION_MESSAGE);
                             }
                             break;
                         }
-                        case "Spell":
+                        case "spellHeal":
                         {
-                            attacker.setTypeOfDiceUsed(dice);
-                            
+                            int hp = entity.getHealthPoints();
+                            Spell spell = new Spell();
+                            spell.setDie(dice);
+                            spell.castHealingSpell(entity);
+
+                            if (entity.getHealthPoints() > hp)
+                            {
+                                JOptionPane.showMessageDialog(parent, "Increased health by "
+                                        + (entity.getHealthPoints() - hp) + " points!",
+                                        "Healed", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            break;
+                        }
+                        case "spellCombat":
+                        {
+                            int hp = entity.getHealthPoints();
+                            Spell spell = new Spell();
+                            spell.setDie(dice);
+
+                            spell.castCombatSpell(entity);
+
+                            if (entity.getHealthPoints() < hp)
+                            {
+                                int damage = Math.abs(hp - entity.getHealthPoints());
+                                JOptionPane.showMessageDialog(parent, "Attack successful dealing " + damage + " damage!", "Succsess", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            else
+                            {
+                                JOptionPane.showMessageDialog(parent, "Attack Failed!", "Attack Failed", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            break;
+                        }
+                        case "spellProtective":
+                        {
+                            int ac = entity.getArmorClass();
+                            Spell spell = new Spell();
+                            spell.setDie(dice);
+                            spell.castProtectiveSpell(entity);
+
+                            if (entity.getArmorClass() > ac)
+                            {
+                                JOptionPane.showMessageDialog(parent, "Increased AC by "
+                                        + (entity.getArmorClass() - ac) + " points!",
+                                        "Protected", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                            break;
+                        }
+                        case "spellWeakening":
+                        {
+                            int ac = entity.getArmorClass();
+                            Spell spell = new Spell();
+                            spell.setDie(dice);
+                            spell.castWeakeningSpell(entity);
+
+                            if (entity.getArmorClass() < ac)
+                            {
+                                JOptionPane.showMessageDialog(parent, "Decreased AC by "
+                                        + (Math.abs(entity.getArmorClass() - ac)) + " points!",
+                                        "Weakened", JOptionPane.INFORMATION_MESSAGE);
+                            }
                             break;
                         }
                     };
 
-
                     if (entity.getHealthPoints() < 0)
                     {
-                        attacker.getLevel().giveExperience(entity.getExpDropped());
+                        parent.giveExperience(entity.getExpDropped());
                         parent.removeTarget(panel);
                     }
                 }
