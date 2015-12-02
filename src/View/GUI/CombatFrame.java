@@ -114,16 +114,19 @@ public class CombatFrame extends javax.swing.JFrame
             {
                 if (!entities.isEmpty())
                 {
-                    if (turnIndex == entities.size() - 1)
+                    if (!entities.isEmpty())
                     {
-                        turnIndex = 0;
+                        if (turnIndex == entities.size() - 1)
+                        {
+                            turnIndex = 0;
+                        }
+                        else
+                        {
+                            turnIndex++;
+                        }
+                        currentEntity = entities.get(turnIndex);
+                        nameLabel.setText(currentEntity.getDescriptions().getName());
                     }
-                    else
-                    {
-                        turnIndex++;
-                    }
-                    currentEntity = entities.get(turnIndex);
-                    nameLabel.setText(currentEntity.getDescriptions().getName());
                 }
             }
         });
