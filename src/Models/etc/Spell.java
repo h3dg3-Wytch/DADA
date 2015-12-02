@@ -94,4 +94,10 @@ public class Spell implements Serializable {
     public void setSpellLevel(int spellLevel) {
         this.spellLevel = spellLevel;
     }
+    
+    public void setLevelMulitpiler(Level level){
+        
+        this.levelMultiplier = level.getLevel() / 4;
+        
+    }
 }

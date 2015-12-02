@@ -14,13 +14,11 @@ import java.util.Random;
  *
  * @author Maia
  */
-public class MainMenuFrame extends javax.swing.JFrame
-{
+public class MainMenuFrame extends javax.swing.JFrame {
 
     private boolean buttonsEnabled = true;
 
-    public MainMenuFrame()
-    {
+    public MainMenuFrame() {
         initComponents();
     }
 
@@ -111,9 +109,8 @@ public class MainMenuFrame extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void characterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_characterButtonMouseClicked
-          
-        if (buttonsEnabled)
-        {
+
+        if (buttonsEnabled) {
             disableButtons();
             CharacterFrame frame = new CharacterFrame(this);
             frame.setLocationRelativeTo(this);
@@ -123,8 +120,7 @@ public class MainMenuFrame extends javax.swing.JFrame
 
     private void monsterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monsterButtonMouseClicked
 
-        if (buttonsEnabled)
-        {
+        if (buttonsEnabled) {
             disableButtons();
             MonsterFrame frame = new MonsterFrame(this);
             frame.setLocationRelativeTo(this);
@@ -135,43 +131,37 @@ public class MainMenuFrame extends javax.swing.JFrame
 
     private void combatButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combatButtonMouseClicked
 
-        
-        /*// this is test data
+        // this is test data
         List<Models.Entity.Character> characterList = new ArrayList();
         List<Monster> monsterList = new ArrayList();
 
-        if (buttonsEnabled)
-        {
+        if (buttonsEnabled) {
             // this is test data
 
             disableButtons();
 
-            for (int i = 0; i < 5; i++)
-            {
+            for (int i = 0; i < 5; i++) {
                 Models.Entity.Character character = new Models.Entity.Character();
                 character.getDescriptions().setName("Character " + i);
                 character.setInitiative(new Random().nextInt(20) + 1);
                 characterList.add(character);
             }
 
-            for (int i = 0; i < 5; i++)
-            {
+            for (int i = 0; i < 5; i++) {
                 Monster monster = new Monster();
                 monster.getDescriptions().setName("Monster " + i);
                 monster.setInitiative(new Random().nextInt(20) + 1);
                 monsterList.add(monster);
             }
-
             CombatFrame frame = new CombatFrame(characterList, monsterList, this);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-            */
+        }
     }//GEN-LAST:event_combatButtonMouseClicked
 
     private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsButtonMouseClicked
 
-        if (buttonsEnabled)
-        {
+        if (buttonsEnabled) {
             disableButtons();
             OptionsFrame frame = new OptionsFrame(this);
             frame.setLocationRelativeTo(this);
@@ -179,8 +169,7 @@ public class MainMenuFrame extends javax.swing.JFrame
         }
     }//GEN-LAST:event_optionsButtonMouseClicked
 
-    public void disableButtons()
-    {
+    public void disableButtons() {
         optionsButton.setEnabled(false);
         characterButton.setEnabled(false);
         monsterButton.setEnabled(false);
@@ -188,8 +177,7 @@ public class MainMenuFrame extends javax.swing.JFrame
         buttonsEnabled = false;
     }
 
-    public void enableButtons()
-    {
+    public void enableButtons() {
         optionsButton.setEnabled(true);
         characterButton.setEnabled(true);
         monsterButton.setEnabled(true);

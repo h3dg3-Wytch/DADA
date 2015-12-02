@@ -1,11 +1,11 @@
 package Models.Skills;
 
-import jdk.internal.org.objectweb.asm.Handle;
-
 import java.io.Serializable;
 
 /**
  * Created by Alex on 11/27/15.
+ * 
+ * skills.setAcrobatics(new Acrobatics());
  */
 public class Skills implements Serializable {
 

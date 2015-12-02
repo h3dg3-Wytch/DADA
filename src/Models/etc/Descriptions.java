@@ -94,16 +94,6 @@ public class Descriptions implements Serializable
         return gender;
     }
 
-    public String getHairColor()
-    {
-        return hairColor;
-    }
-
-    public String getEyeColor()
-    {
-        return eyeColor;
-    }
-
     public int getAge()
     {
         return age;
