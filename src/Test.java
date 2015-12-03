@@ -43,7 +43,6 @@ public class Test {
         try {
             System.out.println(new File("").getAbsolutePath());
             View.CharacterImage charImage = new View.CharacterImage("La", "Gnome", "Wizard", "m", "c");
-            charImage.getPixels();
             BufferedImage image = charImage.setImage();
             File outputfile = new File("temp.png");
             ImageIO.write(image, "png", outputfile);

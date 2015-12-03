@@ -90,7 +90,7 @@ public class CharacterImage implements Serializable {
 
     public void drawImage() {
         try {
-            File outputfile = new File("src\\View\\Images\\temp.png");
+            File outputfile = new File("temp.png");
             ImageIO.write(image, "png", outputfile);
         } catch (IOException ex) {
             Logger.getLogger(CharacterImage.class.getName()).log(Level.SEVERE, null, ex);
