@@ -5,8 +5,18 @@
  */
 package View.GUI;
 
+import Models.Attributes.*;
+import Models.Databases.EntityManager;
+import Models.Databases.SpellManager;
+import Models.Dice.*;
+import Models.Entity.*;
+import Models.etc.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 /**
  *
@@ -36,7 +46,9 @@ public class EditMonsterFrame extends javax.swing.JFrame
             }
         });
     }
-
+     List<Monster> monsterList = new ArrayList<Monster>();
+     //monsterList.add(new Monster());
+     Monster monster = new Monster();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,18 +58,60 @@ public class EditMonsterFrame extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        diceGroup = new javax.swing.ButtonGroup();
+        attributeGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         dropsPane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        namePanel = new javax.swing.JPanel();
         nameField = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        descField = new javax.swing.JTextArea();
+        jPanel9 = new javax.swing.JPanel();
+        Strengthrb = new javax.swing.JRadioButton();
+        Charismarb = new javax.swing.JRadioButton();
+        Constitutionrb = new javax.swing.JRadioButton();
+        Intelligencerb = new javax.swing.JRadioButton();
+        Dexterityrb = new javax.swing.JRadioButton();
+        Wisdomrb = new javax.swing.JRadioButton();
+        attributeValue = new javax.swing.JTextField();
+        setAttribute = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        monsterLevel = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        hideValue = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        loadSpellButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        spellManagerList = new javax.swing.JList<String>();
+        jLabel7 = new javax.swing.JLabel();
+        createnewpanellayer = new javax.swing.JLayeredPane();
+        jLabel8 = new javax.swing.JLabel();
+        spellField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        spellDesc = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
+        Dice = new javax.swing.JTextField();
+        spellLevel = new javax.swing.JTextField();
+        spellLevelLabel = new javax.swing.JLabel();
+        saveSpell = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        weakDice = new javax.swing.JRadioButton();
+        normalDice = new javax.swing.JRadioButton();
+        strongDice = new javax.swing.JRadioButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        dropValue = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        hidestat = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         equipmentPanel = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -68,110 +122,459 @@ public class EditMonsterFrame extends javax.swing.JFrame
         addButton1 = new javax.swing.JButton();
         equipmentLabel = new javax.swing.JLabel();
         inventoryLabel = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Monster Editor");
 
         saveButton.setText("Save");
+        saveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveButtonMouseClicked(evt);
+            }
+        });
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
+        nameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameFieldKeyPressed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout namePanelLayout = new javax.swing.GroupLayout(namePanel);
-        namePanel.setLayout(namePanelLayout);
-        namePanelLayout.setHorizontalGroup(
-            namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(namePanelLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nameField)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-        namePanelLayout.setVerticalGroup(
-            namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(namePanelLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        descField.setColumns(20);
+        descField.setRows(5);
+        descField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                descFieldKeyPressed(evt);
+            }
+        });
+        jScrollPane4.setViewportView(descField);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(namePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(691, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(namePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(316, 316, 316))
         );
 
         dropsPane.addTab("Name/Description", jPanel1);
+
+        attributeGroup.add(Strengthrb);
+        Strengthrb.setText("Strength");
+
+        attributeGroup.add(Charismarb);
+        Charismarb.setText("Charisma");
+
+        attributeGroup.add(Constitutionrb);
+        Constitutionrb.setText("Constitution");
+
+        attributeGroup.add(Intelligencerb);
+        Intelligencerb.setText("Intelligence");
+
+        attributeGroup.add(Dexterityrb);
+        Dexterityrb.setText("Dexterity");
+
+        attributeGroup.add(Wisdomrb);
+        Wisdomrb.setText("Wisdom");
+
+        setAttribute.setText("Set Attribute");
+        setAttribute.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                setAttributeMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Wisdomrb)
+                    .addComponent(Dexterityrb)
+                    .addComponent(Intelligencerb)
+                    .addComponent(Charismarb)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addComponent(Constitutionrb)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(setAttribute))
+                        .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addComponent(Strengthrb)
+                            .addGap(102, 102, 102)
+                            .addComponent(attributeValue, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(862, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Strengthrb)
+                    .addComponent(attributeValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Charismarb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Constitutionrb)
+                    .addComponent(setAttribute))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Intelligencerb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Dexterityrb)
+                .addGap(5, 5, 5)
+                .addComponent(Wisdomrb)
+                .addContainerGap(119, Short.MAX_VALUE))
+        );
+
+        dropsPane.addTab("Attributes", jPanel9);
+
+        jLabel2.setText("How old the monster is ?");
+
+        monsterLevel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                monsterLevelKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(monsterLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(980, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel2)
+                .addGap(26, 26, 26)
+                .addComponent(monsterLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(220, Short.MAX_VALUE))
         );
 
-        dropsPane.addTab("Skills", jPanel2);
+        dropsPane.addTab("Level", jPanel2);
+
+        jLabel3.setText("How strong the hide of the monster will be?");
+
+        hideValue.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                hideValueKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(hideValue, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(885, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(hideValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
-        dropsPane.addTab("Feats", jPanel3);
+        dropsPane.addTab("Hide", jPanel3);
+
+        jLabel6.setText("Spells");
+
+        loadSpellButton.setText("Load Spells");
+        loadSpellButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadSpellButtonMouseClicked(evt);
+            }
+        });
+
+        spellManagerList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(spellManagerList);
+
+        jLabel7.setText("Spell Manager");
+
+        javax.swing.GroupLayout createnewpanellayerLayout = new javax.swing.GroupLayout(createnewpanellayer);
+        createnewpanellayer.setLayout(createnewpanellayerLayout);
+        createnewpanellayerLayout.setHorizontalGroup(
+            createnewpanellayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 368, Short.MAX_VALUE)
+        );
+        createnewpanellayerLayout.setVerticalGroup(
+            createnewpanellayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 225, Short.MAX_VALUE)
+        );
+
+        jLabel8.setText("Spell Name");
+
+        jLabel9.setText("Spell Description");
+
+        spellDesc.setColumns(20);
+        spellDesc.setRows(5);
+        jScrollPane2.setViewportView(spellDesc);
+
+        jLabel10.setText("Dice");
+
+        spellLevelLabel.setText("Spell level");
+
+        saveSpell.setText("Save Spell");
+        saveSpell.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveSpellMouseClicked(evt);
+            }
+        });
+
+        jLabel11.setText("Create New Spell");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 138, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(28, 28, 28)
+                        .addComponent(loadSpellButton))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spellField)
+                            .addComponent(jLabel8))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(132, 132, 132)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Dice, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                            .addComponent(jLabel10)
+                                            .addGap(37, 37, 37))))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                    .addGap(110, 110, 110)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                            .addComponent(spellLevelLabel)
+                                            .addGap(25, 25, 25))
+                                        .addComponent(spellLevel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(saveSpell)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(createnewpanellayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(loadSpellButton)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(createnewpanellayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spellField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(spellLevelLabel)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Dice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(spellLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(saveSpell)))))
+                .addGap(54, 54, 54))
         );
 
         dropsPane.addTab("Spells", jPanel4);
+
+        jLabel5.setText("How strong the monster is ?");
+
+        diceGroup.add(weakDice);
+        weakDice.setText("Weak");
+        weakDice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                weakDiceMouseClicked(evt);
+            }
+        });
+
+        diceGroup.add(normalDice);
+        normalDice.setText("Normal");
+        normalDice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                normalDiceMouseClicked(evt);
+            }
+        });
+
+        diceGroup.add(strongDice);
+        strongDice.setText("Strong");
+        strongDice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                strongDiceMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(strongDice)
+                    .addComponent(normalDice)
+                    .addComponent(weakDice)
+                    .addComponent(jLabel5))
+                .addContainerGap(938, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(weakDice)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(normalDice)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(strongDice)
+                .addContainerGap(166, Short.MAX_VALUE))
+        );
+
+        dropsPane.addTab("Dice", jPanel8);
+
+        jLabel4.setText("How much Experience this monster will drop ?");
+
+        dropValue.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dropValueKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(dropValue, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(866, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(dropValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(217, Short.MAX_VALUE))
+        );
+
+        dropsPane.addTab("Drops", jPanel7);
+
+        jButton1.setText("Get stats");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hidestat)
+                    .addComponent(jButton1))
+                .addContainerGap(1052, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(29, 29, 29)
+                .addComponent(hidestat)
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
         dropsPane.addTab("Stats", jPanel5);
@@ -244,7 +647,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGap(0, 1156, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -262,19 +665,6 @@ public class EditMonsterFrame extends javax.swing.JFrame
         );
 
         dropsPane.addTab("Equipment", jPanel6);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
-        );
-
-        dropsPane.addTab("Drops", jPanel7);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -306,29 +696,227 @@ public class EditMonsterFrame extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
+        monster.getDescriptions().setName(nameField.getText());
+    }//GEN-LAST:event_nameFieldKeyPressed
+
+    private void descFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descFieldKeyPressed
+       monster.getDescriptions().setDescription(descField.getText());
+    }//GEN-LAST:event_descFieldKeyPressed
+
+    private void monsterLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_monsterLevelKeyPressed
+        
+        Level newLevel = new Level();
+        String age = monsterLevel.getText();
+        //int ageIntoInt = 0;
+        try{
+        int ageIntoInt = Integer.parseInt(age);
+        for ( int i =0; i < ageIntoInt; i++){
+        newLevel.levelUp();
+        }
+        
+        }catch( Exception e){}
+         monster.setLevel(newLevel);
+        
+      
+    }//GEN-LAST:event_monsterLevelKeyPressed
+
+    private void hideValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hideValueKeyPressed
+        
+        try{
+            String hide = hideValue.getText();
+        
+        monster.setArmorClass(Integer.parseInt(hide));
+        
+        }catch(Exception e){
+        }
+        
+    }//GEN-LAST:event_hideValueKeyPressed
+
+    private void dropValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dropValueKeyPressed
+          try{
+            String drop = dropValue.getText();
+        
+        monster.setExpDropped(Integer.parseInt(drop));
+        
+        }catch(Exception e){
+            
+        }
+         
+    }//GEN-LAST:event_dropValueKeyPressed
+
+    private void weakDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_weakDiceMouseClicked
+       Dice dice = new Dice (4);
+       monster.setDice(dice);
+       
+    }//GEN-LAST:event_weakDiceMouseClicked
+
+    private void normalDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_normalDiceMouseClicked
+        Dice dice = new Dice (6);
+       monster.setDice(dice);
+       
+    }//GEN-LAST:event_normalDiceMouseClicked
+
+    private void strongDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strongDiceMouseClicked
+        Dice dice = new Dice (10);
+       monster.setDice(dice);
+       
+    }//GEN-LAST:event_strongDiceMouseClicked
+
+    private void setAttributeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setAttributeMouseClicked
+        Attributes attribute = new Attributes();
+        monster.setAttributes(attribute);
+       
+         String attr= attributeValue.getText();
+        
+        int att = 0 ;
+           try{
+           
+        
+         att = Integer.parseInt(attr);
+        
+         
+     
+        
+         if (Strengthrb.isSelected()){
+          monster.getAttributes().setStrength(new Strength(att));
+         } 
+        if (Constitutionrb.isSelected()){
+          monster.getAttributes().setConstitution(new Constitution(att));
+         
+         } 
+         if (Dexterityrb.isSelected()){
+          monster.getAttributes().setDexterity(new Dexterity(att));
+         }
+         if (Charismarb.isSelected()){
+          monster.getAttributes().setCharisma(new Charisma(att));
+         }
+         if (Intelligencerb.isSelected()){
+          monster.getAttributes().setIntelligence(new Intelligence(att));
+         }
+         if (Wisdomrb.isSelected()){
+          monster.getAttributes().setWisdom(new Wisdom(att));
+         }
+           }catch(Exception e){ // Do nothing
+             }  
+        
+    }//GEN-LAST:event_setAttributeMouseClicked
+
+    private void loadSpellButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadSpellButtonMouseClicked
+          //spellField.disable();
+         // spellDesc.disable();
+         // Dice.disable();
+        //  spellLevel.disable();
+        //  saveSpell.disable();
+        //  spellManagerList.enable();
+          
+          List<Spell> spells = SpellManager.loadSpells();
+            
+         
+         if(monster.getSpells() == null){
+         monster.setSpells(new ArrayList<Spell>());
+         monster.getSpells().add(new Spell());
+         }else{
+        monster.getSpells().add(new Spell());
+        }
+       
+    
+    }//GEN-LAST:event_loadSpellButtonMouseClicked
+  
+    
+    private void saveSpellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveSpellMouseClicked
+        //  int diceSides = 0;// number of sides
+         // int speLevel = 0; // spell level
+           try{
+            String dice = Dice.getText();
+            String spell = spellLevel.getText();
+            String spellname = spellField.getText();
+            String spelldesc = spellDesc.getText();
+            int diceSides = (Integer.parseInt(dice)); // number of sides of dice
+            int speLevel = (Integer.parseInt(spell)); ///spell level
+        Spell newSpell = new Spell(spellname,diceSides,spelldesc,speLevel,monster.getLevel());
+            List<Spell> newSpells = new ArrayList<>();
+        newSpells.add(newSpell);
+        }catch(Exception e){
+        }
+         
+    }//GEN-LAST:event_saveSpellMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        hidestat.setText("" + monster.getArmorClass());
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
+        monster.calculateEverything();
+        ArrayList<Monster> monsterList1 = new ArrayList<>();
+        monsterList1.add(monster);
+        EntityManager.saveMonsters(monsterList1);
+    }//GEN-LAST:event_saveButtonMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Charismarb;
+    private javax.swing.JRadioButton Constitutionrb;
+    private javax.swing.JRadioButton Dexterityrb;
+    private javax.swing.JTextField Dice;
+    private javax.swing.JRadioButton Intelligencerb;
+    private javax.swing.JRadioButton Strengthrb;
+    private javax.swing.JRadioButton Wisdomrb;
     private javax.swing.JButton addButton;
     private javax.swing.JButton addButton1;
+    private javax.swing.ButtonGroup attributeGroup;
+    private javax.swing.JTextField attributeValue;
+    private javax.swing.JLayeredPane createnewpanellayer;
+    private javax.swing.JTextArea descField;
+    private javax.swing.ButtonGroup diceGroup;
+    private javax.swing.JTextField dropValue;
     private javax.swing.JTabbedPane dropsPane;
     private javax.swing.JLabel equipmentLabel;
     private javax.swing.JList equipmentList;
     private javax.swing.JPanel equipmentPanel;
+    private javax.swing.JTextField hideValue;
+    private javax.swing.JLabel hidestat;
     private javax.swing.JLabel inventoryLabel;
     private javax.swing.JList inventoryList;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JButton loadSpellButton;
+    private javax.swing.JTextField monsterLevel;
     private javax.swing.JTextField nameField;
-    private javax.swing.JPanel namePanel;
+    private javax.swing.JRadioButton normalDice;
     private javax.swing.JButton saveButton;
+    private javax.swing.JButton saveSpell;
+    private javax.swing.JButton setAttribute;
+    private javax.swing.JTextArea spellDesc;
+    private javax.swing.JTextField spellField;
+    private javax.swing.JTextField spellLevel;
+    private javax.swing.JLabel spellLevelLabel;
+    private javax.swing.JList<String> spellManagerList;
+    private javax.swing.JRadioButton strongDice;
+    private javax.swing.JRadioButton weakDice;
     // End of variables declaration//GEN-END:variables
 }

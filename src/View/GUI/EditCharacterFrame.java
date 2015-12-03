@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.ListModel;
 
 /**
@@ -57,6 +58,9 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     Models.Dice.Dice dice = new Models.Dice.Dice(69);
     private int[] tempStats;
     private int strPrev, dexPrev, conPrev, intPrev, wisPrev, chaPrev;
+    
+    //image
+    private BufferedImage image = new BufferedImage(288,288, BufferedImage.TYPE_INT_RGB);
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -187,7 +191,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addGroup(namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
                     .addComponent(nameField, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
-                .addContainerGap(516, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         namePanelLayout.setVerticalGroup(
             namePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +315,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                                     .addComponent(constitutionButton))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(416, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         racePanelLayout.setVerticalGroup(
             racePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,7 +551,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addGroup(skillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generateStatsButton))
-                .addContainerGap(558, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         skillsPanelLayout.setVerticalGroup(
             skillsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -569,7 +573,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         spellsPanel.setLayout(spellsPanelLayout);
         spellsPanelLayout.setHorizontalGroup(
             spellsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 889, Short.MAX_VALUE)
+            .addGap(0, 653, Short.MAX_VALUE)
         );
         spellsPanelLayout.setVerticalGroup(
             spellsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -644,7 +648,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addGroup(equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(goldLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(setGoldField, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(510, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         equipmentPanelLayout.setVerticalGroup(
             equipmentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,7 +729,6 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         });
 
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/question mark.png"))); // NOI18N
-        imageLabel.setText("  ");
 
         javax.swing.GroupLayout appearancePanelLayout = new javax.swing.GroupLayout(appearancePanel);
         appearancePanel.setLayout(appearancePanelLayout);
@@ -733,8 +736,8 @@ public class EditCharacterFrame extends javax.swing.JFrame {
             appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, appearancePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(imageLabel)
+                .addGap(33, 33, 33)
                 .addGroup(appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(skinLabel)
                     .addComponent(genderLabel)
@@ -744,32 +747,33 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                     .addComponent(paletteAButton)
                     .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(drawButton))
-                .addContainerGap(495, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         appearancePanelLayout.setVerticalGroup(
             appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appearancePanelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(genderLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(masculineButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(feminineButton)
-                .addGap(32, 32, 32)
-                .addComponent(skinLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paletteAButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(paletteBButton)
-                .addGap(18, 18, 18)
-                .addComponent(drawButton)
-                .addContainerGap(93, Short.MAX_VALUE))
-            .addGroup(appearancePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(appearancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(appearancePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(imageLabel))
+                    .addGroup(appearancePanelLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(genderLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(masculineButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(feminineButton)
+                        .addGap(32, 32, 32)
+                        .addComponent(skinLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paletteCButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paletteAButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(paletteBButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(drawButton)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         namePane.addTab("Appearance", appearancePanel);
@@ -790,7 +794,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(namePane)
+                    .addComponent(namePane, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -988,40 +992,6 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         character.getDescriptions().setName(nameField.getText());
     }//GEN-LAST:event_nameFieldKeyPressed
 
-    private void drawButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawButtonMouseClicked
-        String charRace = character.getRaceString();
-        String charClass = character.getClassString();
-        String gender = character.getDescriptions().getGender();
-        String palette = character.getDescriptions().getPalette();
-        String name = character.getDescriptions().getName();
-        View.CharacterImage charImage = new View.CharacterImage(name, charRace, charClass, gender, palette);
-        character.setImage(charImage.writePixels());
-        charImage.drawImage();
-
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("src\\View\\Images\\Output\\temp.png")));
-
-    }//GEN-LAST:event_drawButtonMouseClicked
-
-    private void masculineButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masculineButtonMouseClicked
-        character.getDescriptions().setGender("m");
-    }//GEN-LAST:event_masculineButtonMouseClicked
-
-    private void feminineButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feminineButtonMouseClicked
-        character.getDescriptions().setGender("f");
-    }//GEN-LAST:event_feminineButtonMouseClicked
-
-    private void paletteCButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteCButtonMouseClicked
-        character.getDescriptions().setPalette("c");
-    }//GEN-LAST:event_paletteCButtonMouseClicked
-
-    private void paletteAButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteAButtonMouseClicked
-        character.getDescriptions().setPalette("a");
-    }//GEN-LAST:event_paletteAButtonMouseClicked
-
-    private void paletteBButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteBButtonMouseClicked
-        character.getDescriptions().setPalette("b");
-    }//GEN-LAST:event_paletteBButtonMouseClicked
-
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
         //test code
         System.out.println(character.getDescriptions().getName());
@@ -1030,6 +1000,9 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         System.out.println(character.getClassString());
         System.out.println(character.getDescriptions().getGender());
         System.out.println(character.getDescriptions().getPalette());
+        System.out.println(character.getMoney().getGold());
+        System.out.println(character.getCurrentlyEquippedArmor().getName());
+        System.out.println(character.getCurrentlyEquippedWeapon().getName());
     }//GEN-LAST:event_saveButtonMouseClicked
 
     private void goldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goldButtonMouseClicked
@@ -1092,6 +1065,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
     private void setGoldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setGoldButtonMouseClicked
         character.getMoney().setGold(Integer.parseInt(setGoldField.getText()));
+        goldLabel.setText(Integer.toString(gold));
     }//GEN-LAST:event_setGoldButtonMouseClicked
 
     private void armEquipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_armEquipMouseClicked
@@ -1103,6 +1077,41 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         int selected = weapList.getSelectedIndex();
         character.setCurrentlyEquippedWeapon(wList.get(selected));
     }//GEN-LAST:event_weapEquipMouseClicked
+
+    private void drawButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawButtonMouseClicked
+        String charRace = character.getRaceString();
+        String charClass = character.getClassString();
+        String gender = character.getDescriptions().getGender();
+        String palette = character.getDescriptions().getPalette();
+        String name = character.getDescriptions().getName();
+        View.CharacterImage charImage = new View.CharacterImage(name, charRace, charClass, gender, palette);
+        image = charImage.setImage();
+        ImageIcon icon = new ImageIcon(image);
+        //test
+        //System.out.println(new File("").getAbsolutePath());
+
+        imageLabel.setIcon(icon);
+    }//GEN-LAST:event_drawButtonMouseClicked
+
+    private void paletteCButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteCButtonMouseClicked
+        character.getDescriptions().setPalette("c");
+    }//GEN-LAST:event_paletteCButtonMouseClicked
+
+    private void paletteBButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteBButtonMouseClicked
+        character.getDescriptions().setPalette("b");
+    }//GEN-LAST:event_paletteBButtonMouseClicked
+
+    private void paletteAButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_paletteAButtonMouseClicked
+        character.getDescriptions().setPalette("a");
+    }//GEN-LAST:event_paletteAButtonMouseClicked
+
+    private void feminineButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_feminineButtonMouseClicked
+        character.getDescriptions().setGender("f");
+    }//GEN-LAST:event_feminineButtonMouseClicked
+
+    private void masculineButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masculineButtonMouseClicked
+        character.getDescriptions().setGender("m");
+    }//GEN-LAST:event_masculineButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appearancePanel;

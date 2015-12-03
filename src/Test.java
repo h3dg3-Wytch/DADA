@@ -25,9 +25,11 @@ import java.awt.image.DataBufferInt;
 import java.awt.image.WritableRaster;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 
@@ -38,10 +40,16 @@ public class Test {
 //testetsteststeet
 
     public static void main(String[] args) {
-
-        System.out.println(new File("").getAbsolutePath());
-        View.CharacterImage charImage = new View.CharacterImage("La", "Elf", "Wizard", "m", "c");
-        charImage.drawImage();
+        try {
+            System.out.println(new File("").getAbsolutePath());
+            View.CharacterImage charImage = new View.CharacterImage("La", "Gnome", "Wizard", "m", "c");
+            charImage.getPixels();
+            BufferedImage image = charImage.setImage();
+            File outputfile = new File("temp.png");
+            ImageIO.write(image, "png", outputfile);
+        } catch (IOException ex) {
+            Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 
 //     Monster monster = new Monster();
 //     monster.setTypeOfDiceUsed(new Dice(6));
@@ -120,43 +128,43 @@ public class Test {
         //If the class is a wizard or sorcerer, have them select two spells
         //Morgan will add the spellManager
         //Go ahead and create the visual representation of the character, you are done with character creation!
-        /*
+            /*
          Attributes attributes = new Attributes();
          attributes.setStrength(new Strength(10));
-
+            
          Gnome gnome = new Gnome();
          gnome.modifyAttributes(attributes);
          System.out.println(attributes.getStrength().getAbilityScore());
-
+            
          // Created by Alex on 11/22/15.
-
-        
+            
+            
          Dice d4 = new Dice(4);
-
+            
          System.out.println("Rolling d4");
          for(int i =0; i < 5; i++){
          System.out.print(d4.rollDice() + " ");
          }
-        
+            
          System.out.println("\nRolling d8");
          for(int i =0; i < 5; i++){
          System.out.print(Dice.rolld8() + " ");
          }
-
+            
          System.out.println("\nRolling d10");
          for(int i =0; i < 5; i++){
          System.out.print(Dice.rolld10() + " ");
          }
-
+            
          System.out.println("\nRolling d12");
          for(int i =0; i < 5; i++){
          System.out.print(Dice.rolld12() + " ");
          }
-
+            
          System.out.println("\nRollding d20");
          for(int i = 0; i < 5; i++){
          System.out.print(Dice.rolld20() + " ");
-                
+            
          }*/
     }
 }
