@@ -18,6 +18,7 @@ import Models.etc.Level;
 import Models.etc.Money;
 import Models.etc.Spell;
 import View.CharacterImage;
+import View.GUI.MainMenuFrame;
 import org.w3c.dom.Attr;
 
 import java.awt.image.BufferedImage;
@@ -32,6 +33,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
+import javax.swing.JFrame;
 
 /**
  * Created by Rex on 11/6/2015.
@@ -40,15 +42,18 @@ public class Test {
 //testetsteststeet
 
     public static void main(String[] args) {
-        try {
-            System.out.println(new File("").getAbsolutePath());
-            View.CharacterImage charImage = new View.CharacterImage("La", "Gnome", "Wizard", "m", "c");
-            BufferedImage image = charImage.setImage();
-            File outputfile = new File("temp.png");
-            ImageIO.write(image, "png", outputfile);
-        } catch (IOException ex) {
-            Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        
+        MainMenuFrame frame = new MainMenuFrame();
+        frame.setVisible(true);
+//        try {
+//            System.out.println(new File("").getAbsolutePath());
+//            View.CharacterImage charImage = new View.CharacterImage("La", "Gnome", "Wizard", "m", "c");
+//            BufferedImage image = charImage.setImage();
+//            File outputfile = new File("temp.png");
+//            ImageIO.write(image, "png", outputfile);
+//        } catch (IOException ex) {
+//            Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
 
 //     Monster monster = new Monster();
 //     monster.setTypeOfDiceUsed(new Dice(6));

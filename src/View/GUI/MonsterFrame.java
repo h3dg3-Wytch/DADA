@@ -60,6 +60,11 @@ public class MonsterFrame extends javax.swing.JFrame
         });
 
         editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,11 +91,17 @@ public class MonsterFrame extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void newButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newButtonMouseClicked
-        EditMonsterFrame frame = new EditMonsterFrame(mainFrame);
+        NewMonsterFrame frame = new NewMonsterFrame(mainFrame);
         frame.setLocationRelativeTo(this);
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_newButtonMouseClicked
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+                 // TODO add your handling code here:
+        EditMonsterFrame frame = new EditMonsterFrame(mainFrame);
+        frame.setVisible(true);
+    }//GEN-LAST:event_editButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editButton;

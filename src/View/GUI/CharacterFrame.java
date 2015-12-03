@@ -68,6 +68,11 @@ public class CharacterFrame extends javax.swing.JFrame
         });
 
         editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,11 +100,19 @@ public class CharacterFrame extends javax.swing.JFrame
 
     private void newButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newButtonMouseClicked
    
-        EditCharacterFrame frame = new EditCharacterFrame(mainFrame);
+        newCharacterFrame frame = new newCharacterFrame(mainFrame);
         frame.setLocationRelativeTo(this);
         frame.setVisible(true);
         dispose();
     }//GEN-LAST:event_newButtonMouseClicked
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        // TODO add your handling code here:
+        EditCharacterFrame frame = new EditCharacterFrame(mainFrame);
+        frame.setLocationRelativeTo(this);
+        frame.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_editButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton editButton;

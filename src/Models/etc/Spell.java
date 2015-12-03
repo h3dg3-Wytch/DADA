@@ -25,6 +25,22 @@ public class Spell implements Serializable {
         this.levelMultiplier = casterLevel.getLevel() / 4;
     }
 
+    public String getSpellName() {
+        return spellName;
+    }
+
+    public void setSpellName(String spellName) {
+        this.spellName = spellName;
+    }
+
+    public int getLevelMultiplier() {
+        return levelMultiplier;
+    }
+
+    public void setLevelMultiplier(int levelMultiplier) {
+        this.levelMultiplier = levelMultiplier;
+    }
+
     public Spell() {
 
     }

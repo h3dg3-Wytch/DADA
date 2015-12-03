@@ -11,8 +11,6 @@ import Models.Databases.SpellManager;
 import Models.Dice.*;
 import Models.Entity.*;
 import Models.etc.*;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -24,45 +22,16 @@ import javax.swing.JList;
  *
  * @author Maia
  */
-public class EditMonsterFrame extends javax.swing.JFrame
+public class NewMonsterFrame extends javax.swing.JFrame
 {
-    private List<Monster> monsters;
-    private Monster monster;
-    
-    private List<Spell> spells;
-
-    public Monster getMonster() {
-        return monster;
-    }
-
-    public void setMonster(Monster monster) {
-        this.monster = monster;
-    }
-
 
     private final MainMenuFrame mainFrame;
 
-    public EditMonsterFrame(MainMenuFrame mainFrame)
+    public NewMonsterFrame(MainMenuFrame mainFrame)
     {
         this.mainFrame = mainFrame;
         initComponents();
         initListeners();
-        monsters = EntityManager.loadMonsters();
-        spells = SpellManager.loadSpells();
-        if(spells == null){
-            spells = new ArrayList<Spell>();
-            spells.add(new Spell("Magic Missle", 6, "I magic missle the darkness!", 6, new Level()));
-        }
-      
-        DefaultListModel model = new DefaultListModel();
-        for(int i = 0 ; i < monsters.size(); i++){
-             model.addElement(monsters.get(i).getDescriptions().getName());
-        }
-        jList1.setModel(model);
-        
-        updateSpellList();
-        
-           
     }
 
     private void initListeners()
@@ -77,7 +46,9 @@ public class EditMonsterFrame extends javax.swing.JFrame
             }
         });
     }
-     
+     List<Monster> monsterList = new ArrayList<Monster>();
+     //monsterList.add(new Monster());
+     Monster monster = new Monster();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,10 +63,6 @@ public class EditMonsterFrame extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         dropsPane = new javax.swing.JTabbedPane();
-        jPanel11 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         nameField = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -171,46 +138,6 @@ public class EditMonsterFrame extends javax.swing.JFrame
                 saveButtonActionPerformed(evt);
             }
         });
-
-        jButton3.setLabel("Load");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(jList1);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
-                        .addComponent(jButton3)))
-                .addContainerGap(658, Short.MAX_VALUE))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        dropsPane.addTab("Select", jPanel11);
 
         nameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -316,7 +243,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
                 .addComponent(Dexterityrb)
                 .addGap(5, 5, 5)
                 .addComponent(Wisdomrb)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
         );
 
         dropsPane.addTab("Attributes", jPanel9);
@@ -347,7 +274,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
                 .addComponent(jLabel2)
                 .addGap(26, 26, 26)
                 .addComponent(monsterLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap(461, Short.MAX_VALUE))
         );
 
         dropsPane.addTab("Level", jPanel2);
@@ -378,22 +305,17 @@ public class EditMonsterFrame extends javax.swing.JFrame
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(hideValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(459, Short.MAX_VALUE))
         );
 
         dropsPane.addTab("Hide", jPanel3);
 
         jLabel6.setText("Spells");
 
-        loadSpellButton.setText("Load to Monster");
+        loadSpellButton.setText("Load Spells");
         loadSpellButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loadSpellButtonMouseClicked(evt);
-            }
-        });
-        loadSpellButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadSpellButtonActionPerformed(evt);
             }
         });
 
@@ -459,7 +381,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
                     .addComponent(jLabel7)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(51, 51, 51)
+                        .addGap(28, 28, 28)
                         .addComponent(loadSpellButton))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -474,7 +396,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spellField, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                            .addComponent(spellField)
                             .addComponent(jLabel8))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -596,7 +518,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
                 .addComponent(normalDice)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(strongDice)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(415, Short.MAX_VALUE))
         );
 
         dropsPane.addTab("Dice", jPanel8);
@@ -627,7 +549,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(dropValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(458, Short.MAX_VALUE))
         );
 
         dropsPane.addTab("Drops", jPanel7);
@@ -657,7 +579,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
                 .addComponent(jButton1)
                 .addGap(29, 29, 29)
                 .addComponent(hidestat)
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(507, Short.MAX_VALUE))
         );
 
         dropsPane.addTab("Stats", jPanel5);
@@ -739,7 +661,7 @@ public class EditMonsterFrame extends javax.swing.JFrame
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -778,8 +700,158 @@ public class EditMonsterFrame extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
+        monster.getDescriptions().setName(nameField.getText());
+    }//GEN-LAST:event_nameFieldKeyPressed
+
+    private void descFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descFieldKeyPressed
+       monster.getDescriptions().setDescription(descField.getText());
+    }//GEN-LAST:event_descFieldKeyPressed
+
+    private void monsterLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_monsterLevelKeyPressed
+        
+        Level newLevel = new Level();
+        String age = monsterLevel.getText();
+        //int ageIntoInt = 0;
+        try{
+        int ageIntoInt = Integer.parseInt(age);
+        for ( int i =0; i < ageIntoInt; i++){
+        newLevel.levelUp();
+        }
+        
+        }catch( Exception e){}
+         monster.setLevel(newLevel);
+        
+      
+    }//GEN-LAST:event_monsterLevelKeyPressed
+
+    private void hideValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hideValueKeyPressed
+        
+        try{
+            String hide = hideValue.getText();
+        
+        monster.setArmorClass(Integer.parseInt(hide));
+        
+        }catch(Exception e){
+        }
+        
+    }//GEN-LAST:event_hideValueKeyPressed
+
+    private void dropValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dropValueKeyPressed
+          try{
+            String drop = dropValue.getText();
+        
+        monster.setExpDropped(Integer.parseInt(drop));
+        
+        }catch(Exception e){
+            
+        }
+         
+    }//GEN-LAST:event_dropValueKeyPressed
+
+    private void weakDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_weakDiceMouseClicked
+       Dice dice = new Dice (4);
+       monster.setDice(dice);
+       
+    }//GEN-LAST:event_weakDiceMouseClicked
+
+    private void normalDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_normalDiceMouseClicked
+        Dice dice = new Dice (6);
+       monster.setDice(dice);
+       
+    }//GEN-LAST:event_normalDiceMouseClicked
+
+    private void strongDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strongDiceMouseClicked
+        Dice dice = new Dice (10);
+       monster.setDice(dice);
+       
+    }//GEN-LAST:event_strongDiceMouseClicked
+
+    private void setAttributeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setAttributeMouseClicked
+        Attributes attribute = new Attributes();
+        monster.setAttributes(attribute);
+       
+         String attr= attributeValue.getText();
+        
+        int att = 0 ;
+           try{
+           
+        
+         att = Integer.parseInt(attr);
+        
+         
+     
+        
+         if (Strengthrb.isSelected()){
+          monster.getAttributes().setStrength(new Strength(att));
+         } 
+        if (Constitutionrb.isSelected()){
+          monster.getAttributes().setConstitution(new Constitution(att));
+         
+         } 
+         if (Dexterityrb.isSelected()){
+          monster.getAttributes().setDexterity(new Dexterity(att));
+         }
+         if (Charismarb.isSelected()){
+          monster.getAttributes().setCharisma(new Charisma(att));
+         }
+         if (Intelligencerb.isSelected()){
+          monster.getAttributes().setIntelligence(new Intelligence(att));
+         }
+         if (Wisdomrb.isSelected()){
+          monster.getAttributes().setWisdom(new Wisdom(att));
+         }
+           }catch(Exception e){ // Do nothing
+             }  
+        
+    }//GEN-LAST:event_setAttributeMouseClicked
+
+    private void loadSpellButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadSpellButtonMouseClicked
+          //spellField.disable();
+         // spellDesc.disable();
+         // Dice.disable();
+        //  spellLevel.disable();
+        //  saveSpell.disable();
+        //  spellManagerList.enable();
+          
+          List<Spell> spells = SpellManager.loadSpells();
+            
+         
+         if(monster.getSpells() == null){
+         monster.setSpells(new ArrayList<Spell>());
+         monster.getSpells().add(new Spell());
+         }else{
+        monster.getSpells().add(new Spell());
+        }
+       
+    
+    }//GEN-LAST:event_loadSpellButtonMouseClicked
   
     
+    private void saveSpellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveSpellMouseClicked
+        //  int diceSides = 0;// number of sides
+         // int speLevel = 0; // spell level
+           try{
+            String dice = Dice.getText();
+            String spell = spellLevel.getText();
+            String spellname = spellField.getText();
+            String spelldesc = spellDesc.getText();
+            int diceSides = (Integer.parseInt(dice)); // number of sides of dice
+            int speLevel = (Integer.parseInt(spell)); ///spell level
+        Spell newSpell = new Spell(spellname,diceSides,spelldesc,speLevel,monster.getLevel());
+            List<Spell> newSpells = new ArrayList<>();
+        newSpells.add(newSpell);
+        }catch(Exception e){
+            
+        }
+         
+    }//GEN-LAST:event_saveSpellMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        hidestat.setText("" + monster.getArmorClass());
+    }//GEN-LAST:event_jButton1MouseClicked
+
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
         monster.calculateEverything();
         List<Monster> monsterList1 = EntityManager.loadMonsters();
@@ -787,196 +859,9 @@ public class EditMonsterFrame extends javax.swing.JFrame
         EntityManager.saveMonsters(monsterList1);
     }//GEN-LAST:event_saveButtonMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        hidestat.setText("" + monster.getArmorClass());
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void dropValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dropValueKeyPressed
-        try{
-            String drop = dropValue.getText();
-
-            monster.setExpDropped(Integer.parseInt(drop));
-
-        }catch(Exception e){
-
-        }
-
-    }//GEN-LAST:event_dropValueKeyPressed
-
-    private void strongDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strongDiceMouseClicked
-        Dice dice = new Dice (10);
-        monster.setDice(dice);
-
-    }//GEN-LAST:event_strongDiceMouseClicked
-
-    private void normalDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_normalDiceMouseClicked
-        Dice dice = new Dice (6);
-        monster.setDice(dice);
-
-    }//GEN-LAST:event_normalDiceMouseClicked
-
-    private void weakDiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_weakDiceMouseClicked
-        Dice dice = new Dice (4);
-        monster.setDice(dice);
-
-    }//GEN-LAST:event_weakDiceMouseClicked
-
-    private void saveSpellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveSpellMouseClicked
-        //  int diceSides = 0;// number of sides
-        // int speLevel = 0; // spell level
-        
-        
-        
-        String spellName = null;
-        String dice = null;
-        String spellL = null;
-        String spelldesc = null;
-      try{
-            dice = Dice.getText();
-            spellL = spellLevel.getText();
-            spellName = spellField.getText();
-           
-            spelldesc = spellDesc.getText();
-            int diceSides = (Integer.parseInt(dice)); // number of sides of dice
-            int speLevel = (Integer.parseInt(spellL)); ///spell level
-            Spell newSpell = new Spell(spellField.getText(),diceSides,spelldesc,speLevel,monster.getLevel());
-            spells.add(newSpell);
-            SpellManager.saveSpells(spells);
-            
-            updateSpellList();
-      }catch(Exception e){
-          Spell spell = new Spell();
-          spell.setSpellName(spellField.getText());
-          spells.add(spell);
-          SpellManager.saveSpells(spells);
-          updateSpellList();
-      }
-       
-
-    }//GEN-LAST:event_saveSpellMouseClicked
-
-    private void loadSpellButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadSpellButtonMouseClicked
-        //spellField.disable();
-        // spellDesc.disable();
-        // Dice.disable();
-        //  spellLevel.disable();
-        //  saveSpell.disable();
-        //  spellManagerList.enable();
-
-        List<Spell> spells = SpellManager.loadSpells();
-
-        if(monster.getSpells() == null){
-            monster.setSpells(new ArrayList<Spell>());
-            monster.getSpells().add(new Spell());
-        }else{
-            monster.getSpells().add(new Spell());
-        }
-
-    }//GEN-LAST:event_loadSpellButtonMouseClicked
-
-    private void hideValueKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_hideValueKeyPressed
-
-        try{
-            String hide = hideValue.getText();
-
-            monster.setArmorClass(Integer.parseInt(hide));
-
-        }catch(Exception e){
-        }
-
-    }//GEN-LAST:event_hideValueKeyPressed
-
-    private void monsterLevelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_monsterLevelKeyPressed
-
-        Level newLevel = new Level();
-        String age = monsterLevel.getText();
-        //int ageIntoInt = 0;
-        try{
-            int ageIntoInt = Integer.parseInt(age);
-            for ( int i =0; i < ageIntoInt; i++){
-                newLevel.levelUp();
-            }
-
-        }catch( Exception e){}
-        monster.setLevel(newLevel);
-
-    }//GEN-LAST:event_monsterLevelKeyPressed
-
-    private void setAttributeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setAttributeMouseClicked
-        Attributes attribute = new Attributes();
-        monster.setAttributes(attribute);
-
-        String attr= attributeValue.getText();
-
-        int att = 0 ;
-        try{
-
-            att = Integer.parseInt(attr);
-
-            if (Strengthrb.isSelected()){
-                monster.getAttributes().setStrength(new Strength(att));
-            }
-            if (Constitutionrb.isSelected()){
-                monster.getAttributes().setConstitution(new Constitution(att));
-
-            }
-            if (Dexterityrb.isSelected()){
-                monster.getAttributes().setDexterity(new Dexterity(att));
-            }
-            if (Charismarb.isSelected()){
-                monster.getAttributes().setCharisma(new Charisma(att));
-            }
-            if (Intelligencerb.isSelected()){
-                monster.getAttributes().setIntelligence(new Intelligence(att));
-            }
-            if (Wisdomrb.isSelected()){
-                monster.getAttributes().setWisdom(new Wisdom(att));
-            }
-        }catch(Exception e){ // Do nothing
-        }
-
-    }//GEN-LAST:event_setAttributeMouseClicked
-
-    private void descFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descFieldKeyPressed
-        monster.getDescriptions().setDescription(descField.getText());
-    }//GEN-LAST:event_descFieldKeyPressed
-
-    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
-        monster.getDescriptions().setName(nameField.getText());
-    }//GEN-LAST:event_nameFieldKeyPressed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-           // TODO add your handling code here:
-          DefaultListModel model = new DefaultListModel();
-          int selectedIndex = jList1.getSelectedIndex();
-          if (selectedIndex != -1) {
-          monster = monsters.get(selectedIndex);
-          
-        }
-       
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-        EntityManager.saveMonsters(monsters);
     }//GEN-LAST:event_saveButtonActionPerformed
-
-    private void loadSpellButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadSpellButtonActionPerformed
-        // TODO add your handling code here:
-          int selectedIndex = spellManagerList.getSelectedIndex();
-          if (selectedIndex != -1) {
-          Spell spell = spells.get(selectedIndex);
-          if(monster.getSpells() != null){
-              monster.getSpells().add(spell);
-          }else{
-              monster.setSpells(new ArrayList<Spell>());
-              monster.getSpells().add(spell);
-              System.out.println("hello!");
-              
-         }
-         }
-          
-    }//GEN-LAST:event_loadSpellButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Charismarb;
@@ -1003,7 +888,6 @@ public class EditMonsterFrame extends javax.swing.JFrame
     private javax.swing.JLabel inventoryLabel;
     private javax.swing.JList inventoryList;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1015,10 +899,8 @@ public class EditMonsterFrame extends javax.swing.JFrame
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1029,7 +911,6 @@ public class EditMonsterFrame extends javax.swing.JFrame
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -1048,19 +929,4 @@ public class EditMonsterFrame extends javax.swing.JFrame
     private javax.swing.JRadioButton strongDice;
     private javax.swing.JRadioButton weakDice;
     // End of variables declaration//GEN-END:variables
-
-    private void updateSpellList() {
-        //To change body of generated methods, choose Tools | Templates.
-        DefaultListModel model = new DefaultListModel();
-        
-        for(int i = 0 ; i < spells.size(); i++){
-            try{
-             model.addElement(spells.get(i).getSpellName());
-            }catch(Exception e){
-                
-            }
-        }
-        spellManagerList.setModel(model);
-        
-    }
 }

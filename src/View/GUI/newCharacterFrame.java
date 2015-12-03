@@ -1,6 +1,8 @@
 package View.GUI;
 
+import Models.Databases.EntityManager;
 import Models.Dice.Dice;
+import Models.Entity.Entity;
 import java.awt.event.WindowAdapter;
 
 import java.awt.event.WindowEvent;
@@ -786,6 +788,11 @@ public class newCharacterFrame extends javax.swing.JFrame {
                 saveButtonMouseClicked(evt);
             }
         });
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -794,7 +801,7 @@ public class newCharacterFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(namePane, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                    .addComponent(namePane)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1112,6 +1119,19 @@ public class newCharacterFrame extends javax.swing.JFrame {
     private void masculineButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masculineButtonMouseClicked
         character.getDescriptions().setGender("m");
     }//GEN-LAST:event_masculineButtonMouseClicked
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // TODO add your handling code here:
+        List<Models.Entity.Character> characters = EntityManager.loadCharacters();
+        if(characters != null){
+            characters.add(character);
+            EntityManager.saveCharacters(characters);
+        }else{
+            characters = new ArrayList<Models.Entity.Character>();
+            characters.add(character);
+            EntityManager.saveCharacters(characters);
+        }
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appearancePanel;
