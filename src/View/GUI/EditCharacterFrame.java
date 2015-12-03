@@ -61,6 +61,8 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     
     //image
     private BufferedImage image = new BufferedImage(288,288, BufferedImage.TYPE_INT_RGB);
+    
+    //
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -70,7 +72,11 @@ public class EditCharacterFrame extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
-        namePane = new javax.swing.JTabbedPane();
+        selectPanel = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        characterjList = new javax.swing.JList();
+        selectButton = new javax.swing.JButton();
         namePanel = new javax.swing.JPanel();
         nameField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -169,6 +175,41 @@ public class EditCharacterFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        characterjList.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane7.setViewportView(characterjList);
+
+        selectButton.setText("jButton1");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(selectButton)
+                .addContainerGap(416, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(selectButton)))
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        selectPanel.addTab("Select", jPanel3);
+
         nameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nameFieldKeyPressed(evt);
@@ -203,7 +244,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        namePane.addTab("Name/Description", namePanel);
+        selectPanel.addTab("Name/Description", namePanel);
 
         raceLabel.setText("Select Race");
 
@@ -349,7 +390,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        namePane.addTab("Race/Class", racePanel);
+        selectPanel.addTab("Race/Class", racePanel);
 
         curStr.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         curStr.setText("0");
@@ -567,7 +608,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        namePane.addTab("Stats", skillsPanel);
+        selectPanel.addTab("Stats", skillsPanel);
 
         javax.swing.GroupLayout spellsPanelLayout = new javax.swing.GroupLayout(spellsPanel);
         spellsPanel.setLayout(spellsPanelLayout);
@@ -580,7 +621,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
             .addGap(0, 347, Short.MAX_VALUE)
         );
 
-        namePane.addTab("Spells", spellsPanel);
+        selectPanel.addTab("Spells", spellsPanel);
 
         goldButton.setText("Generate Gold");
         goldButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -675,7 +716,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        namePane.addTab("Gold/Equipment", equipmentPanel);
+        selectPanel.addTab("Gold/Equipment", equipmentPanel);
 
         buttonGroup2.add(masculineButton);
         masculineButton.setText("Masculine");
@@ -776,7 +817,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        namePane.addTab("Appearance", appearancePanel);
+        selectPanel.addTab("Appearance", appearancePanel);
 
         jLabel1.setText("Character Editor");
 
@@ -794,7 +835,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(namePane, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+                    .addComponent(selectPanel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -810,7 +851,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                     .addComponent(saveButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(namePane, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1122,6 +1163,7 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton chaButton;
+    private javax.swing.JList characterjList;
     private javax.swing.JRadioButton charismaButton;
     private javax.swing.JLabel classLabel;
     private javax.swing.JButton conButton;
@@ -1156,16 +1198,17 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JLabel labelLabel;
     private javax.swing.JRadioButton masculineButton;
     private javax.swing.JTextField nameField;
-    private javax.swing.JTabbedPane namePane;
     private javax.swing.JPanel namePanel;
     private javax.swing.JRadioButton paletteAButton;
     private javax.swing.JRadioButton paletteBButton;
@@ -1173,7 +1216,9 @@ public class EditCharacterFrame extends javax.swing.JFrame {
     private javax.swing.JLabel raceLabel;
     private javax.swing.JPanel racePanel;
     private javax.swing.JButton saveButton;
+    private javax.swing.JButton selectButton;
     private javax.swing.JList selectClass;
+    private javax.swing.JTabbedPane selectPanel;
     private javax.swing.JList selectRace;
     private javax.swing.JButton setGoldButton;
     private javax.swing.JTextField setGoldField;
