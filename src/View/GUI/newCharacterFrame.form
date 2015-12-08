@@ -721,28 +721,6 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="spellsPanel">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Spells">
-                <Property name="tabTitle" type="java.lang.String" value="Spells"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="653" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="347" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
         <Container class="javax.swing.JPanel" name="equipmentPanel">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -846,8 +824,7 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="armList">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value=" new javax.swing.JList(aSList.toArray())"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//test character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));&#xa;for (int i = 0; i &lt; 5; i++){&#xa;    aList.add(new Models.Equipment.Armor(Models.Equipment.Armor.ArmorType.PLATE, &quot;&quot;, &quot;&quot;, &quot;armor &quot; + i, i, i, i));&#xa;}&#xa;List&lt;String&gt; aSList = new ArrayList();&#xa;for (Models.Equipment.Armor e : aList){&#xa;    aSList.add(e.getName());&#xa;}"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value=" new javax.swing.JList()"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -861,8 +838,7 @@
               <SubComponents>
                 <Component class="javax.swing.JList" name="weapList">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList(wSList.toArray())"/>
-                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="for (int i = 0; i &lt; 5; i++){&#xa;            wList.add(new Models.Equipment.Weapon(&quot;&quot;, &quot;&quot;, &quot;weapon &quot; + i, i, i, true, i));&#xa;        }&#xa;        List&lt;String&gt; wSList = new ArrayList();&#xa;        for (Models.Equipment.Weapon e : wList){&#xa;            wSList.add(e.getName());&#xa;        }"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JList()"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -885,6 +861,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="armEquipMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="armEquipActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="weapEquip">
@@ -893,6 +870,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="weapEquipMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="weapEquipActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="setGoldField">

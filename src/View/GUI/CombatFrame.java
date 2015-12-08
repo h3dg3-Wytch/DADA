@@ -1,16 +1,21 @@
-
 package View.GUI;
 
 import Models.Databases.EntityManager;
 import Models.Entity.Entity;
 import Models.Entity.Monster;
+import View.Images.ImageLoader;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 public class CombatFrame extends javax.swing.JFrame
 {
@@ -26,6 +31,16 @@ public class CombatFrame extends javax.swing.JFrame
     public CombatFrame(List<Models.Entity.Character> characters, List<Monster> monsters, MainMenuFrame mainFrame)
     {
         super("Combat");
+
+        try
+        {
+            BufferedImage image = ImageIO.read(ImageLoader.loadImage("Icon.png"));
+            setIconImage(image);
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(MainMenuFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         this.entities = new ArrayList();
         this.characters = new ArrayList(characters);
@@ -167,13 +182,14 @@ public class CombatFrame extends javax.swing.JFrame
     {
         return currentEntity;
     }
+
     public void giveExperience(int exp)
     {
-        for(int i = 0; i < characters.size(); i++)
+        for (int i = 0; i < characters.size(); i++)
         {
             Models.Entity.Character character = characters.get(i);
-            
-            if(character.getHealthPoints() >= 0)
+
+            if (character.getHealthPoints() >= 0)
             {
                 character.getLevel().giveExperience(exp);
             }

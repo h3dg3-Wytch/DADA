@@ -1,8 +1,11 @@
 package View.GUI;
 
 import Models.Databases.EntityManager;
+import Models.Databases.EquipmentManager;
 import Models.Dice.Dice;
 import Models.Entity.Entity;
+import Models.Equipment.Armor;
+import Models.Equipment.Weapon;
 import java.awt.event.WindowAdapter;
 
 import java.awt.event.WindowEvent;
@@ -28,11 +31,28 @@ import javax.swing.ListModel;
 public class newCharacterFrame extends javax.swing.JFrame {
 
     private final MainMenuFrame mainFrame;
+    
+    private List<Weapon> wList;
+    private List<Armor> aList;
 
     public newCharacterFrame(MainMenuFrame mainFrame) {
         this.mainFrame = mainFrame;
         initComponents();
         initListeners();
+        
+         wList = EquipmentManager.loadWeapons();
+        if(wList == null){
+            wList = new ArrayList<Weapon>();
+        }
+        
+        updateWeaponList();
+        
+        aList = EquipmentManager.loadArmor();
+        if(aList == null){
+            aList = new ArrayList<Armor>();
+        }
+        
+        updateArmorList();
     }
 
     private void initListeners() {
@@ -53,8 +73,8 @@ public class newCharacterFrame extends javax.swing.JFrame {
     ArrayList<Models.Equipment.Weapon> wChList = new ArrayList();
     ArrayList<String> chSList = new ArrayList();
     //armor inventory
-    List<Models.Equipment.Armor> aList = new ArrayList();
-    List<Models.Equipment.Weapon> wList = new ArrayList();
+//    List<Models.Equipment.Armor> aList = new ArrayList();
+//    List<Models.Equipment.Weapon> wList = new ArrayList();
 
     //stats stuff
     Models.Dice.Dice dice = new Models.Dice.Dice(69);
@@ -115,30 +135,14 @@ public class newCharacterFrame extends javax.swing.JFrame {
         generateStatsButton = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         statList = new javax.swing.JList();
-        spellsPanel = new javax.swing.JPanel();
         equipmentPanel = new javax.swing.JPanel();
         goldButton = new javax.swing.JButton();
         armorLabel = new javax.swing.JLabel();
         weaponsLabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        //test character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));
-        for (int i = 0; i < 5; i++){
-            aList.add(new Models.Equipment.Armor(Models.Equipment.Armor.ArmorType.PLATE, "", "", "armor " + i, i, i, i));
-        }
-        List<String> aSList = new ArrayList();
-        for (Models.Equipment.Armor e : aList){
-            aSList.add(e.getName());
-        }
-        armList =  new javax.swing.JList(aSList.toArray());
+        armList =  new javax.swing.JList();
         jScrollPane5 = new javax.swing.JScrollPane();
-        for (int i = 0; i < 5; i++){
-            wList.add(new Models.Equipment.Weapon("", "", "weapon " + i, i, i, true, i));
-        }
-        List<String> wSList = new ArrayList();
-        for (Models.Equipment.Weapon e : wList){
-            wSList.add(e.getName());
-        }
-        weapList = new javax.swing.JList(wSList.toArray());
+        weapList = new javax.swing.JList();
         labelLabel = new javax.swing.JLabel();
         goldLabel = new javax.swing.JLabel();
         armEquip = new javax.swing.JButton();
@@ -571,19 +575,6 @@ public class newCharacterFrame extends javax.swing.JFrame {
 
         namePane.addTab("Stats", skillsPanel);
 
-        javax.swing.GroupLayout spellsPanelLayout = new javax.swing.GroupLayout(spellsPanel);
-        spellsPanel.setLayout(spellsPanelLayout);
-        spellsPanelLayout.setHorizontalGroup(
-            spellsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 653, Short.MAX_VALUE)
-        );
-        spellsPanelLayout.setVerticalGroup(
-            spellsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
-        );
-
-        namePane.addTab("Spells", spellsPanel);
-
         goldButton.setText("Generate Gold");
         goldButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -609,11 +600,21 @@ public class newCharacterFrame extends javax.swing.JFrame {
                 armEquipMouseClicked(evt);
             }
         });
+        armEquip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                armEquipActionPerformed(evt);
+            }
+        });
 
         weapEquip.setText("Equip");
         weapEquip.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 weapEquipMouseClicked(evt);
+            }
+        });
+        weapEquip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weapEquipActionPerformed(evt);
             }
         });
 
@@ -824,266 +825,32 @@ public class newCharacterFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void wisdomButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wisdomButtonMouseClicked
-        abilitySelect = 5;
-    }//GEN-LAST:event_wisdomButtonMouseClicked
-
-    private void strengthButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strengthButtonMouseClicked
-        abilitySelect = 4;
-    }//GEN-LAST:event_strengthButtonMouseClicked
-
-    private void intelligenceButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_intelligenceButtonMouseClicked
-        abilitySelect = 3;
-    }//GEN-LAST:event_intelligenceButtonMouseClicked
-
-    private void dexterityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dexterityButtonMouseClicked
-        abilitySelect = 2;
-    }//GEN-LAST:event_dexterityButtonMouseClicked
-
-    private void constitutionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_constitutionButtonMouseClicked
-        abilitySelect = 1;
-    }//GEN-LAST:event_constitutionButtonMouseClicked
-
-    private void charismaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_charismaButtonMouseClicked
-        abilitySelect = 0;
-    }//GEN-LAST:event_charismaButtonMouseClicked
-
-    private void selectClassValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectClassValueChanged
-        //strings = {"Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard" }
-
-        switch (selectClass.getSelectedIndex()) {
-            case 0:
-                character.setCharacterClass(new Models.Classes.Barbarian());
-                character.setClassString("Barbarian");
-                break;
-            case 1:
-                character.setCharacterClass(new Models.Classes.Bard());
-                character.setClassString("Bard");
-                break;
-            case 2:
-                character.setCharacterClass(new Models.Classes.Cleric());
-                character.setClassString("Cleric");
-                break;
-            case 3:
-                character.setCharacterClass(new Models.Classes.Druid());
-                character.setClassString("Druid");
-                break;
-            case 4:
-                character.setCharacterClass(new Models.Classes.Fighter());
-                character.setClassString("Fighter");
-                break;
-            case 5:
-                character.setCharacterClass(new Models.Classes.Monk());
-                character.setClassString("Monk");
-                break;
-            case 6:
-                character.setCharacterClass(new Models.Classes.Paladin());
-                character.setClassString("Paladin");
-                break;
-            case 7:
-                character.setCharacterClass(new Models.Classes.Ranger());
-                character.setClassString("Ranger");
-                break;
-            case 8:
-                character.setCharacterClass(new Models.Classes.Rogue());
-                character.setClassString("Rogue");
-                break;
-            case 9:
-                character.setCharacterClass(new Models.Classes.Sorcerer());
-                character.setClassString("Sorcerer");
-                break;
-            case 10:
-                character.setCharacterClass(new Models.Classes.Wizard());
-                character.setClassString("Wizard");
-                break;
-        }
-    }//GEN-LAST:event_selectClassValueChanged
-
-    private void selectRaceValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectRaceValueChanged
-        //String[] strings = { "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfing", "Human" };
-        //ability boost: {charisma, constitution, dexterity, intelligence, strength, widsom}
-        switch (selectRace.getSelectedIndex()) {
-            case 0://dwarf
-                character.setRace(new Models.Races.Dwarf());
-                character.setRaceString("Dwarf");
-                break;
-            case 1://elf
-                character.setRace(new Models.Races.Elf());
-                character.setRaceString("Elf");
-                break;
-            case 2://gnome
-                character.setRace(new Models.Races.Gnome());
-                character.setRaceString("Gnome");
-                break;
-            case 3://half elf
-                character.setRaceString("Half Elf");
-                switch (abilitySelect) {
-                    case 0:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));
-                        break;
-                    case 1:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CONSTITUTION));
-                        break;
-                    case 2:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.DEXTERITY));
-                        break;
-                    case 3:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.INTELLIGENCE));
-                        break;
-                    case 4:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.STRENGTH));
-                        break;
-                    case 5:
-                        character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.WISDOM));
-                        break;
-                }
-                break;
-            case 4://half orc
-                character.setRaceString("Half Orc");
-                switch (abilitySelect) {
-                    case 0:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CHARISMA));
-                        break;
-                    case 1:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CONSTITUTION));
-                        break;
-                    case 2:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.DEXTERITY));
-                        break;
-                    case 3:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.INTELLIGENCE));
-                        break;
-                    case 4:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.STRENGTH));
-                        break;
-                    case 5:
-                        character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.WISDOM));
-                        break;
-                }
-                break;
-            case 5://halfling
-                character.setRace(new Models.Races.Halfling());
-                character.setRaceString("Halfling");
-                break;
-            case 6://human
-                character.setRaceString("Human");
-                switch (abilitySelect) {
-                    case 0:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.CHARISMA));
-                        break;
-                    case 1:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.CONSTITUTION));
-                        break;
-                    case 2:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.DEXTERITY));
-                        break;
-                    case 3:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.INTELLIGENCE));
-                        break;
-                    case 4:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.STRENGTH));
-                        break;
-                    case 5:
-                        character.setRace(new Models.Races.Human(Human.AbilityBoost.WISDOM));
-                        break;
-                }
-
-        }
-    }//GEN-LAST:event_selectRaceValueChanged
-
-    private void descFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descFieldKeyPressed
-        character.getDescriptions().setDescription(descField.getText());
-    }//GEN-LAST:event_descFieldKeyPressed
-
-    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
-        character.getDescriptions().setName(nameField.getText());
-    }//GEN-LAST:event_nameFieldKeyPressed
-
     private void saveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveButtonMouseClicked
         //test code
-        System.out.println(character.getDescriptions().getName());
-        System.out.println(character.getDescriptions().getDescription());
-        System.out.println(character.getRaceString());
-        System.out.println(character.getClassString());
-        System.out.println(character.getDescriptions().getGender());
-        System.out.println(character.getDescriptions().getPalette());
-        System.out.println(character.getMoney().getGold());
-        System.out.println(character.getCurrentlyEquippedArmor().getName());
-        System.out.println(character.getCurrentlyEquippedWeapon().getName());
+//        System.out.println(character.getDescriptions().getName());
+//        System.out.println(character.getDescriptions().getDescription());
+//        System.out.println(character.getRaceString());
+//        System.out.println(character.getClassString());
+//        System.out.println(character.getDescriptions().getGender());
+//        System.out.println(character.getDescriptions().getPalette());
+//        System.out.println(character.getMoney().getGold());
+//        System.out.println(character.getCurrentlyEquippedArmor().getName());
+//        System.out.println(character.getCurrentlyEquippedWeapon().getName());
+//        
+        
     }//GEN-LAST:event_saveButtonMouseClicked
 
-    private void goldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goldButtonMouseClicked
-        Models.etc.Money money = new Models.etc.Money();
-        gold = money.generateStartingGold();
-        character.setMoney(money);
-        goldLabel.setText(Integer.toString(gold));
-    }//GEN-LAST:event_goldButtonMouseClicked
-
-    private void generateStatsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generateStatsButtonMouseClicked
-        DefaultListModel statModel = new DefaultListModel();
-        int[] array = dice.generateIntialDice();
-        for (int i = 0; i < array.length; i++){
-            statModel.addElement(array[i]);
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // TODO add your handling code here:
+       List<Models.Entity.Character> characters = EntityManager.loadCharacters();
+        if(character == null){
+            characters = new ArrayList<Models.Entity.Character>();
         }
-        statList.setModel(statModel);
-    }//GEN-LAST:event_generateStatsButtonMouseClicked
-
-    private void strButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strButtonMouseClicked
-        String a = statList.getSelectedValue().toString();
-        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
-        character.getAttributes().setStrength(str);
-        curStr.setText(a);
-    }//GEN-LAST:event_strButtonMouseClicked
-
-    private void dexButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dexButtonMouseClicked
-        String a = statList.getSelectedValue().toString();
-        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
-        character.getAttributes().setStrength(str);
-        curDex.setText(a);
-    }//GEN-LAST:event_dexButtonMouseClicked
-
-    private void conButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_conButtonMouseClicked
-        String a = statList.getSelectedValue().toString();
-        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
-        character.getAttributes().setStrength(str);
-        curCon.setText(a);
-    }//GEN-LAST:event_conButtonMouseClicked
-
-    private void intButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_intButtonMouseClicked
-        String a = statList.getSelectedValue().toString();
-        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
-        character.getAttributes().setStrength(str);
-        curInt.setText(a);
-    }//GEN-LAST:event_intButtonMouseClicked
-
-    private void wisButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wisButtonMouseClicked
-        String a = statList.getSelectedValue().toString();
-        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
-        character.getAttributes().setStrength(str);
-        curWis.setText(a);
-    }//GEN-LAST:event_wisButtonMouseClicked
-
-    private void chaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chaButtonMouseClicked
-        String a = statList.getSelectedValue().toString();
-        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
-        character.getAttributes().setStrength(str);
-        curCha.setText(a);
-    }//GEN-LAST:event_chaButtonMouseClicked
-
-    private void setGoldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setGoldButtonMouseClicked
-        character.getMoney().setGold(Integer.parseInt(setGoldField.getText()));
-        goldLabel.setText(Integer.toString(gold));
-    }//GEN-LAST:event_setGoldButtonMouseClicked
-
-    private void armEquipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_armEquipMouseClicked
-        int selected = armList.getSelectedIndex();
-        character.setCurrentlyEquippedArmor(aList.get(selected));
-    }//GEN-LAST:event_armEquipMouseClicked
-
-    private void weapEquipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_weapEquipMouseClicked
-        int selected = weapList.getSelectedIndex();
-        character.setCurrentlyEquippedWeapon(wList.get(selected));
-    }//GEN-LAST:event_weapEquipMouseClicked
+        characters.add(character);
+        
+        EntityManager.saveCharacters(characters);
+        
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     private void drawButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_drawButtonMouseClicked
         String charRace = character.getRaceString();
@@ -1120,18 +887,281 @@ public class newCharacterFrame extends javax.swing.JFrame {
         character.getDescriptions().setGender("m");
     }//GEN-LAST:event_masculineButtonMouseClicked
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
-        List<Models.Entity.Character> characters = EntityManager.loadCharacters();
-        if(characters != null){
-            characters.add(character);
-            EntityManager.saveCharacters(characters);
-        }else{
-            characters = new ArrayList<Models.Entity.Character>();
-            characters.add(character);
-            EntityManager.saveCharacters(characters);
+    private void setGoldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_setGoldButtonMouseClicked
+        character.getMoney().setGold(Integer.parseInt(setGoldField.getText()));
+        goldLabel.setText(Integer.toString(gold));
+    }//GEN-LAST:event_setGoldButtonMouseClicked
+
+    private void weapEquipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_weapEquipMouseClicked
+        int selected = weapList.getSelectedIndex();
+        character.setCurrentlyEquippedWeapon(wList.get(selected));
+    }//GEN-LAST:event_weapEquipMouseClicked
+
+    private void armEquipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_armEquipMouseClicked
+        int selected = armList.getSelectedIndex();
+        character.setCurrentlyEquippedArmor(aList.get(selected));
+    }//GEN-LAST:event_armEquipMouseClicked
+
+    private void goldButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goldButtonMouseClicked
+        Models.etc.Money money = new Models.etc.Money();
+        gold = money.generateStartingGold();
+        character.setMoney(money);
+        goldLabel.setText(Integer.toString(gold));
+    }//GEN-LAST:event_goldButtonMouseClicked
+
+    private void generateStatsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generateStatsButtonMouseClicked
+        DefaultListModel statModel = new DefaultListModel();
+        int[] array = dice.generateIntialDice();
+        for (int i = 0; i < array.length; i++){
+            statModel.addElement(array[i]);
         }
-    }//GEN-LAST:event_saveButtonActionPerformed
+        statList.setModel(statModel);
+    }//GEN-LAST:event_generateStatsButtonMouseClicked
+
+    private void wisButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wisButtonMouseClicked
+        String a = statList.getSelectedValue().toString();
+        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
+        character.getAttributes().setStrength(str);
+        curWis.setText(a);
+    }//GEN-LAST:event_wisButtonMouseClicked
+
+    private void chaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chaButtonMouseClicked
+        String a = statList.getSelectedValue().toString();
+        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
+        character.getAttributes().setStrength(str);
+        curCha.setText(a);
+    }//GEN-LAST:event_chaButtonMouseClicked
+
+    private void intButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_intButtonMouseClicked
+        String a = statList.getSelectedValue().toString();
+        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
+        character.getAttributes().setStrength(str);
+        curInt.setText(a);
+    }//GEN-LAST:event_intButtonMouseClicked
+
+    private void strButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strButtonMouseClicked
+        String a = statList.getSelectedValue().toString();
+        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
+        character.getAttributes().setStrength(str);
+        curStr.setText(a);
+    }//GEN-LAST:event_strButtonMouseClicked
+
+    private void conButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_conButtonMouseClicked
+        String a = statList.getSelectedValue().toString();
+        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
+        character.getAttributes().setStrength(str);
+        curCon.setText(a);
+    }//GEN-LAST:event_conButtonMouseClicked
+
+    private void dexButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dexButtonMouseClicked
+        String a = statList.getSelectedValue().toString();
+        Models.Attributes.Strength str = new Models.Attributes.Strength(Integer.parseInt(a));
+        character.getAttributes().setStrength(str);
+        curDex.setText(a);
+    }//GEN-LAST:event_dexButtonMouseClicked
+
+    private void wisdomButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_wisdomButtonMouseClicked
+        abilitySelect = 5;
+    }//GEN-LAST:event_wisdomButtonMouseClicked
+
+    private void strengthButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strengthButtonMouseClicked
+        abilitySelect = 4;
+    }//GEN-LAST:event_strengthButtonMouseClicked
+
+    private void intelligenceButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_intelligenceButtonMouseClicked
+        abilitySelect = 3;
+    }//GEN-LAST:event_intelligenceButtonMouseClicked
+
+    private void dexterityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dexterityButtonMouseClicked
+        abilitySelect = 2;
+    }//GEN-LAST:event_dexterityButtonMouseClicked
+
+    private void constitutionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_constitutionButtonMouseClicked
+        abilitySelect = 1;
+    }//GEN-LAST:event_constitutionButtonMouseClicked
+
+    private void charismaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_charismaButtonMouseClicked
+        abilitySelect = 0;
+    }//GEN-LAST:event_charismaButtonMouseClicked
+
+    private void selectClassValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectClassValueChanged
+        //strings = {"Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Wizard" }
+
+        switch (selectClass.getSelectedIndex()) {
+            case 0:
+            character.setCharacterClass(new Models.Classes.Barbarian());
+            character.setClassString("Barbarian");
+            break;
+            case 1:
+            character.setCharacterClass(new Models.Classes.Bard());
+            character.setClassString("Bard");
+            break;
+            case 2:
+            character.setCharacterClass(new Models.Classes.Cleric());
+            character.setClassString("Cleric");
+            break;
+            case 3:
+            character.setCharacterClass(new Models.Classes.Druid());
+            character.setClassString("Druid");
+            break;
+            case 4:
+            character.setCharacterClass(new Models.Classes.Fighter());
+            character.setClassString("Fighter");
+            break;
+            case 5:
+            character.setCharacterClass(new Models.Classes.Monk());
+            character.setClassString("Monk");
+            break;
+            case 6:
+            character.setCharacterClass(new Models.Classes.Paladin());
+            character.setClassString("Paladin");
+            break;
+            case 7:
+            character.setCharacterClass(new Models.Classes.Ranger());
+            character.setClassString("Ranger");
+            break;
+            case 8:
+            character.setCharacterClass(new Models.Classes.Rogue());
+            character.setClassString("Rogue");
+            break;
+            case 9:
+            character.setCharacterClass(new Models.Classes.Sorcerer());
+            character.setClassString("Sorcerer");
+            break;
+            case 10:
+            character.setCharacterClass(new Models.Classes.Wizard());
+            character.setClassString("Wizard");
+            break;
+        }
+    }//GEN-LAST:event_selectClassValueChanged
+
+    private void selectRaceValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_selectRaceValueChanged
+        //String[] strings = { "Dwarf", "Elf", "Gnome", "Half Elf", "Half Orc", "Halfing", "Human" };
+        //ability boost: {charisma, constitution, dexterity, intelligence, strength, widsom}
+        switch (selectRace.getSelectedIndex()) {
+            case 0://dwarf
+            character.setRace(new Models.Races.Dwarf());
+            character.setRaceString("Dwarf");
+            break;
+            case 1://elf
+            character.setRace(new Models.Races.Elf());
+            character.setRaceString("Elf");
+            break;
+            case 2://gnome
+            character.setRace(new Models.Races.Gnome());
+            character.setRaceString("Gnome");
+            break;
+            case 3://half elf
+            character.setRaceString("Half Elf");
+            switch (abilitySelect) {
+                case 0:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CHARISMA));
+                break;
+                case 1:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.CONSTITUTION));
+                break;
+                case 2:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.DEXTERITY));
+                break;
+                case 3:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.INTELLIGENCE));
+                break;
+                case 4:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.STRENGTH));
+                break;
+                case 5:
+                character.setRace(new Models.Races.HalfElf(HalfElf.AbilityBoost.WISDOM));
+                break;
+            }
+            break;
+            case 4://half orc
+            character.setRaceString("Half Orc");
+            switch (abilitySelect) {
+                case 0:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CHARISMA));
+                break;
+                case 1:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.CONSTITUTION));
+                break;
+                case 2:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.DEXTERITY));
+                break;
+                case 3:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.INTELLIGENCE));
+                break;
+                case 4:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.STRENGTH));
+                break;
+                case 5:
+                character.setRace(new Models.Races.HalfOrc(HalfOrc.AbilityBoost.WISDOM));
+                break;
+            }
+            break;
+            case 5://halfling
+            character.setRace(new Models.Races.Halfling());
+            character.setRaceString("Halfling");
+            break;
+            case 6://human
+            character.setRaceString("Human");
+            switch (abilitySelect) {
+                case 0:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.CHARISMA));
+                break;
+                case 1:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.CONSTITUTION));
+                break;
+                case 2:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.DEXTERITY));
+                break;
+                case 3:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.INTELLIGENCE));
+                break;
+                case 4:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.STRENGTH));
+                break;
+                case 5:
+                character.setRace(new Models.Races.Human(Human.AbilityBoost.WISDOM));
+                break;
+            }
+
+        }
+    }//GEN-LAST:event_selectRaceValueChanged
+
+    private void descFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_descFieldKeyPressed
+        character.getDescriptions().setDescription(descField.getText());
+    }//GEN-LAST:event_descFieldKeyPressed
+
+    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
+
+        character.getDescriptions().setName(nameField.getText());
+    }//GEN-LAST:event_nameFieldKeyPressed
+
+    private void armEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_armEquipActionPerformed
+        // TODO add your handling code here:
+        int selectedIndex = armList.getSelectedIndex();
+        if (selectedIndex != -1) {
+            Armor armor = aList.get(selectedIndex);
+            if(character.getArmory() == null){
+                character.setArmory(new ArrayList<Armor>());
+            }
+                
+            character.getArmory().add(armor);
+        }
+    }//GEN-LAST:event_armEquipActionPerformed
+
+    private void weapEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weapEquipActionPerformed
+        int selectedIndex = weapList.getSelectedIndex();
+        if (selectedIndex != -1) {
+            Weapon weapon = wList.get(selectedIndex);
+            if(character.getWeapons() != null){
+                character.getWeapons().add(weapon);
+            }else{
+                character.setWeapons(new ArrayList<Weapon>());
+                character.getWeapons().add(weapon);
+                System.out.println(character.getWeapons().get(0).getName());
+
+            }
+        }    }//GEN-LAST:event_weapEquipActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appearancePanel;
@@ -1199,7 +1229,6 @@ public class newCharacterFrame extends javax.swing.JFrame {
     private javax.swing.JTextField setGoldField;
     private javax.swing.JPanel skillsPanel;
     private javax.swing.JLabel skinLabel;
-    private javax.swing.JPanel spellsPanel;
     private javax.swing.JList statList;
     private javax.swing.JButton strButton;
     private javax.swing.JRadioButton strengthButton;
@@ -1209,4 +1238,33 @@ public class newCharacterFrame extends javax.swing.JFrame {
     private javax.swing.JButton wisButton;
     private javax.swing.JRadioButton wisdomButton;
     // End of variables declaration//GEN-END:variables
+
+ private void updateWeaponList() {
+        
+        DefaultListModel model = new DefaultListModel();
+        for(int i = 0; i < wList.size(); i++){
+            
+            try{
+                model.addElement(wList.get(i).getName());
+            }catch(Exception e){
+                
+            }
+            weapList.setModel(model);
+        }
+    }
+
+    private void updateArmorList() {
+        DefaultListModel model = new DefaultListModel();
+        for(int i = 0; i < aList.size(); i++){
+            
+            try{
+                model.addElement(aList.get(i).getName());
+                System.out.println(aList.get(i).getName());
+            }catch(Exception e){
+                
+            }
+            armList.setModel(model);
+        }
+        
+    }
 }

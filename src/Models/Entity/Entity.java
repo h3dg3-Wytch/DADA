@@ -18,6 +18,7 @@ import java.util.UUID;
  */
 public abstract class Entity implements Serializable, Comparable<Entity>
 {
+
     protected UUID id;
     private Descriptions descriptions = new Descriptions();
     private Level level = new Level();
@@ -26,15 +27,16 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     private ArrayList<Weapon> weapons;
     private ArrayList<Armor> armory;
 
-
     protected Dice typeOfDiceUsed;
     protected int expDropped;
 
+    public static boolean hideStats = false;
+
     @Override
-    public int compareTo(Entity o) {
+    public int compareTo(Entity o)
+    {
         return 0;
     }
-
 
     private Skills skills;
     private CharacterClass characterClass;
@@ -74,8 +76,11 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     public abstract void calculateFlatFooted();
 
     public abstract void calculateFortitude();
+
     public abstract void calculateReflex();
+
     public abstract void calculateWill();
+
     public abstract boolean attack(Entity e);
 
     public Descriptions getDescriptions()
@@ -148,27 +153,33 @@ public abstract class Entity implements Serializable, Comparable<Entity>
         this.skills = skills;
     }
 
-    public Race getRace() {
+    public Race getRace()
+    {
         return race;
     }
 
-    public void setRace(Race race) {
+    public void setRace(Race race)
+    {
         this.race = race;
     }
 
-    public String getRaceString() {
+    public String getRaceString()
+    {
         return raceString;
     }
 
-    public void setRaceString(String raceString) {
+    public void setRaceString(String raceString)
+    {
         this.raceString = raceString;
     }
 
-    public String getClassString() {
+    public String getClassString()
+    {
         return classString;
     }
 
-    public void setClassString(String classString) {
+    public void setClassString(String classString)
+    {
         this.classString = classString;
     }
 
@@ -311,42 +322,57 @@ public abstract class Entity implements Serializable, Comparable<Entity>
     {
         this.will = will;
     }
-    public UUID getId() {
+
+    public UUID getId()
+    {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(UUID id)
+    {
         this.id = id;
     }
 
     public String getToolTip()
     {
-        ToolTip tooltip = new ToolTip();
-        tooltip.add(new ToolTipObject("Level: ",Integer.toString(level.getLevel())));
-        tooltip.add(new ToolTipObject("HP: ", Integer.toString(getHealthPoints())));
-        tooltip.add(new ToolTipObject("AC: ", Integer.toString(armorClass)));
-        tooltip.add(new ToolTipObject("STR: ", Integer.toString(attributes.getStrength().getAbilityScore())));
-        tooltip.add(new ToolTipObject("DEX: ", Integer.toString(attributes.getDexterity().getAbilityScore())));
-        tooltip.add(new ToolTipObject("CON: ", Integer.toString(attributes.getConstitution().getAbilityScore())));
-        tooltip.add(new ToolTipObject("INT: ", Integer.toString(attributes.getIntelligence().getAbilityScore())));
-        tooltip.add(new ToolTipObject("WIS: ", Integer.toString(attributes.getWisdom().getAbilityScore())));
-        tooltip.add(new ToolTipObject("CHA: ", Integer.toString(attributes.getCharisma().getAbilityScore())));
-        
-        return tooltip.getDisplayString();
+        if (!hideStats)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.add(new ToolTipObject("Level: ", Integer.toString(level.getLevel())));
+            tooltip.add(new ToolTipObject("HP: ", Integer.toString(getHealthPoints())));
+            tooltip.add(new ToolTipObject("AC: ", Integer.toString(armorClass)));
+            tooltip.add(new ToolTipObject("STR: ", Integer.toString(attributes.getStrength().getAbilityScore())));
+            tooltip.add(new ToolTipObject("DEX: ", Integer.toString(attributes.getDexterity().getAbilityScore())));
+            tooltip.add(new ToolTipObject("CON: ", Integer.toString(attributes.getConstitution().getAbilityScore())));
+            tooltip.add(new ToolTipObject("INT: ", Integer.toString(attributes.getIntelligence().getAbilityScore())));
+            tooltip.add(new ToolTipObject("WIS: ", Integer.toString(attributes.getWisdom().getAbilityScore())));
+            tooltip.add(new ToolTipObject("CHA: ", Integer.toString(attributes.getCharisma().getAbilityScore())));
+            return tooltip.getDisplayString();
+        }
+        else
+        {
+            return "";
+        }
+
     }
 
-    public Dice getTypeOfDiceUsed() {
+    public Dice getTypeOfDiceUsed()
+    {
         return typeOfDiceUsed;
     }
 
-    public void setTypeOfDiceUsed(Dice typeOfDiceUsed) {
+    public void setTypeOfDiceUsed(Dice typeOfDiceUsed)
+    {
         this.typeOfDiceUsed = typeOfDiceUsed;
     }
-    public int getExpDropped() {
+
+    public int getExpDropped()
+    {
         return expDropped;
     }
 
-    public void setExpDropped(int expDropped) {
+    public void setExpDropped(int expDropped)
+    {
         this.expDropped = expDropped;
     }
 

@@ -5,8 +5,19 @@
  */
 package View.GUI;
 
+import Models.Entity.Entity;
+import View.Images.ImageLoader;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -19,8 +30,34 @@ public class OptionsFrame extends javax.swing.JFrame
 
     public OptionsFrame(MainMenuFrame mainFrame)
     {
+        super("Options");
+        
+        try
+        {
+            BufferedImage image = ImageIO.read(ImageLoader.loadImage("Icon.png"));
+            setIconImage(image);
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(MainMenuFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         this.mainFrame = mainFrame;
+
         initComponents();
+
+        buttonGroup.add(showButton);
+        buttonGroup.add(hideButton);
+
+        if(Entity.hideStats)
+        {
+            buttonGroup.setSelected(hideButton.getModel(), true);
+        }
+        else
+        {
+            buttonGroup.setSelected(showButton.getModel(), true);
+        }
+
         initListeners();
     }
 
@@ -35,6 +72,33 @@ public class OptionsFrame extends javax.swing.JFrame
                 dispose();
             }
         });
+
+        showButton.addItemListener(new ItemListener()
+        {
+
+            @Override
+            public void itemStateChanged(ItemEvent e)
+            {
+                if (e.getStateChange() == ItemEvent.SELECTED)
+                {
+                    Entity.hideStats = false;
+                }
+            }
+        });
+
+        hideButton.addItemListener(new ItemListener()
+        {
+
+            @Override
+            public void itemStateChanged(ItemEvent e)
+            {
+                if (e.getStateChange() == ItemEvent.SELECTED)
+                {
+                    Entity.hideStats = true;
+                }
+            }
+        });
+
     }
 
     /**
@@ -44,38 +108,31 @@ public class OptionsFrame extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         buttonGroup = new javax.swing.ButtonGroup();
         showButton = new javax.swing.JRadioButton();
         hideButton = new javax.swing.JRadioButton();
-        Save = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         buttonGroup.add(showButton);
-        showButton.setText("Show monster stats during combat");
+        showButton.setText("Show stats during combat");
 
         buttonGroup.add(hideButton);
-        hideButton.setText("Hide monster stats during combat");
-
-        Save.setText("Save Changes");
+        hideButton.setText("Hide stats during combat");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hideButton)
-                            .addComponent(showButton)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(Save)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(showButton)
+                    .addComponent(hideButton))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,16 +141,13 @@ public class OptionsFrame extends javax.swing.JFrame
                 .addComponent(showButton)
                 .addGap(18, 18, 18)
                 .addComponent(hideButton)
-                .addGap(18, 18, 18)
-                .addComponent(Save)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Save;
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JRadioButton hideButton;
     private javax.swing.JRadioButton showButton;

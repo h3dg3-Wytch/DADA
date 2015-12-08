@@ -28,6 +28,9 @@ public class Weapon implements Serializable
         this.gold = gold;
     }
 
+    public Weapon() {
+    }
+
     public int getGold() {
         return gold;
     }

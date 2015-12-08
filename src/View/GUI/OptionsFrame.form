@@ -28,20 +28,12 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hideButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="showButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                      <Component id="Save" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="showButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="hideButton" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace pref="46" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,9 +44,7 @@
               <Component id="showButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="hideButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="Save" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -65,7 +55,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Show monster stats during combat"/>
+        <Property name="text" type="java.lang.String" value="Show stats during combat"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="hideButton">
@@ -73,12 +63,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Hide monster stats during combat"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="Save">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Save Changes"/>
+        <Property name="text" type="java.lang.String" value="Hide stats during combat"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -11,6 +11,9 @@ import java.io.Serializable;
 
 public class Armor implements Serializable
 {
+
+    public Armor() {
+    }
     public enum ArmorType
     {
 
