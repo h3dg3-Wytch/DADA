@@ -111,7 +111,7 @@ public class TargetPanel extends JPanel
                             if (entity.getHealthPoints() < hp)
                             {
                                 int damage = Math.abs(hp - entity.getHealthPoints());
-                                JOptionPane.showMessageDialog(parent, "Attack successful dealing " + damage + " damage!", "Succsess", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(parent, "Attack successful dealing " + damage + " damage!", "Success", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else
                             {
@@ -145,7 +145,7 @@ public class TargetPanel extends JPanel
                             if (entity.getHealthPoints() < hp)
                             {
                                 int damage = Math.abs(hp - entity.getHealthPoints());
-                                JOptionPane.showMessageDialog(parent, "Attack successful dealing " + damage + " damage!", "Succsess", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(parent, "Attack successful dealing " + damage + " damage!", "Success", JOptionPane.INFORMATION_MESSAGE);
                             }
                             else
                             {

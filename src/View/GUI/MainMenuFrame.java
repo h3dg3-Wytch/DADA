@@ -13,9 +13,9 @@ import Models.Attributes.Intelligence;
 import Models.Attributes.Strength;
 import Models.Attributes.Wisdom;
 import Models.Classes.Wizard;
+import Models.Databases.EntityManager;
 import Models.Entity.Monster;
 import View.Images.ImageLoader;
-import dada.DADA;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,12 +29,14 @@ import javax.imageio.ImageIO;
  *
  * @author Maia
  */
-public class MainMenuFrame extends javax.swing.JFrame {
+public class MainMenuFrame extends javax.swing.JFrame
+{
 
     private boolean buttonsEnabled = true;
 
-    public MainMenuFrame() {
-        
+    public MainMenuFrame()
+    {
+
         try
         {
             BufferedImage image = ImageIO.read(ImageLoader.loadImage("Icon.png"));
@@ -42,9 +44,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
         }
         catch (IOException ex)
         {
-            Logger.getLogger(MainMenuFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OptionsFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         initComponents();
     }
 
@@ -147,7 +148,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
     private void monsterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_monsterButtonMouseClicked
 
-        if (buttonsEnabled) {
+        if (buttonsEnabled)
+        {
             disableButtons();
             MonsterFrame frame = new MonsterFrame(this);
             frame.setLocationRelativeTo(this);
@@ -158,56 +160,75 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
     private void combatButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_combatButtonMouseClicked
 
-         // this is test data
-        List<Models.Entity.Character> characterList = new ArrayList();
-        List<Monster> monsterList = new ArrayList();
+        // this is test data
+        List<Models.Entity.Character> characterList = EntityManager.loadCharacters();
+        List<Monster> monsterList = EntityManager.loadMonsters();
 
-        if (buttonsEnabled) {
+        if (characterList == null)
+        {
+            characterList = new ArrayList();
+        }
+        if (monsterList == null)
+        {
+            monsterList = new ArrayList();
+        }
+
+        if (buttonsEnabled)
+        {
             // this is test data
 
             disableButtons();
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 2; i++)
+            {
                 Models.Entity.Character character = new Models.Entity.Character();
 
                 Attributes attributes = new Attributes();
-                attributes.setCharisma(new Charisma(new Random().nextInt(12)+1));
-                attributes.setDexterity(new Dexterity(new Random().nextInt(12)+1));
-                attributes.setStrength(new Strength(new Random().nextInt(12)+1));
-                attributes.setWisdom(new Wisdom(new Random().nextInt(12)+1));
-                attributes.setIntelligence(new Intelligence(new Random().nextInt(12)+1));
-                attributes.setConstitution(new Constitution(new Random().nextInt(12)+1));
-                
-                
+                attributes.setCharisma(new Charisma(new Random().nextInt(12) + 1));
+                attributes.setDexterity(new Dexterity(new Random().nextInt(12) + 1));
+                attributes.setStrength(new Strength(new Random().nextInt(12) + 1));
+                attributes.setWisdom(new Wisdom(new Random().nextInt(12) + 1));
+                attributes.setIntelligence(new Intelligence(new Random().nextInt(12) + 1));
+                attributes.setConstitution(new Constitution(new Random().nextInt(12) + 1));
+
                 character.setAttributes(attributes);
                 character.setCharacterClass(new Wizard());
-                character.caluclateArmorClass();
-                
+
                 character.setHealthPoints(20);
-                character.getDescriptions().setName("Character " + i);
-                character.setInitiative(new Random().nextInt(20) + 1);
+                character.getDescriptions().setName("Character " + characterList.size());
                 characterList.add(character);
             }
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < characterList.size(); i++)
+            {
+                characterList.get(i).setInitiative(new Random().nextInt(20) + 1);
+                characterList.get(i).caluclateArmorClass();
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
                 Monster monster = new Monster();
-                
+
                 Attributes attributes = new Attributes();
-                attributes.setCharisma(new Charisma(new Random().nextInt(12)+1));
-                attributes.setDexterity(new Dexterity(new Random().nextInt(12)+1));
-                attributes.setStrength(new Strength(new Random().nextInt(12)+1));
-                attributes.setWisdom(new Wisdom(new Random().nextInt(12)+1));
-                attributes.setIntelligence(new Intelligence(new Random().nextInt(12)+1));
-                attributes.setConstitution(new Constitution(new Random().nextInt(12)+1));
-                
+                attributes.setCharisma(new Charisma(new Random().nextInt(12) + 1));
+                attributes.setDexterity(new Dexterity(new Random().nextInt(12) + 1));
+                attributes.setStrength(new Strength(new Random().nextInt(12) + 1));
+                attributes.setWisdom(new Wisdom(new Random().nextInt(12) + 1));
+                attributes.setIntelligence(new Intelligence(new Random().nextInt(12) + 1));
+                attributes.setConstitution(new Constitution(new Random().nextInt(12) + 1));
+
                 monster.setAttributes(attributes);
-                monster.caluclateArmorClass();
-                
+
                 monster.setHealthPoints(20);
                 monster.setExpDropped(2000);
-                monster.getDescriptions().setName("Monster " + i);
-                monster.setInitiative(new Random().nextInt(20) + 1);
+                monster.getDescriptions().setName("Monster " + monsterList.size());
                 monsterList.add(monster);
+            }
+
+            for (int i = 0; i < monsterList.size(); i++)
+            {
+                monsterList.get(i).setInitiative(new Random().nextInt(20) + 1);
+                monsterList.get(i).caluclateArmorClass();
             }
             CombatFrame frame = new CombatFrame(characterList, monsterList, this);
             frame.setLocationRelativeTo(null);
@@ -217,7 +238,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
     private void optionsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_optionsButtonMouseClicked
 
-        if (buttonsEnabled) {
+        if (buttonsEnabled)
+        {
             disableButtons();
             OptionsFrame frame = new OptionsFrame(this);
             frame.setLocationRelativeTo(this);
@@ -225,7 +247,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_optionsButtonMouseClicked
 
-    public void disableButtons() {
+    public void disableButtons()
+    {
         optionsButton.setEnabled(false);
         characterButton.setEnabled(false);
         monsterButton.setEnabled(false);
@@ -233,7 +256,8 @@ public class MainMenuFrame extends javax.swing.JFrame {
         buttonsEnabled = false;
     }
 
-    public void enableButtons() {
+    public void enableButtons()
+    {
         optionsButton.setEnabled(true);
         characterButton.setEnabled(true);
         monsterButton.setEnabled(true);

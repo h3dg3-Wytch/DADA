@@ -39,9 +39,9 @@ public class CombatFrame extends javax.swing.JFrame
         }
         catch (IOException ex)
         {
-            Logger.getLogger(MainMenuFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OptionsFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         this.entities = new ArrayList();
         this.characters = new ArrayList(characters);
         this.monsters = new ArrayList(monsters);
